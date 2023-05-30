@@ -23,10 +23,10 @@ export default function Canvas() {
     if (canvasRef.current) {
       // 1. Setup canvas
       const canvas = new fabric.Canvas(canvasRef.current, {
+        backgroundColor: "#808080",
         width: CANVAS_WIDTH,
         height: CANVAS_HEIGHT,
-        backgroundColor: "#808080",
-        selection: false
+        selection: false,
       })
 
       // 2. Setup objects & its properties
@@ -57,7 +57,7 @@ export default function Canvas() {
         canvas.dispose()
       }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return <canvas ref={canvasRef} />
