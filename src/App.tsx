@@ -1,8 +1,22 @@
+import Canvas from "@/components/Canvas"
+import Footer from "@/components/Footer"
+import Header from "@/components/Header"
+
 function App() {
   return (
-    <main className="mx-auto max-w-xl">
-      <h1 className="text-center text-2xl font-bold">Collage Express</h1>
-    </main>
+    <div className="mx-auto max-w-xl">
+      <header>
+        <Header />
+      </header>
+
+      <main>
+        <Canvas />
+      </main>
+
+      <footer>
+        <Footer />
+      </footer>
+    </div>
   )
 }
 
