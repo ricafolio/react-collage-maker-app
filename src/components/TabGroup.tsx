@@ -11,7 +11,7 @@ export default function TabGroup() {
 
   return (
     <>
-      <div className="bg-neutral-900 h-24 rounded-t overflow-x-scroll">
+      <div className="bg-neutral-900 h-24 rounded-t overflow-x-auto scrollbar-hide">
         {/* To do content here */}
       </div>
       <div className="grid grid-flow-col justify-stretch gap-x-1">
