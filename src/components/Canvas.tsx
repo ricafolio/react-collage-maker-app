@@ -25,7 +25,7 @@ export default function Canvas() {
     if (canvasRef.current) {
       // 1. Setup canvas
       const canvas = new fabric.Canvas(canvasRef.current, {
-        backgroundColor: "#232323",
+        backgroundColor: "#1a1a1a",
         width: CANVAS_WIDTH,
         height: CANVAS_HEIGHT,
         selection: false,
@@ -33,20 +33,22 @@ export default function Canvas() {
 
       // 2. Setup objects & its properties
       const rectTop = new fabric.Rect({
-        fill: "yellow",
-        height: CANVAS_HEIGHT * 0.5,
-        width: CANVAS_WIDTH,
-        top: 0,
+        fill: "#1a1a1a",
+        height: CANVAS_HEIGHT * 0.5 + 1,
+        width: CANVAS_WIDTH + 1,
+        top: -1,
+        left: -1,
+        absolutePositioned: true,
         hoverCursor: "pointer",
       }).set(OBJECT_LOCKED)
 
       const rectBottom = new fabric.Rect({
-        fill: "blue",
+        fill: "#2a2a2a",
         height: CANVAS_HEIGHT * 0.5,
         width: CANVAS_WIDTH + 1,
-        top: CANVAS_HEIGHT + 1,
+        top: CANVAS_HEIGHT * 0.5,
         left: -1,
-        originY: "bottom",
+        absolutePositioned: true,
         hoverCursor: "pointer",
       }).set(OBJECT_LOCKED)
 
@@ -72,12 +74,9 @@ export default function Canvas() {
                 top: gridCell.top,
                 selectable: true,
                 hasControls: true,
-                // clipPath: new fabric.Rect({
-                //   originY: "top",
-                //   height: CANVAS_HEIGHT * 0.5,
-                //   width: CANVAS_WIDTH,
-                // }),
+                clipPath: gridCell
               })
+              img.scaleToWidth(CANVAS_WIDTH)
               canvas.add(img)
             }
             addImage(dataUrl)
