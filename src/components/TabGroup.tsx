@@ -1,8 +1,7 @@
-import RatioIcon from "./icons/RatioIcon";
-import TemplateIcon from "./icons/TemplateIcon";
-import { SelectedTabType } from "@/types";
-import { useState } from "react";
-
+import RatioIcon from "./icons/RatioIcon"
+import TemplateIcon from "./icons/TemplateIcon"
+import { SelectedTabType } from "@/types"
+import { useState } from "react"
 
 export default function TabGroup() {
   const [selected, setSelected] = useState<SelectedTabType>("template")
@@ -16,19 +15,30 @@ export default function TabGroup() {
 
   return (
     <>
-      <div className="bg-neutral-900 h-24 rounded-t overflow-x-auto scrollbar-hide">
+      <div className="scrollbar-hide h-24 overflow-x-auto rounded-t bg-neutral-900">
         {/* To do content here */}
       </div>
       <div className="grid grid-flow-col justify-stretch gap-x-1">
-        <button className={`${getStyle("template")}`} onClick={() => setSelected("template")}>
+        <button
+          className={`${getStyle("template")}`}
+          onClick={() => setSelected("template")}
+        >
           <TemplateIcon className="mr-2" />
           <span>Template</span>
         </button>
-        <button className={`${getStyle("ratio")}`} onClick={() => setSelected("ratio")}>
+        <button
+          className={`${getStyle("ratio")}`}
+          onClick={() => setSelected("ratio")}
+        >
           <RatioIcon className="mr-2" />
           <span>Ratio</span>
         </button>
-        <button className={`${getStyle("more")}`} onClick={() => setSelected("more")}>More..</button>
+        <button
+          className={`${getStyle("more")}`}
+          onClick={() => setSelected("more")}
+        >
+          More..
+        </button>
       </div>
     </>
   )

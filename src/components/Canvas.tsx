@@ -1,6 +1,6 @@
-import * as fabric from "fabric";
-import { useEffect, useRef } from "react";
-import DownloadIcon from "./icons/DownloadIcon";
+import DownloadIcon from "./icons/DownloadIcon"
+import * as fabric from "fabric"
+import { useEffect, useRef } from "react"
 
 export default function Canvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
@@ -57,34 +57,34 @@ export default function Canvas() {
         input.accept = "image/*"
 
         input.onchange = async (event) => {
-            const target = event.target as HTMLInputElement
-            const file = target.files && target.files[0]
-            if (!file) return
+          const target = event.target as HTMLInputElement
+          const file = target.files && target.files[0]
+          if (!file) return
 
-            const reader = new FileReader()
-            reader.readAsDataURL(file)
-            reader.onload = (e) => {
-              const dataUrl = e.target?.result as string
-              const addImage = async (imageBase64: string) => {
-                const img = await fabric.Image.fromURL(imageBase64)
-                img.set({
-                  left: gridCell.left,
-                  top: gridCell.top,
-                  selectable: true,
-                  hasControls: true,
-                  clipPath: new fabric.Rect({
-                    originY: "top",
-                    height: CANVAS_HEIGHT * 0.5,
-                    width: CANVAS_WIDTH,
-                  }),
-                })
-                canvas.add(img)
-              }
-              addImage(dataUrl)
+          const reader = new FileReader()
+          reader.readAsDataURL(file)
+          reader.onload = (e) => {
+            const dataUrl = e.target?.result as string
+            const addImage = async (imageBase64: string) => {
+              const img = await fabric.Image.fromURL(imageBase64)
+              img.set({
+                left: gridCell.left,
+                top: gridCell.top,
+                selectable: true,
+                hasControls: true,
+                // clipPath: new fabric.Rect({
+                //   originY: "top",
+                //   height: CANVAS_HEIGHT * 0.5,
+                //   width: CANVAS_WIDTH,
+                // }),
+              })
+              canvas.add(img)
             }
+            addImage(dataUrl)
+          }
 
-            canvas.remove(gridCell)
-            canvas.renderAll()
+          canvas.remove(gridCell)
+          canvas.renderAll()
         }
 
         input.click()
@@ -124,7 +124,10 @@ export default function Canvas() {
     <>
       <canvas ref={canvasRef} />
       <a ref={linkRef} className="hidden"></a>
-      <button className="w-full mt-4 text-sm bg-indigo-600 hover:bg-indigo-700 transition-colors rounded font-semibold transition px-5 py-3 flex justify-center items-center" onClick={downloadImage}>
+      <button
+        className="mt-4 flex w-full items-center justify-center rounded bg-indigo-600 px-5 py-3 text-sm font-semibold transition transition-colors hover:bg-indigo-700"
+        onClick={downloadImage}
+      >
         <DownloadIcon className="mr-2" />
         <span>Download image</span>
       </button>
