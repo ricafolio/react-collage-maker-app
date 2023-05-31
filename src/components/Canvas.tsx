@@ -4,6 +4,8 @@ import { useEffect, useRef } from "react";
 
 export default function Canvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
+  const linkRef = useRef<HTMLAnchorElement | null>(null)
+
   const CANVAS_WIDTH = 576
   const CANVAS_HEIGHT = 576
   const OBJECT_LOCKED = {
@@ -60,5 +62,20 @@ export default function Canvas() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  return <canvas ref={canvasRef} />
+  const downloadImage = () => {
+    if (canvasRef.current && linkRef.current) {
+      const canvas = canvasRef.current
+      linkRef.current.href = canvas.toDataURL()
+      linkRef.current.download = `collage-${new Date().getTime()}.png`
+      linkRef.current.click()
+    }
+  }
+
+  return (
+    <>
+      <canvas ref={canvasRef} />
+      <a ref={linkRef} className="hidden"></a>
+      <button className="w-full mt-4 text-sm bg-indigo-600 hover:bg-indigo-700 transition-colors rounded font-semibold transition px-5 py-3" onClick={downloadImage}>Download image</button>
+    </>
+  )
 }
