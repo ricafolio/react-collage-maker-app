@@ -1,12 +1,17 @@
-import { useState } from "react"
-import { SelectedTabType } from "@/types"
+import RatioIcon from "./icons/RatioIcon";
+import TemplateIcon from "./icons/TemplateIcon";
+import { SelectedTabType } from "@/types";
+import { useState } from "react";
+
 
 export default function TabGroup() {
   const [selected, setSelected] = useState<SelectedTabType>("template")
-  const tabStyle = "transition-colors rounded-b p-3 bg-black hover:bg-neutral-950"
-  const activeTabStyle = "transition-colors rounded-b p-3 bg-neutral-900"
+  const sharedTabStyle = "flex justify-center items-center transition-colors rounded-b p-3"
+  const inactiveTabStyle = `${sharedTabStyle} bg-black hover:bg-neutral-950`
+  const activeTabStyle = `${sharedTabStyle} bg-neutral-900`
+
   const getStyle = (tab: SelectedTabType) => {
-    return selected === tab ? activeTabStyle : tabStyle
+    return selected === tab ? activeTabStyle : inactiveTabStyle
   }
 
   return (
@@ -15,8 +20,14 @@ export default function TabGroup() {
         {/* To do content here */}
       </div>
       <div className="grid grid-flow-col justify-stretch gap-x-1">
-        <button className={`${getStyle("template")}`} onClick={() => setSelected("template")}>Template</button>
-        <button className={`${getStyle("ratio")}`} onClick={() => setSelected("ratio")}>Ratio</button>
+        <button className={`${getStyle("template")}`} onClick={() => setSelected("template")}>
+          <TemplateIcon className="mr-2" />
+          <span>Template</span>
+        </button>
+        <button className={`${getStyle("ratio")}`} onClick={() => setSelected("ratio")}>
+          <RatioIcon className="mr-2" />
+          <span>Ratio</span>
+        </button>
         <button className={`${getStyle("more")}`} onClick={() => setSelected("more")}>More..</button>
       </div>
     </>
