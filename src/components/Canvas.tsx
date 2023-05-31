@@ -1,6 +1,6 @@
 import * as fabric from "fabric";
 import { useEffect, useRef } from "react";
-
+import DownloadIcon from "./icons/DownloadIcon";
 
 export default function Canvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
@@ -75,7 +75,10 @@ export default function Canvas() {
     <>
       <canvas ref={canvasRef} />
       <a ref={linkRef} className="hidden"></a>
-      <button className="w-full mt-4 text-sm bg-indigo-600 hover:bg-indigo-700 transition-colors rounded font-semibold transition px-5 py-3" onClick={downloadImage}>Download image</button>
+      <button className="w-full mt-4 text-sm bg-indigo-600 hover:bg-indigo-700 transition-colors rounded font-semibold transition px-5 py-3 flex justify-center items-center" onClick={downloadImage}>
+        <DownloadIcon className="mr-2" />
+        <span>Download image</span>
+      </button>
     </>
   )
 }
