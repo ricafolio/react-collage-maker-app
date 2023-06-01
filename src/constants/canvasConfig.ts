@@ -153,6 +153,194 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
       },
     ],
   },
+  {
+    name: "4 squares",
+    config: [
+      {
+        rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
+          fill: "#1a1a1a",
+          height: CANVAS_HEIGHT * 0.5 + 1,
+          width: CANVAS_WIDTH * 0.5 + 1,
+          top: -1,
+          left: -1,
+          absolutePositioned: true,
+          hoverCursor: "pointer",
+        }),
+        scaleTo: "height",
+      },
+      {
+        rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
+          fill: "#2a2a2a",
+          height: CANVAS_HEIGHT * 0.5 + 1,
+          width: CANVAS_WIDTH * 0.5 + 1,
+          top: -1,
+          left: CANVAS_WIDTH * 0.5,
+          absolutePositioned: true,
+          hoverCursor: "pointer",
+        }),
+        scaleTo: "height",
+      },
+      {
+        rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
+          fill: "#3a3a3a",
+          height: CANVAS_HEIGHT * 0.5 + 1,
+          width: CANVAS_WIDTH * 0.5 + 1,
+          top: CANVAS_HEIGHT * 0.5,
+          left: -1,
+          absolutePositioned: true,
+          hoverCursor: "pointer",
+        }),
+        scaleTo: "height",
+      },
+      {
+        rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
+          fill: "#4a4a4a",
+          height: CANVAS_HEIGHT * 0.5 + 1,
+          width: CANVAS_WIDTH * 0.5 + 1,
+          top: CANVAS_HEIGHT * 0.5,
+          left: CANVAS_WIDTH * 0.5,
+          absolutePositioned: true,
+          hoverCursor: "pointer",
+        }),
+        scaleTo: "height",
+      },
+    ],
+  },
+  {
+    name: "4 squares uneven",
+    config: [
+      {
+        rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
+          fill: "#1a1a1a",
+          height: CANVAS_HEIGHT * 0.6 + 1,
+          width: CANVAS_WIDTH * 0.5 + 1,
+          top: -1,
+          left: -1,
+          absolutePositioned: true,
+          hoverCursor: "pointer",
+        }),
+        scaleTo: "height",
+      },
+      {
+        rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
+          fill: "#2a2a2a",
+          height: CANVAS_HEIGHT * 0.4,
+          width: CANVAS_WIDTH * 0.5 + 1,
+          top: CANVAS_HEIGHT * 0.6,
+          left: -1,
+          absolutePositioned: true,
+          hoverCursor: "pointer",
+        }),
+        scaleTo: "height",
+      },
+      {
+        rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
+          fill: "#3a3a3a",
+          height: CANVAS_HEIGHT * 0.4,
+          width: CANVAS_WIDTH * 0.5 + 1,
+          top: -1,
+          left: CANVAS_WIDTH * 0.5,
+          absolutePositioned: true,
+          hoverCursor: "pointer",
+        }),
+        scaleTo: "height",
+      },
+      {
+        rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
+          fill: "#4a4a4a",
+          height: CANVAS_HEIGHT * 0.6 + 1,
+          width: CANVAS_WIDTH * 0.5 + 1,
+          top: CANVAS_HEIGHT * 0.4,
+          left: CANVAS_WIDTH * 0.5,
+          absolutePositioned: true,
+          hoverCursor: "pointer",
+        }),
+        scaleTo: "height",
+      },
+    ],
+  },
+  {
+    name: "3 squares - 2 left, 1 right",
+    config: [
+      {
+        rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
+          fill: "#1a1a1a",
+          height: CANVAS_HEIGHT * 0.5,
+          width: CANVAS_WIDTH * 0.5,
+          top: 0,
+          left: 0,
+          absolutePositioned: true,
+          hoverCursor: "pointer",
+        }),
+        scaleTo: "height",
+      },
+      {
+        rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
+          fill: "#2a2a2a",
+          height: CANVAS_HEIGHT * 0.5,
+          width: CANVAS_WIDTH * 0.5,
+          top: CANVAS_HEIGHT * 0.5,
+          left: 0,
+          absolutePositioned: true,
+          hoverCursor: "pointer",
+        }),
+        scaleTo: "height",
+      },
+      {
+        rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
+          fill: "#3a3a3a",
+          height: CANVAS_HEIGHT,
+          width: CANVAS_WIDTH * 0.5,
+          top: 0,
+          left: CANVAS_WIDTH * 0.5,
+          absolutePositioned: true,
+          hoverCursor: "pointer",
+        }),
+        scaleTo: "height",
+      },
+    ],
+  },
+  {
+    name: "3 squares - 2 right, 1 left",
+    config: [
+      {
+        rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
+          fill: "#3a3a3a",
+          height: CANVAS_HEIGHT,
+          width: CANVAS_WIDTH * 0.5,
+          top: 0,
+          left: 0,
+          absolutePositioned: true,
+          hoverCursor: "pointer",
+        }),
+        scaleTo: "height",
+      },
+      {
+        rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
+          fill: "#1a1a1a",
+          height: CANVAS_HEIGHT * 0.5,
+          width: CANVAS_WIDTH * 0.5,
+          top: 0,
+          left: CANVAS_WIDTH * 0.5,
+          absolutePositioned: true,
+          hoverCursor: "pointer",
+        }),
+        scaleTo: "height",
+      },
+      {
+        rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
+          fill: "#2a2a2a",
+          height: CANVAS_HEIGHT * 0.5,
+          width: CANVAS_WIDTH * 0.5,
+          top: CANVAS_HEIGHT * 0.5,
+          left: CANVAS_WIDTH * 0.5,
+          absolutePositioned: true,
+          hoverCursor: "pointer",
+        }),
+        scaleTo: "height",
+      },
+    ],
+  },
 ]
 
 const DEFAULT_HEIGHT = 576
