@@ -7,7 +7,7 @@ import store from "@/redux/store"
 function App() {
   return (
     <Provider store={store}>
-      <div className="mx-auto max-w-xl">
+      <div className="max-w-xl mx-2 sm:mx-auto">
         <header>
           <Header />
         </header>

@@ -20,7 +20,7 @@ export default function TabGroup() {
 
   return (
     <>
-      <div className="scrollbar-hide h-24 overflow-x-auto rounded-t bg-neutral-900">
+      <div className="flex items-center scrollbar-hide h-28 p-2 overflow-y-hidden overflow-x-auto rounded-t bg-neutral-900">
         {selected === "template" && <TabTemplate />}
         {selected === "ratio" && <TabRatio />}
         {selected === "more" && <TabMore />}
