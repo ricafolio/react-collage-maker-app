@@ -16,7 +16,6 @@ export const OBJECT_LOCKED: LockedObjectType = {
 
 export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
   {
-    id: 1,
     uid: "two-landscape-photos",
     name: "Two landscape photos",
     config: [
@@ -45,7 +44,6 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
     ],
   },
   {
-    id: 2,
     uid: "three-landscape-photos",
     name: "Three landscape photos",
     config: [
@@ -90,43 +88,36 @@ const DEFAULT_HEIGHT = 576
 
 export const ASPECT_RATIOS: AspectRatioType[] = [
   {
-    id: 1,
     name: "1:1",
     nickname: "Square",
     canvas: calculateHeightByAspectRatio(1, 1, DEFAULT_HEIGHT),
   },
   {
-    id: 2,
     name: "3:2",
     nickname: "",
     canvas: calculateHeightByAspectRatio(3, 2, DEFAULT_HEIGHT),
   },
   {
-    id: 3,
     name: "4:3",
     nickname: "",
     canvas: calculateHeightByAspectRatio(4, 3, DEFAULT_HEIGHT),
   },
   {
-    id: 4,
     name: "16:9",
     nickname: "Cinematic",
     canvas: calculateHeightByAspectRatio(16, 9, DEFAULT_HEIGHT),
   },
   {
-    id: 5,
     name: "9:16",
     nickname: "Tiktok",
     canvas: calculateHeightByAspectRatio(9, 16, DEFAULT_HEIGHT),
   },
   {
-    id: 6,
     name: "2:3",
     nickname: "",
     canvas: calculateHeightByAspectRatio(2, 3, DEFAULT_HEIGHT),
   },
   {
-    id: 5,
     name: "3:4",
     nickname: "",
     canvas: calculateHeightByAspectRatio(3, 4, DEFAULT_HEIGHT),

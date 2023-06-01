@@ -31,7 +31,6 @@ export type RectConfigType = {
 }
 
 export type CollageTemplateType = {
-  id: number
   uid: string
   name: string
   config: RectConfigType[]
@@ -43,7 +42,6 @@ export type DimensionsType = {
 }
 
 export type AspectRatioType = {
-  id: number
   name: string
   nickname: string
   canvas: DimensionsType
