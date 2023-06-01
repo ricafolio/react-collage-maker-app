@@ -33,6 +33,7 @@ export type RectConfigType = {
 
 export type CollageTemplateType = {
   name: string
+  icon: string
   config: RectConfigType[]
 }
 
