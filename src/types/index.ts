@@ -43,3 +43,8 @@ export type AspectRatioType = {
     height: number
   }
 }
+
+export interface defaultSettingsType {
+  template: number
+  ratio: number
+}
