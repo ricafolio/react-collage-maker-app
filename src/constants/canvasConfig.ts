@@ -83,7 +83,6 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
     ],
   },
   {
-    uid: "two-portrait-photos",
     name: "Two portrait photos",
     scaleTo: "height",
     config: [
