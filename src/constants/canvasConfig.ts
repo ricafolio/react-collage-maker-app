@@ -93,14 +93,9 @@ export const ASPECT_RATIOS: AspectRatioType[] = [
     canvas: calculateHeightByAspectRatio(1, 1, DEFAULT_HEIGHT),
   },
   {
-    name: "9:16",
-    nickname: "Stories",
-    canvas: calculateHeightByAspectRatio(9, 16, DEFAULT_HEIGHT),
-  },
-  {
-    name: "3:4",
-    nickname: "Twitter (Tall)",
-    canvas: calculateHeightByAspectRatio(3, 4, DEFAULT_HEIGHT),
+    name: "2:1",
+    nickname: "FB Post",
+    canvas: calculateHeightByAspectRatio(2, 1, DEFAULT_HEIGHT),
   },
   {
     name: "2:3",
@@ -108,23 +103,28 @@ export const ASPECT_RATIOS: AspectRatioType[] = [
     canvas: calculateHeightByAspectRatio(2, 3, DEFAULT_HEIGHT),
   },
   {
-    name: "2:1",
-    nickname: "FB Post",
-    canvas: calculateHeightByAspectRatio(2, 1, DEFAULT_HEIGHT),
-  },
-  {
     name: "3:1",
     nickname: "Twitter Header",
     canvas: calculateHeightByAspectRatio(3, 1, DEFAULT_HEIGHT),
+  },
+  {
+    name: "3:4",
+    nickname: "Twitter Tall Photo",
+    canvas: calculateHeightByAspectRatio(3, 4, DEFAULT_HEIGHT),
+  },
+  {
+    name: "4:3",
+    nickname: "Standard",
+    canvas: calculateHeightByAspectRatio(4, 3, DEFAULT_HEIGHT),
+  },
+  {
+    name: "9:16",
+    nickname: "Stories",
+    canvas: calculateHeightByAspectRatio(9, 16, DEFAULT_HEIGHT),
   },
   {
     name: "16:9",
     nickname: "Cinematic",
     canvas: calculateHeightByAspectRatio(16, 9, DEFAULT_HEIGHT),
   },
-  {
-    name: "4:3",
-    nickname: "Standard",
-    canvas: calculateHeightByAspectRatio(4, 3, DEFAULT_HEIGHT),
-  }
 ]
