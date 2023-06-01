@@ -31,6 +31,7 @@ export default function Canvas() {
         width: ratio.canvas.width,
         height: ratio.canvas.height,
         selection: false,
+        controlsAboveOverlay: false
       })
 
       // 2. Setup objects & its properties
@@ -65,8 +66,9 @@ export default function Canvas() {
                     selectable: true,
                     hasControls: true,
                     clipPath: selectedCell,
+                    perPixelTargetFind: true,
                   })
-                  img.scaleToWidth(ratio.canvas.width)
+                  img.scaleToWidth(ratio.canvas.width + 1)
                   canvas.add(img)
                 }
                 addImage(dataUrl)
