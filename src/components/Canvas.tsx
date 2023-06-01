@@ -104,7 +104,7 @@ export default function Canvas() {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeRatioIndex || activeTemplateIndex])
+  }, [activeRatioIndex, activeTemplateIndex])
 
   const downloadImage = () => {
     if (canvasRef.current && linkRef.current) {
