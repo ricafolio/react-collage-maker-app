@@ -26,8 +26,9 @@ export default function TabTemplate() {
                 ? "border-white"
                 : "border-neutral-800 hover:border-neutral-200"
             }`}
+            aria-label={`change template to ${template.name}`}
           >
-            <small>{template.name}</small>
+            <img src={template.icon} alt={template.name} />
           </button>
         )
       })}
