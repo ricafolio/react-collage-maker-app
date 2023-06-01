@@ -78,6 +78,7 @@ export default function Canvas() {
             }
 
             input.click()
+            input.value = ""
           }
         }
 
