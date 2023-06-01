@@ -11,14 +11,12 @@ export const OBJECT_LOCKED = {
   selectable: false,
 }
 
-export const collage_templates = [
+export const COLLAGE_TEMPLATES = [
   {
     id: 1,
     uid: "two-landscape-photos",
-    name: "Default",
-    nickname: "Two landscape photos",
+    name: "Two landscape photos",
     config: [
-      // config for each grid cell
       {
         rectFabric: (CANVAS_HEIGHT: number, CANVAS_WIDTH: number) => ({
           fill: "#1a1a1a",
@@ -45,7 +43,7 @@ export const collage_templates = [
   },
 ]
 
-export const aspect_ratios = [
+export const ASPECT_RATIOS = [
   {
     id: 1,
     name: "1:1",
