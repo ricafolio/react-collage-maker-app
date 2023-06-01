@@ -71,10 +71,10 @@ export default function Canvas() {
                   })
                   
                   // Scale accordingly to look good
-                  if (activeTemplate.scaleTo === "width") {
-                    img.scaleToWidth(ratio.canvas.width + 1)
-                  } else if (activeTemplate.scaleTo === "height") {
-                    img.scaleToHeight(ratio.canvas.height + 1)
+                  if (config.scaleTo === "width") {
+                    img.scaleToWidth(selectedCell.width + 1)
+                  } else if (config.scaleTo === "height") {
+                    img.scaleToHeight(selectedCell.height + 1)
                   }
 
                   canvas.add(img)

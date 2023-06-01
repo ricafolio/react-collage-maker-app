@@ -17,7 +17,6 @@ export const OBJECT_LOCKED: LockedObjectType = {
 export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
   {
     name: "Two landscape photos",
-    scaleTo: "width",
     config: [
       {
         rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
@@ -29,6 +28,7 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
           absolutePositioned: true,
           hoverCursor: "pointer",
         }),
+        scaleTo: "width",
       },
       {
         rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
@@ -40,12 +40,12 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
           absolutePositioned: true,
           hoverCursor: "pointer",
         }),
+        scaleTo: "width",
       },
     ],
   },
   {
     name: "Three landscape photos",
-    scaleTo: "width",
     config: [
       {
         rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
@@ -57,6 +57,7 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
           absolutePositioned: true,
           hoverCursor: "pointer",
         }),
+        scaleTo: "width",
       },
       {
         rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
@@ -68,6 +69,7 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
           absolutePositioned: true,
           hoverCursor: "pointer",
         }),
+        scaleTo: "width",
       },
       {
         rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
@@ -79,12 +81,12 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
           absolutePositioned: true,
           hoverCursor: "pointer",
         }),
+        scaleTo: "width",
       },
     ],
   },
   {
     name: "Two portrait photos",
-    scaleTo: "height",
     config: [
       {
         rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
@@ -95,6 +97,7 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
           absolutePositioned: true,
           hoverCursor: "pointer",
         }),
+        scaleTo: "height",
       },
       {
         rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
@@ -105,12 +108,12 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
           absolutePositioned: true,
           hoverCursor: "pointer",
         }),
+        scaleTo: "height",
       },
     ],
   },
   {
     name: "1 landscape, 2 squares bottom",
-    scaleTo: "height",
     config: [
       {
         rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
@@ -122,6 +125,7 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
           absolutePositioned: true,
           hoverCursor: "pointer",
         }),
+        scaleTo: "width",
       },
       {
         rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
@@ -133,6 +137,7 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
           absolutePositioned: true,
           hoverCursor: "pointer",
         }),
+        scaleTo: "height",
       },
       {
         rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
@@ -144,6 +149,7 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
           absolutePositioned: true,
           hoverCursor: "pointer",
         }),
+        scaleTo: "height",
       },
     ],
   },

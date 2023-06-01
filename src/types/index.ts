@@ -27,12 +27,12 @@ export type RectFabricFunctionType = (
 }
 
 export type RectConfigType = {
-  rectFabric: RectFabricFunctionType
+  rectFabric: RectFabricFunctionType,
+  scaleTo: "width" | "height"
 }
 
 export type CollageTemplateType = {
   name: string
-  scaleTo: "width" | "height"
   config: RectConfigType[]
 }
 
