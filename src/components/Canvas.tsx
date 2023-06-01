@@ -1,117 +1,96 @@
 import DownloadIcon from "./icons/DownloadIcon"
+
 import * as fabric from "fabric"
 import { useEffect, useRef } from "react"
+
+import { OBJECT_LOCKED, ASPECT_RATIOS, COLLAGE_TEMPLATES } from "@/constants/canvasConfig"
+import { useAppSelector } from '@/redux/hooks'
+import { RootStateType } from '@/redux/store'
 
 export default function Canvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const linkRef = useRef<HTMLAnchorElement | null>(null)
   const inputRef  = useRef<HTMLInputElement | null>(null)
 
-  const CANVAS_WIDTH = 576
-  const CANVAS_HEIGHT = 576
-  const OBJECT_LOCKED = {
-    lockMovementX: true,
-    lockMovementY: true,
-    lockRotation: true,
-    lockScalingFlip: true,
-    lockScalingX: true,
-    lockScalingY: true,
-    lockSkewingX: true,
-    lockSkewingY: true,
-    hasControls: false,
-    selectable: false,
-  }
+  const activeTemplateIndex = useAppSelector((state: RootStateType) => state.settings.template)
+  const activeRatioIndex = useAppSelector((state: RootStateType) => state.settings.ratio)
+  const activeTemplate = COLLAGE_TEMPLATES[activeTemplateIndex]
+  const ratio = ASPECT_RATIOS[activeRatioIndex]
 
   useEffect(() => {
     if (canvasRef.current) {
       // 1. Setup canvas
       const canvas = new fabric.Canvas(canvasRef.current, {
         backgroundColor: "#1a1a1a",
-        width: CANVAS_WIDTH,
-        height: CANVAS_HEIGHT,
+        width: ratio.canvas.width,
+        height: ratio.canvas.height,
         selection: false,
       })
 
       // 2. Setup objects & its properties
-      const rectTop = new fabric.Rect({
-        fill: "#1a1a1a",
-        height: CANVAS_HEIGHT * 0.5 + 1,
-        width: CANVAS_WIDTH + 1,
-        top: -1,
-        left: -1,
-        absolutePositioned: true,
-        hoverCursor: "pointer",
-      }).set(OBJECT_LOCKED)
+      activeTemplate.config.forEach((config) => {
+        const PROPERTIES = config.rectFabric(ratio.canvas.height, ratio.canvas.width)
+        const CELL = new fabric.Rect(PROPERTIES).set(OBJECT_LOCKED)
 
-      const rectBottom = new fabric.Rect({
-        fill: "#2a2a2a",
-        height: CANVAS_HEIGHT * 0.5,
-        width: CANVAS_WIDTH + 1,
-        top: CANVAS_HEIGHT * 0.5,
-        left: -1,
-        absolutePositioned: true,
-        hoverCursor: "pointer",
-      }).set(OBJECT_LOCKED)
+        // 3. Define image upload event handler
+        const handleImageUpload = (selectedCell: fabric.Rect) => {
+          const input = inputRef.current
+          if (input){
+            input.onchange = async (event) => {
+              const target = event.target as HTMLInputElement
+              const file = target.files && target.files[0]
+              if (!file) return
 
-      // 2.1 Define image upload event handler
-      const handleImageUpload = (gridCell: fabric.Rect) => {
-        const input = inputRef.current
-        if (input){
-          input.onchange = async (event) => {
-            const target = event.target as HTMLInputElement
-            const file = target.files && target.files[0]
-            if (!file) return
-
-            // 1. Load uploaded file as Base64
-            const reader = new FileReader()
-            reader.readAsDataURL(file)
-            reader.onload = (e) => {
-              const dataUrl = e.target?.result as string
-              // 1.1 Load image as fabric image
-              const addImage = async (imageBase64: string) => {
-                const img = await fabric.Image.fromURL(imageBase64)
-                img.set({
-                  left: gridCell.left,
-                  top: gridCell.top,
-                  selectable: true,
-                  hasControls: true,
-                  clipPath: gridCell
-                })
-                img.scaleToWidth(CANVAS_WIDTH)
-                canvas.add(img)
+              // 1. Load uploaded file as Base64
+              const reader = new FileReader()
+              reader.readAsDataURL(file)
+              reader.onload = (e) => {
+                const dataUrl = e.target?.result as string
+                // 1.1 Load image as fabric image
+                const addImage = async (imageBase64: string) => {
+                  const img = await fabric.Image.fromURL(imageBase64)
+                  // Set position to selected cell
+                  img.set({
+                    left: selectedCell.left,
+                    top: selectedCell.top,
+                    selectable: true,
+                    hasControls: true,
+                    clipPath: selectedCell
+                  })
+                  img.scaleToWidth(ratio.canvas.width)
+                  canvas.add(img)
+                }
+                addImage(dataUrl)
               }
-              addImage(dataUrl)
+              
+              // Render in canvas 
+              canvas.remove(selectedCell)
+              canvas.renderAll()
             }
-            
-            // Render in canvas 
-            canvas.remove(gridCell)
-            canvas.renderAll()
+
+            input.click()
           }
-
-          input.click()
         }
-      }
 
-      // 3. Attach event handler
-      rectTop.on("mouseup", () => {
-        handleImageUpload(rectTop)
-      })
-      rectBottom.on("mouseup", () => {
-        handleImageUpload(rectBottom)
+        // 4. Attach event handler
+        CELL.on("mouseup", () => {
+          handleImageUpload(CELL)
+        })
+
+        // 5. Render
+        canvas.add(CELL)
       })
 
-      // 4. Render
-      canvas.add(rectTop)
-      canvas.add(rectBottom)
+      // 6. Render all looped objects
       canvas.renderAll()
 
-      // 5. Clean up the canvas when the component unmounts
+      // 7. Clean up the canvas when the component unmounts
       return () => {
         canvas.dispose()
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [activeRatioIndex || activeTemplateIndex])
 
   const downloadImage = () => {
     if (canvasRef.current && linkRef.current) {
