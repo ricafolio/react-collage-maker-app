@@ -1,5 +1,10 @@
 import RatioIcon from "./icons/RatioIcon"
 import TemplateIcon from "./icons/TemplateIcon"
+
+import TabMore from "./TabMore"
+import TabRatio from "./TabRatio"
+import TabTemplate from "./TabTemplate"
+
 import { SelectedTabType } from "@/types"
 import { useState } from "react"
 
@@ -16,7 +21,9 @@ export default function TabGroup() {
   return (
     <>
       <div className="scrollbar-hide h-24 overflow-x-auto rounded-t bg-neutral-900">
-        {/* To do content here */}
+        {selected === "template" && <TabTemplate />}
+        {selected === "ratio" && <TabRatio />}
+        {selected === "more" && <TabMore />}
       </div>
       <div className="grid grid-flow-col justify-stretch gap-x-1">
         <button
