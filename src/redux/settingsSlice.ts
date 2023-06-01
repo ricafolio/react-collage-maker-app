@@ -1,9 +1,9 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { defaultSettingsType } from '@/types'
+import { defaultSettingsType } from "@/types"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 const defaultSettings: defaultSettingsType = {
   template: 0,
-  ratio: 0
+  ratio: 0,
 }
 
 export const settingsSlice = createSlice({
@@ -15,8 +15,8 @@ export const settingsSlice = createSlice({
     },
     changeRatioByIndex: (state, action: PayloadAction<number>) => {
       state.ratio = action.payload
-    }
-  }
+    },
+  },
 })
 
 export const { changeTemplateByIndex, changeRatioByIndex } = settingsSlice.actions

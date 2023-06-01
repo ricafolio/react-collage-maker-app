@@ -1,13 +1,13 @@
 import Canvas from "@/components/Canvas"
 import Footer from "@/components/Footer"
 import Header from "@/components/Header"
-import { Provider } from "react-redux"
 import store from "@/redux/store"
+import { Provider } from "react-redux"
 
 function App() {
   return (
     <Provider store={store}>
-      <div className="max-w-xl mx-2 sm:mx-auto">
+      <div className="mx-2 max-w-xl sm:mx-auto">
         <header>
           <Header />
         </header>

@@ -1,16 +1,15 @@
-import RatioIcon from "./icons/RatioIcon"
-import TemplateIcon from "./icons/TemplateIcon"
-
 import TabMore from "./TabMore"
 import TabRatio from "./TabRatio"
 import TabTemplate from "./TabTemplate"
-
+import RatioIcon from "./icons/RatioIcon"
+import TemplateIcon from "./icons/TemplateIcon"
 import { SelectedTabType } from "@/types"
 import { useState } from "react"
 
 export default function TabGroup() {
   const [selected, setSelected] = useState<SelectedTabType>("template")
-  const sharedTabStyle = "flex justify-center items-center transition-colors rounded-b p-3"
+  const sharedTabStyle =
+    "flex justify-center items-center transition-colors rounded-b p-3"
   const inactiveTabStyle = `${sharedTabStyle} bg-black hover:bg-neutral-950`
   const activeTabStyle = `${sharedTabStyle} bg-neutral-900`
 
@@ -20,7 +19,7 @@ export default function TabGroup() {
 
   return (
     <>
-      <div className="flex items-center scrollbar-hide h-28 p-2 overflow-y-hidden overflow-x-auto rounded-t bg-neutral-900">
+      <div className="scrollbar-hide flex h-28 items-center overflow-x-auto overflow-y-hidden rounded-t bg-neutral-900 p-2">
         {selected === "template" && <TabTemplate />}
         {selected === "ratio" && <TabRatio />}
         {selected === "more" && <TabMore />}

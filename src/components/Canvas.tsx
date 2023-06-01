@@ -1,19 +1,25 @@
 import DownloadIcon from "./icons/DownloadIcon"
-
+import {
+  OBJECT_LOCKED,
+  ASPECT_RATIOS,
+  COLLAGE_TEMPLATES,
+} from "@/constants/canvasConfig"
+import { useAppSelector } from "@/redux/hooks"
+import { RootStateType } from "@/redux/store"
 import * as fabric from "fabric"
 import { useEffect, useRef } from "react"
-
-import { OBJECT_LOCKED, ASPECT_RATIOS, COLLAGE_TEMPLATES } from "@/constants/canvasConfig"
-import { useAppSelector } from '@/redux/hooks'
-import { RootStateType } from '@/redux/store'
 
 export default function Canvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const linkRef = useRef<HTMLAnchorElement | null>(null)
-  const inputRef  = useRef<HTMLInputElement | null>(null)
+  const inputRef = useRef<HTMLInputElement | null>(null)
 
-  const activeTemplateIndex = useAppSelector((state: RootStateType) => state.settings.template)
-  const activeRatioIndex = useAppSelector((state: RootStateType) => state.settings.ratio)
+  const activeTemplateIndex = useAppSelector(
+    (state: RootStateType) => state.settings.template
+  )
+  const activeRatioIndex = useAppSelector(
+    (state: RootStateType) => state.settings.ratio
+  )
   const activeTemplate = COLLAGE_TEMPLATES[activeTemplateIndex]
   const ratio = ASPECT_RATIOS[activeRatioIndex]
 
@@ -29,13 +35,16 @@ export default function Canvas() {
 
       // 2. Setup objects & its properties
       activeTemplate.config.forEach((config) => {
-        const PROPERTIES = config.rectFabric(ratio.canvas.height, ratio.canvas.width)
-        const CELL = new fabric.Rect(PROPERTIES).set(OBJECT_LOCKED)
+        const PROPERTIES = config.rectFabric(
+          ratio.canvas.height,
+          ratio.canvas.width
+        )
+        const cell = new fabric.Rect(PROPERTIES).set(OBJECT_LOCKED)
 
         // 3. Define image upload event handler
         const handleImageUpload = (selectedCell: fabric.Rect) => {
           const input = inputRef.current
-          if (input){
+          if (input) {
             input.onchange = async (event) => {
               const target = event.target as HTMLInputElement
               const file = target.files && target.files[0]
@@ -55,15 +64,15 @@ export default function Canvas() {
                     top: selectedCell.top,
                     selectable: true,
                     hasControls: true,
-                    clipPath: selectedCell
+                    clipPath: selectedCell,
                   })
                   img.scaleToWidth(ratio.canvas.width)
                   canvas.add(img)
                 }
                 addImage(dataUrl)
               }
-              
-              // Render in canvas 
+
+              // Render in canvas
               canvas.remove(selectedCell)
               canvas.renderAll()
             }
@@ -73,12 +82,12 @@ export default function Canvas() {
         }
 
         // 4. Attach event handler
-        CELL.on("mouseup", () => {
-          handleImageUpload(CELL)
+        cell.on("mouseup", () => {
+          handleImageUpload(cell)
         })
 
         // 5. Render
-        canvas.add(CELL)
+        canvas.add(cell)
       })
 
       // 6. Render all looped objects
