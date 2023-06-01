@@ -19,7 +19,7 @@ export default function TabTemplate() {
             key={`template-${index}`}
             onClick={() => {
               dispatch(changeTemplateByIndex(index))
-              toast.success(`Template changed to ${template.name.toLowerCase()}`)
+              toast.success(`Template changed`)
             }}
             className={`flex h-20 w-20 cursor-pointer flex-col items-center justify-center border text-center transition-colors ${
               index === activeTemplateIndex
