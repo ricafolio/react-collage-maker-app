@@ -13,7 +13,7 @@ export default function TabTemplate() {
     <div className="grid grid-flow-col gap-x-2 text-white">
       {COLLAGE_TEMPLATES.map((template, index) => {
         return (
-          <div
+          <button
             key={`template-${index}`}
             onClick={() => dispatch(changeTemplateByIndex(index))}
             className={`flex h-20 w-20 cursor-pointer flex-col items-center justify-center border text-center transition-colors ${
@@ -23,7 +23,7 @@ export default function TabTemplate() {
             }`}
           >
             <small>{template.name}</small>
-          </div>
+          </button>
         )
       })}
     </div>
