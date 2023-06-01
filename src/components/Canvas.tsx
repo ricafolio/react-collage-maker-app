@@ -69,7 +69,14 @@ export default function Canvas() {
                     clipPath: selectedCell,
                     perPixelTargetFind: true,
                   })
-                  img.scaleToWidth(ratio.canvas.width + 1)
+                  
+                  // Scale accordingly to look good
+                  if (activeTemplate.scaleTo === "width") {
+                    img.scaleToWidth(ratio.canvas.width + 1)
+                  } else if (activeTemplate.scaleTo === "height") {
+                    img.scaleToHeight(ratio.canvas.height + 1)
+                  }
+
                   canvas.add(img)
                 }
                 addImage(dataUrl)
