@@ -16,14 +16,14 @@ export default function TabRatio() {
           <div
             key={`ratio-${index}`}
             onClick={() => dispatch(changeRatioByIndex(index))}
-            className={`flex h-20 w-20 cursor-pointer flex-col items-center justify-center border transition-colors ${
+            className={`flex h-20 w-20 px-2 cursor-pointer flex-col items-center justify-center border transition-colors ${
               index === activeRatioIndex
                 ? "border-white"
                 : "border-neutral-800 hover:border-neutral-200"
             }`}
           >
-            <span>{ratio.name}</span>
-            <small className="text-xs">{ratio.nickname}</small>
+            <span className="w-full text-center">{ratio.name}</span>
+            <small className="w-full text-center text-xs">{ratio.nickname}</small>
           </div>
         )
       })}
