@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react"
 export default function Canvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const linkRef = useRef<HTMLAnchorElement | null>(null)
+  const inputRef  = useRef<HTMLInputElement | null>(null)
 
   const CANVAS_WIDTH = 576
   const CANVAS_HEIGHT = 576
@@ -54,39 +55,41 @@ export default function Canvas() {
 
       // 2.1 Define image upload event handler
       const handleImageUpload = (gridCell: fabric.Rect) => {
-        const input = document.createElement("input")
-        input.type = "file"
-        input.accept = "image/*"
+        const input = inputRef.current
+        if (input){
+          input.onchange = async (event) => {
+            const target = event.target as HTMLInputElement
+            const file = target.files && target.files[0]
+            if (!file) return
 
-        input.onchange = async (event) => {
-          const target = event.target as HTMLInputElement
-          const file = target.files && target.files[0]
-          if (!file) return
-
-          const reader = new FileReader()
-          reader.readAsDataURL(file)
-          reader.onload = (e) => {
-            const dataUrl = e.target?.result as string
-            const addImage = async (imageBase64: string) => {
-              const img = await fabric.Image.fromURL(imageBase64)
-              img.set({
-                left: gridCell.left,
-                top: gridCell.top,
-                selectable: true,
-                hasControls: true,
-                clipPath: gridCell
-              })
-              img.scaleToWidth(CANVAS_WIDTH)
-              canvas.add(img)
+            // 1. Load uploaded file as Base64
+            const reader = new FileReader()
+            reader.readAsDataURL(file)
+            reader.onload = (e) => {
+              const dataUrl = e.target?.result as string
+              // 1.1 Load image as fabric image
+              const addImage = async (imageBase64: string) => {
+                const img = await fabric.Image.fromURL(imageBase64)
+                img.set({
+                  left: gridCell.left,
+                  top: gridCell.top,
+                  selectable: true,
+                  hasControls: true,
+                  clipPath: gridCell
+                })
+                img.scaleToWidth(CANVAS_WIDTH)
+                canvas.add(img)
+              }
+              addImage(dataUrl)
             }
-            addImage(dataUrl)
+            
+            // Render in canvas 
+            canvas.remove(gridCell)
+            canvas.renderAll()
           }
 
-          canvas.remove(gridCell)
-          canvas.renderAll()
+          input.click()
         }
-
-        input.click()
       }
 
       // 3. Attach event handler
@@ -122,7 +125,10 @@ export default function Canvas() {
   return (
     <>
       <canvas ref={canvasRef} />
-      <a ref={linkRef} className="hidden"></a>
+      <div className="hidden">
+        <input ref={inputRef} type="file" accept="image/*" className="hidden" />
+        <a ref={linkRef} id="download" className="hidden"></a>
+      </div>
       <button
         className="mt-4 flex w-full items-center justify-center rounded bg-indigo-600 px-5 py-3 text-sm font-semibold transition transition-colors hover:bg-indigo-700"
         onClick={downloadImage}
