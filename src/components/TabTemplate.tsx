@@ -21,10 +21,10 @@ export default function TabTemplate() {
               dispatch(changeTemplateByIndex(index))
               toast.success(`Template changed`)
             }}
-            className={`flex h-20 w-20 cursor-pointer flex-col items-center justify-center border text-center transition-colors ${
+            className={`flex h-20 w-20 cursor-pointer flex-col items-center justify-center text-center transition-colors rounded ${
               index === activeTemplateIndex
-                ? "border-white"
-                : "border-neutral-800 hover:border-neutral-200"
+                ? "bg-neutral-800"
+                : "hover:bg-neutral-800"
             }`}
             aria-label={`change template to ${template.name}`}
           >

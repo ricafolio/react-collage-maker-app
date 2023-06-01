@@ -21,10 +21,10 @@ export default function TabRatio() {
               dispatch(changeRatioByIndex(index)) 
               toast.success(`Ratio changed to ${ratio.name}`)
             }}
-            className={`flex h-20 w-20 px-2 cursor-pointer flex-col items-center justify-center border transition-colors ${
+            className={`flex h-20 w-20 px-2 cursor-pointer flex-col items-center justify-center transition-colors rounded ${
               index === activeRatioIndex
-                ? "border-white"
-                : "border-neutral-800 hover:border-neutral-200"
+                ? "bg-neutral-800"
+                : "hover:bg-neutral-800"
             }`}
           >
             <span className="w-full text-center">{ratio.name}</span>
