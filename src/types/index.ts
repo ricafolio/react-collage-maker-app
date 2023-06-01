@@ -34,14 +34,16 @@ export type CollageTemplateType = {
   config: RectConfigType[]
 }
 
+export type DimensionsType = {
+  width: number
+  height: number
+}
+
 export type AspectRatioType = {
   id: number
   name: string
   nickname: string
-  canvas: {
-    width: number
-    height: number
-  }
+  canvas: DimensionsType
 }
 
 export interface defaultSettingsType {
