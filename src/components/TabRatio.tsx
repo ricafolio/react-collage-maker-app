@@ -2,6 +2,7 @@ import { ASPECT_RATIOS } from "@/constants/canvasConfig"
 import { useAppSelector, useAppDispatch } from "@/redux/hooks"
 import { changeRatioByIndex } from "@/redux/settingsSlice"
 import { RootStateType } from "@/redux/store"
+import toast, { Toaster } from "react-hot-toast"
 
 export default function TabRatio() {
   const activeRatioIndex = useAppSelector(
@@ -11,11 +12,15 @@ export default function TabRatio() {
 
   return (
     <div className="grid grid-flow-col gap-x-2 text-white">
+      <Toaster />
       {ASPECT_RATIOS.map((ratio, index) => {
         return (
           <button
             key={`ratio-${index}`}
-            onClick={() => dispatch(changeRatioByIndex(index))}
+            onClick={() => {
+              dispatch(changeRatioByIndex(index)) 
+              toast.success(`Ratio changed to ${ratio.name}`)
+            }}
             className={`flex h-20 w-20 px-2 cursor-pointer flex-col items-center justify-center border transition-colors ${
               index === activeRatioIndex
                 ? "border-white"

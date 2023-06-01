@@ -8,6 +8,7 @@ import { useAppSelector } from "@/redux/hooks"
 import { RootStateType } from "@/redux/store"
 import * as fabric from "fabric"
 import { useEffect, useRef } from "react"
+import toast, { Toaster } from "react-hot-toast"
 
 export default function Canvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
@@ -77,6 +78,7 @@ export default function Canvas() {
               // Render in canvas
               canvas.remove(selectedCell)
               canvas.renderAll()
+              toast.success("Image successfully added.")
             }
 
             input.click()
@@ -110,11 +112,13 @@ export default function Canvas() {
       linkRef.current.href = canvas.toDataURL()
       linkRef.current.download = `collage-${new Date().getTime()}.png`
       linkRef.current.click()
+      toast.success("Collage downloaded.")
     }
   }
 
   return (
     <>
+      <Toaster />
       <canvas ref={canvasRef} />
       <div className="hidden">
         <input ref={inputRef} type="file" accept="image/*" className="hidden" />
