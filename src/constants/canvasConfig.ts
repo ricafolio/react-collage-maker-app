@@ -16,8 +16,8 @@ export const OBJECT_LOCKED: LockedObjectType = {
 
 export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
   {
-    uid: "two-landscape-photos",
     name: "Two landscape photos",
+    scaleTo: "width",
     config: [
       {
         rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
@@ -44,8 +44,8 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
     ],
   },
   {
-    uid: "three-landscape-photos",
     name: "Three landscape photos",
+    scaleTo: "width",
     config: [
       {
         rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
@@ -76,6 +76,33 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
           width: CANVAS_WIDTH + 1,
           top: CANVAS_HEIGHT * (1 / 3) * 2,
           left: -1,
+          absolutePositioned: true,
+          hoverCursor: "pointer",
+        }),
+      },
+    ],
+  },
+  {
+    uid: "two-portrait-photos",
+    name: "Two portrait photos",
+    scaleTo: "height",
+    config: [
+      {
+        rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
+          fill: "#1a1a1a",
+          height: CANVAS_HEIGHT,
+          width: CANVAS_WIDTH * 0.5 + 1,
+          left: -1,
+          absolutePositioned: true,
+          hoverCursor: "pointer",
+        }),
+      },
+      {
+        rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
+          fill: "#2a2a2a",
+          height: CANVAS_HEIGHT,
+          width: CANVAS_WIDTH * 0.5 + 1,
+          left: CANVAS_WIDTH * 0.5,
           absolutePositioned: true,
           hoverCursor: "pointer",
         }),

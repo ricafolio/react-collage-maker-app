@@ -31,8 +31,8 @@ export type RectConfigType = {
 }
 
 export type CollageTemplateType = {
-  uid: string
   name: string
+  scaleTo: "width" | "height"
   config: RectConfigType[]
 }
 
