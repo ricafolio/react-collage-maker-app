@@ -108,6 +108,45 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
       },
     ],
   },
+  {
+    name: "1 landscape, 2 squares bottom",
+    scaleTo: "height",
+    config: [
+      {
+        rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
+          fill: "#1a1a1a",
+          height: CANVAS_HEIGHT * 0.5 + 1,
+          width: CANVAS_WIDTH + 1,
+          top: -1,
+          left: -1,
+          absolutePositioned: true,
+          hoverCursor: "pointer",
+        }),
+      },
+      {
+        rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
+          fill: "#2a2a2a",
+          height: CANVAS_HEIGHT * 0.5,
+          width: CANVAS_WIDTH * 0.5 + 1,
+          top: CANVAS_HEIGHT * 0.5,
+          left: -1,
+          absolutePositioned: true,
+          hoverCursor: "pointer",
+        }),
+      },
+      {
+        rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
+          fill: "#3a3a3a",
+          height: CANVAS_HEIGHT * 0.5,
+          width: CANVAS_WIDTH * 0.5 + 1,
+          top: CANVAS_HEIGHT * 0.5,
+          left: CANVAS_WIDTH * 0.5,
+          absolutePositioned: true,
+          hoverCursor: "pointer",
+        }),
+      },
+    ],
+  },
 ]
 
 const DEFAULT_HEIGHT = 576
