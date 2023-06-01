@@ -12,6 +12,7 @@ import toast, { Toaster } from "react-hot-toast"
 
 export default function Canvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
+  const canvasCloneRef = useRef<fabric.Canvas | null>(null)
   const linkRef = useRef<HTMLAnchorElement | null>(null)
   const inputRef = useRef<HTMLInputElement | null>(null)
 
@@ -34,6 +35,7 @@ export default function Canvas() {
         selection: false,
         controlsAboveOverlay: false
       })
+      canvasCloneRef.current = canvas
 
       // 2. Setup objects & its properties
       activeTemplate.config.forEach((config) => {
@@ -114,12 +116,15 @@ export default function Canvas() {
   }, [activeRatioIndex, activeTemplateIndex])
 
   const downloadImage = () => {
-    if (canvasRef.current && linkRef.current) {
-      const canvas = canvasRef.current
-      linkRef.current.href = canvas.toDataURL()
+    if (canvasCloneRef.current && linkRef.current) {
+      const canvasClone = canvasCloneRef.current
+      canvasClone.discardActiveObject()
+      linkRef.current.href = canvasClone.toDataURL()
       linkRef.current.download = `collage-${new Date().getTime()}.png`
       linkRef.current.click()
       toast.success("Collage downloaded.")
+    } else {
+      toast.error("Cannot download collage! :(")
     }
   }
 
