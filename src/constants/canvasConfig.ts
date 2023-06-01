@@ -1,4 +1,6 @@
-export const OBJECT_LOCKED = {
+import { LockedObjectType, CollageTemplateType, AspectRatioType } from "@/types"
+
+export const OBJECT_LOCKED: LockedObjectType = {
   lockMovementX: true,
   lockMovementY: true,
   lockRotation: true,
@@ -11,14 +13,14 @@ export const OBJECT_LOCKED = {
   selectable: false,
 }
 
-export const COLLAGE_TEMPLATES = [
+export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
   {
     id: 1,
     uid: "two-landscape-photos",
     name: "Two landscape photos",
     config: [
       {
-        rectFabric: (CANVAS_HEIGHT: number, CANVAS_WIDTH: number) => ({
+        rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
           fill: "#1a1a1a",
           height: CANVAS_HEIGHT * 0.5 + 1,
           width: CANVAS_WIDTH + 1,
@@ -29,7 +31,7 @@ export const COLLAGE_TEMPLATES = [
         }),
       },
       {
-        rectFabric: (CANVAS_HEIGHT: number, CANVAS_WIDTH: number) => ({
+        rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
           fill: "#2a2a2a",
           height: CANVAS_HEIGHT * 0.5,
           width: CANVAS_WIDTH + 1,
@@ -43,7 +45,7 @@ export const COLLAGE_TEMPLATES = [
   },
 ]
 
-export const ASPECT_RATIOS = [
+export const ASPECT_RATIOS: AspectRatioType[] = [
   {
     id: 1,
     name: "1:1",
