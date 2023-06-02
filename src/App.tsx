@@ -1,8 +1,26 @@
+import Canvas from "@/components/Canvas"
+import Footer from "@/components/Footer"
+import Header from "@/components/Header"
+import store from "@/redux/store"
+import { Provider } from "react-redux"
+
 function App() {
   return (
-    <main className="mx-auto max-w-xl">
-      <h1 className="text-center text-2xl font-bold">Collage Express</h1>
-    </main>
+    <Provider store={store}>
+      <div className="mx-2 max-w-xl sm:mx-auto">
+        <header>
+          <Header />
+        </header>
+
+        <main>
+          <Canvas />
+        </main>
+
+        <footer>
+          <Footer />
+        </footer>
+      </div>
+    </Provider>
   )
 }
 
