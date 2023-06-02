@@ -46,6 +46,7 @@ export type AspectRatioType = {
   name: string
   nickname: string
   canvas: DimensionsType
+  icon: string
 }
 
 export interface defaultSettingsType {
