@@ -1,11 +1,12 @@
-import { defaultSettingsType, SelectedTabType } from "@/types";
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
+import { defaultSettingsType, SelectedTabType } from "@/types"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import type { Canvas } from "fabric"
 
 const defaultSettings: defaultSettingsType = {
   template: 0,
   ratio: 0,
-  tab: "template"
+  tab: "template",
+  canvas: null,
 }
 
 export const settingsSlice = createSlice({
@@ -21,10 +22,17 @@ export const settingsSlice = createSlice({
     changeTab: (state, action: PayloadAction<SelectedTabType>) => {
       state.tab = action.payload
     },
-  },
+    setCanvas: (state, action: PayloadAction<Canvas>) => {
+      state.canvas = action.payload
+    },
+  }
 })
 
-export const { changeTemplateByIndex, changeRatioByIndex, changeTab } =
-  settingsSlice.actions
+export const {
+  changeTemplateByIndex,
+  changeRatioByIndex,
+  changeTab,
+  setCanvas,
+} = settingsSlice.actions
 
 export default settingsSlice.reducer

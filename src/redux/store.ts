@@ -5,6 +5,10 @@ const store = configureStore({
   reducer: {
     settings: settingsReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 })
 
 // To easily set state type - `state: RootState`

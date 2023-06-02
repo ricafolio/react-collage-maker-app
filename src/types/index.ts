@@ -1,3 +1,5 @@
+import type { Canvas } from "fabric"
+
 export type SelectedTabType = "template" | "ratio" | "more"
 
 export type LockedObjectType = {
@@ -27,7 +29,7 @@ export type RectFabricFunctionType = (
 }
 
 export type RectConfigType = {
-  rectFabric: RectFabricFunctionType,
+  rectFabric: RectFabricFunctionType
   scaleTo: "width" | "height"
 }
 
@@ -53,4 +55,5 @@ export interface defaultSettingsType {
   template: number
   ratio: number
   tab: SelectedTabType
+  canvas: Canvas | null
 }

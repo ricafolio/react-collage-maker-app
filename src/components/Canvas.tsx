@@ -9,11 +9,10 @@ import { RootStateType } from "@/redux/store"
 import * as fabric from "fabric"
 import { useEffect, useRef, useState } from "react"
 import toast, { Toaster } from "react-hot-toast"
-import { changeTab } from "@/redux/settingsSlice"
+import { changeTab, setCanvas } from "@/redux/settingsSlice"
 
 export default function Canvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
-  const canvasCloneRef = useRef<fabric.Canvas | null>(null)
   const linkRef = useRef<HTMLAnchorElement | null>(null)
   const inputRef = useRef<HTMLInputElement | null>(null)
   const [uploads, setUploads] = useState(0)
@@ -24,6 +23,9 @@ export default function Canvas() {
   )
   const activeRatioIndex = useAppSelector(
     (state: RootStateType) => state.settings.ratio
+  )
+  const clonedCanvas = useAppSelector(
+    (state: RootStateType) => state.settings.canvas
   )
   const activeTemplate = COLLAGE_TEMPLATES[activeTemplateIndex]
   const ratio = ASPECT_RATIOS[activeRatioIndex]
@@ -36,11 +38,13 @@ export default function Canvas() {
         width: ratio.canvas.width,
         height: ratio.canvas.height,
         selection: false,
-        controlsAboveOverlay: false
+        controlsAboveOverlay: false,
+        allowTouchScrolling: true,
+        imageSmoothingEnabled: false,
       })
 
       // 1.1 Clone canvas
-      canvasCloneRef.current = canvas
+      dispatch(setCanvas(canvas))
 
       // 1.2 Reset upload count
       setUploads(0)
@@ -136,10 +140,9 @@ export default function Canvas() {
   }, [activeRatioIndex, activeTemplateIndex])
 
   const downloadImage = () => {
-    if (canvasCloneRef.current && linkRef.current) {
-      const canvasClone = canvasCloneRef.current
-      canvasClone.discardActiveObject()
-      linkRef.current.href = canvasClone.toDataURL()
+    if (clonedCanvas && linkRef.current) {
+      clonedCanvas.discardActiveObject()
+      linkRef.current.href = clonedCanvas.toDataURL()
       linkRef.current.download = `collage-${new Date().getTime()}.png`
       linkRef.current.click()
       toast.success("Collage downloaded.")
