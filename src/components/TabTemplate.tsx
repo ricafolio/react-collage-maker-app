@@ -19,7 +19,7 @@ export default function TabTemplate() {
             key={`template-${index}`}
             onClick={() => {
               dispatch(changeTemplateByIndex(index))
-              toast.success(`Template changed`)
+              toast.success(`Template changed`, { duration: 800 })
             }}
             className={`flex h-20 w-20 cursor-pointer flex-col items-center justify-center text-center transition-colors rounded ${
               index === activeTemplateIndex

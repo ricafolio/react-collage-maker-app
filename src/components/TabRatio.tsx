@@ -19,7 +19,7 @@ export default function TabRatio() {
             key={`ratio-${index}`}
             onClick={() => {
               dispatch(changeRatioByIndex(index)) 
-              toast.success(`Ratio changed to ${ratio.name}`)
+              toast.success(`Ratio changed to ${ratio.name}`, { duration: 800 })
             }}
             className={`flex h-20 w-20 px-2 cursor-pointer flex-col items-center justify-center transition-colors rounded ${
               index === activeRatioIndex
