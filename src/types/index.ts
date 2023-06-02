@@ -52,4 +52,5 @@ export type AspectRatioType = {
 export interface defaultSettingsType {
   template: number
   ratio: number
+  tab: SelectedTabType
 }

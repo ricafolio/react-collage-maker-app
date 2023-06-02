@@ -3,11 +3,19 @@ import TabRatio from "./TabRatio"
 import TabTemplate from "./TabTemplate"
 import RatioIcon from "./icons/RatioIcon"
 import TemplateIcon from "./icons/TemplateIcon"
+
 import { SelectedTabType } from "@/types"
-import { useState } from "react"
+import { RootStateType } from "@/redux/store"
+
+import { changeTab } from "@/redux/settingsSlice"
+import { useAppSelector, useAppDispatch } from "@/redux/hooks"
 
 export default function TabGroup() {
-  const [selected, setSelected] = useState<SelectedTabType>("template")
+  const selected = useAppSelector(
+    (state: RootStateType) => state.settings.tab
+  )
+  const dispatch = useAppDispatch()
+
   const sharedTabStyle =
     "flex justify-center items-center transition-colors rounded-b p-3"
   const inactiveTabStyle = `${sharedTabStyle} bg-black hover:bg-neutral-950`
@@ -27,21 +35,21 @@ export default function TabGroup() {
       <div className="grid grid-flow-col justify-stretch gap-x-1">
         <button
           className={`${getStyle("template")}`}
-          onClick={() => setSelected("template")}
+          onClick={() => dispatch(changeTab("template"))}
         >
           <TemplateIcon className="mr-2" />
           <span>Template</span>
         </button>
         <button
           className={`${getStyle("ratio")}`}
-          onClick={() => setSelected("ratio")}
+          onClick={() => dispatch(changeTab("ratio"))}
         >
           <RatioIcon className="mr-2" />
           <span>Ratio</span>
         </button>
         <button
           className={`${getStyle("more")}`}
-          onClick={() => setSelected("more")}
+          onClick={() => dispatch(changeTab("more"))}
         >
           More..
         </button>
