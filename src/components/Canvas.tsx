@@ -4,11 +4,12 @@ import {
   ASPECT_RATIOS,
   COLLAGE_TEMPLATES,
 } from "@/constants/canvasConfig"
-import { useAppSelector } from "@/redux/hooks"
+import { useAppSelector, useAppDispatch } from "@/redux/hooks"
 import { RootStateType } from "@/redux/store"
 import * as fabric from "fabric"
 import { useEffect, useRef, useState } from "react"
 import toast, { Toaster } from "react-hot-toast"
+import { changeTab } from "@/redux/settingsSlice"
 
 export default function Canvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
@@ -16,6 +17,7 @@ export default function Canvas() {
   const linkRef = useRef<HTMLAnchorElement | null>(null)
   const inputRef = useRef<HTMLInputElement | null>(null)
   const [uploads, setUploads] = useState(0)
+  const dispatch = useAppDispatch()
 
   const activeTemplateIndex = useAppSelector(
     (state: RootStateType) => state.settings.template
@@ -86,6 +88,7 @@ export default function Canvas() {
                   }
 
                   canvas.add(img)
+                  canvas.setActiveObject(img)
                 }
                 addImage(dataUrl)
               }
@@ -97,6 +100,9 @@ export default function Canvas() {
               
               // Increment upload count
               setUploads((prevUploads) => prevUploads + 1)
+
+              // Switch to More tab, to show controls on active object
+              dispatch(changeTab("more"))
             }
 
             input.click()
@@ -116,7 +122,12 @@ export default function Canvas() {
       // 6. Render all looped objects
       canvas.renderAll()
 
-      // 7. Clean up the canvas when the component unmounts
+      // 7. Change tab when an object is selected
+      canvas.on('selection:created', () => {
+        dispatch(changeTab("more"))
+      });
+
+      // 8. Clean up the canvas when the component unmounts
       return () => {
         canvas.dispose()
       }
