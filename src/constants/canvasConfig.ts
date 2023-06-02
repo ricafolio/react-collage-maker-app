@@ -34,9 +34,9 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
       {
         rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
           fill: "#2a2a2a",
-          height: CANVAS_HEIGHT * 0.5,
+          height: CANVAS_HEIGHT * 0.5 + 1,
           width: CANVAS_WIDTH + 1,
-          top: CANVAS_HEIGHT * 0.5,
+          top: CANVAS_HEIGHT * 0.5 - 1,
           left: -1,
           absolutePositioned: true,
           hoverCursor: "pointer",
@@ -64,9 +64,9 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
       {
         rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
           fill: "#2a2a2a",
-          height: CANVAS_HEIGHT * (1 / 3),
+          height: CANVAS_HEIGHT * (1 / 3) + 1,
           width: CANVAS_WIDTH + 1,
-          top: CANVAS_HEIGHT * (1 / 3),
+          top: CANVAS_HEIGHT * (1 / 3) - 1,
           left: -1,
           absolutePositioned: true,
           hoverCursor: "pointer",
@@ -76,9 +76,9 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
       {
         rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
           fill: "#3a3a3a",
-          height: CANVAS_HEIGHT * (1 / 3),
+          height: CANVAS_HEIGHT * (1 / 3) + 1,
           width: CANVAS_WIDTH + 1,
-          top: CANVAS_HEIGHT * (1 / 3) * 2,
+          top: CANVAS_HEIGHT * (1 / 3) * 2 - 1,
           left: -1,
           absolutePositioned: true,
           hoverCursor: "pointer",
@@ -94,9 +94,10 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
       {
         rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
           fill: "#1a1a1a",
-          height: CANVAS_HEIGHT,
+          height: CANVAS_HEIGHT + 1,
           width: CANVAS_WIDTH * (1 / 3) + 1,
           left: -1,
+          top: -1,
           absolutePositioned: true,
           hoverCursor: "pointer",
         }),
@@ -105,9 +106,10 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
       {
         rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
           fill: "#2a2a2a",
-          height: CANVAS_HEIGHT,
+          height: CANVAS_HEIGHT + 1,
           width: CANVAS_WIDTH * (1 / 3) + 1,
-          left: CANVAS_WIDTH * (1 / 3),
+          left: CANVAS_WIDTH * (1 / 3) - 1,
+          top: -1,
           absolutePositioned: true,
           hoverCursor: "pointer",
         }),
@@ -116,9 +118,10 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
       {
         rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
           fill: "#3a3a3a",
-          height: CANVAS_HEIGHT,
+          height: CANVAS_HEIGHT + 1,
           width: CANVAS_WIDTH * (1 / 3) + 1,
-          left: CANVAS_WIDTH * (1 / 3) * 2,
+          left: CANVAS_WIDTH * (1 / 3) * 2 - 1,
+          top: -1,
           absolutePositioned: true,
           hoverCursor: "pointer",
         }),
@@ -133,9 +136,10 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
       {
         rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
           fill: "#1a1a1a",
-          height: CANVAS_HEIGHT,
+          height: CANVAS_HEIGHT + 1,
           width: CANVAS_WIDTH * 0.5 + 1,
           left: -1,
+          top: -1,
           absolutePositioned: true,
           hoverCursor: "pointer",
         }),
@@ -144,9 +148,10 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
       {
         rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
           fill: "#2a2a2a",
-          height: CANVAS_HEIGHT,
+          height: CANVAS_HEIGHT + 1,
           width: CANVAS_WIDTH * 0.5 + 1,
-          left: CANVAS_WIDTH * 0.5,
+          left: CANVAS_WIDTH * 0.5 - 1,
+          top: -1,
           absolutePositioned: true,
           hoverCursor: "pointer",
         }),
@@ -173,9 +178,9 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
       {
         rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
           fill: "#2a2a2a",
-          height: CANVAS_HEIGHT * 0.5,
+          height: CANVAS_HEIGHT * 0.5 + 1,
           width: CANVAS_WIDTH * 0.5 + 1,
-          top: CANVAS_HEIGHT * 0.5,
+          top: CANVAS_HEIGHT * 0.5 - 1,
           left: -1,
           absolutePositioned: true,
           hoverCursor: "pointer",
@@ -185,10 +190,10 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
       {
         rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
           fill: "#3a3a3a",
-          height: CANVAS_HEIGHT * 0.5,
+          height: CANVAS_HEIGHT * 0.5 + 1,
           width: CANVAS_WIDTH * 0.5 + 1,
-          top: CANVAS_HEIGHT * 0.5,
-          left: CANVAS_WIDTH * 0.5,
+          top: CANVAS_HEIGHT * 0.5 - 1,
+          left: CANVAS_WIDTH * 0.5 - 1,
           absolutePositioned: true,
           hoverCursor: "pointer",
         }),
@@ -218,7 +223,7 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
           height: CANVAS_HEIGHT * 0.5 + 1,
           width: CANVAS_WIDTH * 0.5 + 1,
           top: -1,
-          left: CANVAS_WIDTH * 0.5,
+          left: CANVAS_WIDTH * 0.5 - 1,
           absolutePositioned: true,
           hoverCursor: "pointer",
         }),
@@ -229,7 +234,7 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
           fill: "#3a3a3a",
           height: CANVAS_HEIGHT * 0.5 + 1,
           width: CANVAS_WIDTH * 0.5 + 1,
-          top: CANVAS_HEIGHT * 0.5,
+          top: CANVAS_HEIGHT * 0.5 - 1,
           left: -1,
           absolutePositioned: true,
           hoverCursor: "pointer",
@@ -241,8 +246,8 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
           fill: "#4a4a4a",
           height: CANVAS_HEIGHT * 0.5 + 1,
           width: CANVAS_WIDTH * 0.5 + 1,
-          top: CANVAS_HEIGHT * 0.5,
-          left: CANVAS_WIDTH * 0.5,
+          top: CANVAS_HEIGHT * 0.5 - 1,
+          left: CANVAS_WIDTH * 0.5 - 1,
           absolutePositioned: true,
           hoverCursor: "pointer",
         }),
@@ -269,9 +274,9 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
       {
         rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
           fill: "#2a2a2a",
-          height: CANVAS_HEIGHT * 0.4,
+          height: CANVAS_HEIGHT * 0.4 + 1,
           width: CANVAS_WIDTH * 0.5 + 1,
-          top: CANVAS_HEIGHT * 0.6,
+          top: CANVAS_HEIGHT * 0.6 - 1,
           left: -1,
           absolutePositioned: true,
           hoverCursor: "pointer",
@@ -281,10 +286,10 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
       {
         rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
           fill: "#3a3a3a",
-          height: CANVAS_HEIGHT * 0.4,
+          height: CANVAS_HEIGHT * 0.4 + 1,
           width: CANVAS_WIDTH * 0.5 + 1,
           top: -1,
-          left: CANVAS_WIDTH * 0.5,
+          left: CANVAS_WIDTH * 0.5 - 1,
           absolutePositioned: true,
           hoverCursor: "pointer",
         }),
@@ -295,8 +300,8 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
           fill: "#4a4a4a",
           height: CANVAS_HEIGHT * 0.6 + 1,
           width: CANVAS_WIDTH * 0.5 + 1,
-          top: CANVAS_HEIGHT * 0.4,
-          left: CANVAS_WIDTH * 0.5,
+          top: CANVAS_HEIGHT * 0.4 - 1,
+          left: CANVAS_WIDTH * 0.5 - 1,
           absolutePositioned: true,
           hoverCursor: "pointer",
         }),
@@ -311,10 +316,10 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
       {
         rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
           fill: "#1a1a1a",
-          height: CANVAS_HEIGHT * 0.5,
-          width: CANVAS_WIDTH * 0.5,
-          top: 0,
-          left: 0,
+          height: CANVAS_HEIGHT * 0.5 + 1,
+          width: CANVAS_WIDTH * 0.5 + 1,
+          top: -1,
+          left: -1,
           absolutePositioned: true,
           hoverCursor: "pointer",
         }),
@@ -323,10 +328,10 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
       {
         rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
           fill: "#2a2a2a",
-          height: CANVAS_HEIGHT * 0.5,
-          width: CANVAS_WIDTH * 0.5,
-          top: CANVAS_HEIGHT * 0.5,
-          left: 0,
+          height: CANVAS_HEIGHT * 0.5 + 1,
+          width: CANVAS_WIDTH * 0.5 + 1,
+          top: CANVAS_HEIGHT * 0.5 - 1,
+          left: -1,
           absolutePositioned: true,
           hoverCursor: "pointer",
         }),
@@ -335,10 +340,10 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
       {
         rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
           fill: "#3a3a3a",
-          height: CANVAS_HEIGHT,
-          width: CANVAS_WIDTH * 0.5,
-          top: 0,
-          left: CANVAS_WIDTH * 0.5,
+          height: CANVAS_HEIGHT + 1,
+          width: CANVAS_WIDTH * 0.5 + 1,
+          top: -1,
+          left: CANVAS_WIDTH * 0.5 - 1,
           absolutePositioned: true,
           hoverCursor: "pointer",
         }),
@@ -353,10 +358,10 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
       {
         rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
           fill: "#3a3a3a",
-          height: CANVAS_HEIGHT,
-          width: CANVAS_WIDTH * 0.5,
-          top: 0,
-          left: 0,
+          height: CANVAS_HEIGHT + 1,
+          width: CANVAS_WIDTH * 0.5 + 1,
+          top: -1,
+          left: -1,
           absolutePositioned: true,
           hoverCursor: "pointer",
         }),
@@ -365,10 +370,10 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
       {
         rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
           fill: "#1a1a1a",
-          height: CANVAS_HEIGHT * 0.5,
-          width: CANVAS_WIDTH * 0.5,
-          top: 0,
-          left: CANVAS_WIDTH * 0.5,
+          height: CANVAS_HEIGHT * 0.5 + 1,
+          width: CANVAS_WIDTH * 0.5 + 1,
+          top: -1,
+          left: CANVAS_WIDTH * 0.5 - 1,
           absolutePositioned: true,
           hoverCursor: "pointer",
         }),
@@ -377,10 +382,10 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
       {
         rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
           fill: "#2a2a2a",
-          height: CANVAS_HEIGHT * 0.5,
-          width: CANVAS_WIDTH * 0.5,
-          top: CANVAS_HEIGHT * 0.5,
-          left: CANVAS_WIDTH * 0.5,
+          height: CANVAS_HEIGHT * 0.5 + 1,
+          width: CANVAS_WIDTH * 0.5 + 1,
+          top: CANVAS_HEIGHT * 0.5 - 1,
+          left: CANVAS_WIDTH * 0.5 - 1,
           absolutePositioned: true,
           hoverCursor: "pointer",
         }),
