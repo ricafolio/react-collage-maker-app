@@ -57,3 +57,14 @@ export interface defaultSettingsType {
   tab: SelectedTabType
   canvas: Canvas | null
 }
+
+export type FilterType =
+  | "Brightness"
+  | "Contrast"
+  | "Noise"
+  | "Sharpen"
+  | "Saturation"
+  | "Vibrance"
+  | "Hue"
+  | "Pixelate"
+  | "Blur"
