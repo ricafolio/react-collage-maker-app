@@ -88,6 +88,45 @@ export const COLLAGE_TEMPLATES: CollageTemplateType[] = [
     ],
   },
   {
+    name: "Three portrait photos",
+    icon: "data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_7_30)'%3E%3Crect x='9.5' y='29.5' width='29' height='11' transform='rotate(-90 9.5 29.5)' stroke='white'/%3E%3Crect x='0.5' y='29.5' width='29' height='9' transform='rotate(-90 0.5 29.5)' stroke='white'/%3E%3Crect x='20.5' y='29.5' width='29' height='9' transform='rotate(-90 20.5 29.5)' stroke='white'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_7_30'%3E%3Crect width='30' height='30' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A",
+    config: [
+      {
+        rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
+          fill: "#1a1a1a",
+          height: CANVAS_HEIGHT,
+          width: CANVAS_WIDTH * (1 / 3) + 1,
+          left: -1,
+          absolutePositioned: true,
+          hoverCursor: "pointer",
+        }),
+        scaleTo: "height",
+      },
+      {
+        rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
+          fill: "#2a2a2a",
+          height: CANVAS_HEIGHT,
+          width: CANVAS_WIDTH * (1 / 3) + 1,
+          left: CANVAS_WIDTH * (1 / 3),
+          absolutePositioned: true,
+          hoverCursor: "pointer",
+        }),
+        scaleTo: "height",
+      },
+      {
+        rectFabric: (CANVAS_HEIGHT, CANVAS_WIDTH) => ({
+          fill: "#3a3a3a",
+          height: CANVAS_HEIGHT,
+          width: CANVAS_WIDTH * (1 / 3) + 1,
+          left: CANVAS_WIDTH * (1 / 3) * 2,
+          absolutePositioned: true,
+          hoverCursor: "pointer",
+        }),
+        scaleTo: "height",
+      },
+    ],
+  },
+  {
     name: "Two portrait photos",
     icon: "data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_5_12)'%3E%3Crect x='0.5' y='29.5' width='29' height='14' transform='rotate(-90 0.5 29.5)' stroke='white'/%3E%3Crect x='14.5' y='29.5' width='29' height='15' transform='rotate(-90 14.5 29.5)' stroke='white'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_5_12'%3E%3Crect width='30' height='30' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A",
     config: [
