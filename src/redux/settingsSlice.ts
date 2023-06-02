@@ -23,6 +23,8 @@ export const settingsSlice = createSlice({
       state.tab = action.payload
     },
     setCanvas: (state, action: PayloadAction<Canvas>) => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       state.canvas = action.payload
     },
   }
