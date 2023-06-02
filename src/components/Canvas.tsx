@@ -7,7 +7,7 @@ import {
 import { useAppSelector } from "@/redux/hooks"
 import { RootStateType } from "@/redux/store"
 import * as fabric from "fabric"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import toast, { Toaster } from "react-hot-toast"
 
 export default function Canvas() {
@@ -15,6 +15,7 @@ export default function Canvas() {
   const canvasCloneRef = useRef<fabric.Canvas | null>(null)
   const linkRef = useRef<HTMLAnchorElement | null>(null)
   const inputRef = useRef<HTMLInputElement | null>(null)
+  const [uploads, setUploads] = useState(0)
 
   const activeTemplateIndex = useAppSelector(
     (state: RootStateType) => state.settings.template
@@ -35,7 +36,12 @@ export default function Canvas() {
         selection: false,
         controlsAboveOverlay: false
       })
+
+      // 1.1 Clone canvas
       canvasCloneRef.current = canvas
+
+      // 1.2 Reset upload count
+      setUploads(0)
 
       // 2. Setup objects & its properties
       activeTemplate.config.forEach((config) => {
@@ -88,6 +94,9 @@ export default function Canvas() {
               canvas.remove(selectedCell)
               canvas.renderAll()
               toast.success("Image successfully added.")
+              
+              // Increment upload count
+              setUploads((prevUploads) => prevUploads + 1)
             }
 
             input.click()
@@ -137,8 +146,9 @@ export default function Canvas() {
         <a ref={linkRef} id="download" className="hidden"></a>
       </div>
       <button
-        className="mt-4 flex w-full items-center justify-center rounded bg-indigo-600 px-5 py-3 text-sm font-semibold transition transition-colors hover:bg-indigo-700"
+        className="mt-4 flex w-full items-center justify-center rounded bg-indigo-600 px-5 py-3 text-sm font-semibold transition transition-colors hover:bg-indigo-700 disabled:bg-gray-500"
         onClick={downloadImage}
+        disabled={uploads !== activeTemplate.config.length}
       >
         <DownloadIcon className="mr-2" />
         <span>Download image</span>
