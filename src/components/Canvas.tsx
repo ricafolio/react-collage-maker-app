@@ -1,4 +1,3 @@
-import DownloadIcon from "./icons/DownloadIcon"
 import {
   OBJECT_LOCKED,
   ASPECT_RATIOS,
@@ -13,7 +12,6 @@ import { changeTab, setCanvas } from "@/redux/settingsSlice"
 
 export default function Canvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
-  const linkRef = useRef<HTMLAnchorElement | null>(null)
   const inputRef = useRef<HTMLInputElement | null>(null)
   const [uploads, setUploads] = useState(0)
   const dispatch = useAppDispatch()
@@ -24,9 +22,7 @@ export default function Canvas() {
   const activeRatioIndex = useAppSelector(
     (state: RootStateType) => state.settings.ratio
   )
-  const clonedCanvas = useAppSelector(
-    (state: RootStateType) => state.settings.canvas
-  )
+
   const activeTemplate = COLLAGE_TEMPLATES[activeTemplateIndex]
   const ratio = ASPECT_RATIOS[activeRatioIndex]
 
@@ -139,34 +135,15 @@ export default function Canvas() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeRatioIndex, activeTemplateIndex])
 
-  const downloadImage = () => {
-    if (clonedCanvas && linkRef.current) {
-      clonedCanvas.discardActiveObject()
-      linkRef.current.href = clonedCanvas.toDataURL()
-      linkRef.current.download = `collage-${new Date().getTime()}.png`
-      linkRef.current.click()
-      toast.success("Collage downloaded.")
-    } else {
-      toast.error("Cannot download collage! :(")
-    }
-  }
-
   return (
     <>
       <Toaster />
-      <canvas ref={canvasRef} />
+      <div className="h-screen flex items-center justify-center">
+        <canvas ref={canvasRef} />
+      </div>
       <div className="hidden">
         <input ref={inputRef} type="file" accept="image/*" className="hidden" />
-        <a ref={linkRef} id="download" className="hidden"></a>
       </div>
-      <button
-        className="mt-4 flex w-full items-center justify-center rounded bg-indigo-600 px-5 py-3 text-sm font-semibold transition transition-colors hover:bg-indigo-700 disabled:bg-gray-500"
-        onClick={downloadImage}
-        disabled={uploads !== activeTemplate.config.length}
-      >
-        <DownloadIcon className="mr-2" />
-        <span>Download image</span>
-      </button>
     </>
   )
 }
