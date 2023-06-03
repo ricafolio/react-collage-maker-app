@@ -5,7 +5,7 @@ import { useState } from "react"
 import * as fabric from "fabric"
 import toast, { Toaster } from "react-hot-toast"
 
-export default function TabMore() {
+export default function TabFilters() {
   const [setting, setSetting] = useState<FilterType>("Noise")
   const [value, setValue] = useState<number>(0)
 

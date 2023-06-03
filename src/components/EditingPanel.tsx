@@ -1,4 +1,4 @@
-import TabMore from "./TabMore"
+import TabFilters from "./TabFilters"
 import TabRatio from "./TabRatio"
 import TabTemplate from "./TabTemplate"
 import RatioIcon from "./icons/RatioIcon"
