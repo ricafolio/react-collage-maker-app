@@ -141,7 +141,7 @@ export default function Canvas() {
   return (
     <div ref={wrapperRef}>
       <Toaster />
-      <div className="my-2 sm:h-screen flex items-center justify-center">
+      <div className="py-2 sm:py-8 sm:min-h-screen flex items-start justify-center">
         <canvas ref={canvasRef} />
       </div>
       <div className="hidden">

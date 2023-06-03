@@ -30,7 +30,7 @@ export default function EditingPanel() {
 
   return (
     <>
-      <div id="tabs" className="scrollbar-hide overflow-x-auto grid grid-flow-col justify-stretch gap-x-1 mx-2 sm:mx-0">
+      <div id="tabs" className="scrollbar-hide overflow-x-auto grid grid-flow-col justify-stretch mx-2 sm:mx-0">
         <button
           className={`${getStyle("template")}`}
           onClick={() => dispatch(changeTab("template"))}
@@ -57,7 +57,7 @@ export default function EditingPanel() {
       <div id="tabContent" className="
         scrollbar-hide bg-neutral-900 p-2 mx-2 sm:mx-0
         h-28 flex items-center overflow-x-auto overflow-y-hidden
-        sm:h-screen sm:block sm:overflow-x-hidden sm:overflow-y-scroll
+        sm:min-h-screen sm:block sm:overflow-x-hidden sm:overflow-y-auto
       ">
         {selected === "template" && <TabTemplate />}
         {selected === "ratio" && <TabRatio />}
