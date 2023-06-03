@@ -17,46 +17,48 @@ export default function EditingPanel() {
   )
   const dispatch = useAppDispatch()
 
-  const sharedTabStyle =
-    "flex justify-center items-center transition-colors rounded-b p-3"
+  const sharedTabStyle = "flex justify-center items-center transition-colors p-3"
   const inactiveTabStyle = `${sharedTabStyle} bg-black hover:bg-neutral-950`
   const activeTabStyle = `${sharedTabStyle} bg-neutral-900`
-
   const getStyle = (tab: SelectedTabType) => {
     return selected === tab ? activeTabStyle : inactiveTabStyle
   }
 
   return (
     <>
-      <section className="my-4 w-full">
-        <div className="scrollbar-hide flex h-28 items-center overflow-x-auto overflow-y-hidden rounded-t bg-neutral-900 p-2">
-          {selected === "template" && <TabTemplate />}
-          {selected === "ratio" && <TabRatio />}
-          {selected === "more" && <TabMore />}
-        </div>
-        <div className="grid grid-flow-col justify-stretch gap-x-1">
-          <button
-            className={`${getStyle("template")}`}
-            onClick={() => dispatch(changeTab("template"))}
-          >
-            <TemplateIcon className="mr-2" />
-            <span>Template</span>
-          </button>
-          <button
-            className={`${getStyle("ratio")}`}
-            onClick={() => dispatch(changeTab("ratio"))}
-          >
-            <RatioIcon className="mr-2" />
-            <span>Ratio</span>
-          </button>
-          <button
-            className={`${getStyle("more")}`}
-            onClick={() => dispatch(changeTab("more"))}
-          >
-            More..
-          </button>
-        </div>
-      </section>
+      <div id="tabs" className="scrollbar-hide overflow-x-auto grid grid-flow-col justify-stretch gap-x-1">
+        <button
+          className={`${getStyle("template")}`}
+          onClick={() => dispatch(changeTab("template"))}
+        >
+          <TemplateIcon className="mr-2 sm:text-xs md:text-base" />
+          <span className="text-base sm:text-xs md:text-base">Template</span>
+        </button>
+        <button
+          className={`${getStyle("ratio")}`}
+          onClick={() => dispatch(changeTab("ratio"))}
+        >
+          <RatioIcon className="mr-2 sm:text-xs md:text-base" />
+          <span className="text-base sm:text-xs md:text-base">Ratio</span>
+        </button>
+        <button
+          className={`${getStyle("more")}`}
+          onClick={() => dispatch(changeTab("more"))}
+        >
+          <FiltersIcon className="mr-2 sm:text-xs md:text-base" />
+          <span className="text-base sm:text-xs md:text-base">Filters</span>
+        </button>
+      </div>
+
+      <div id="tabContent" className="
+        scrollbar-hide bg-neutral-900 p-2 
+        h-28 flex items-center overflow-x-auto overflow-y-hidden
+        sm:h-screen sm:block sm:overflow-x-hidden sm:overflow-y-scroll
+      ">
+        {selected === "template" && <TabTemplate />}
+        {selected === "ratio" && <TabRatio />}
+        {selected === "more" && <TabFilters />}
+      </div>
     </>
   )
 }

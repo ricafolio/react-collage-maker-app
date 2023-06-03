@@ -11,27 +11,29 @@ export default function TabTemplate() {
   const dispatch = useAppDispatch()
 
   return (
-    <div className="grid grid-flow-col gap-x-2 text-white">
-      <Toaster toastOptions={{ className: "text-center" }}/>
-      {COLLAGE_TEMPLATES.map((template, index) => {
-        return (
-          <button
-            key={`template-${index}`}
-            onClick={() => {
-              dispatch(changeTemplateByIndex(index))
-              toast.success(`Template changed`, { duration: 800 })
-            }}
-            className={`flex h-20 w-20 cursor-pointer flex-col items-center justify-center text-center transition-colors rounded ${
-              index === activeTemplateIndex
-                ? "bg-neutral-800"
-                : "hover:bg-neutral-800"
-            }`}
-            aria-label={`change template to ${template.name}`}
-          >
-            <img src={template.icon} alt={template.name} />
-          </button>
-        )
-      })}
-    </div>
+    <>
+      <Toaster />
+      <div className="flex flex-nowrap sm:flex-wrap place-items-start text-white">
+        {COLLAGE_TEMPLATES.map((template, index) => {
+          return (
+            <button
+              key={`template-${index}`}
+              aria-label={`change template to ${template.name}`}
+              className={`flex mx-1 h-20 w-20 sm:w-full md:w-[calc(50%-8px)] cursor-pointer flex-col items-center justify-center text-center transition-colors rounded ${
+                index === activeTemplateIndex
+                  ? "bg-neutral-800"
+                  : "hover:bg-neutral-800"
+              }`}
+              onClick={() => {
+                dispatch(changeTemplateByIndex(index))
+                toast.success(`Template changed`, { duration: 800, position: "top-right" })
+              }}
+            >
+              <img src={template.icon} alt={template.name} />
+            </button>
+          )
+        })}
+      </div>
+    </>
   )
 }
