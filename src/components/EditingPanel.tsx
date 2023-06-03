@@ -35,22 +35,22 @@ export default function EditingPanel() {
           className={`${getStyle("template")}`}
           onClick={() => dispatch(changeTab("template"))}
         >
-          <TemplateIcon className="mr-2 sm:text-xs md:text-base" />
-          <span className="text-base sm:text-xs md:text-base">Template</span>
+          <TemplateIcon className="mr-2 sm:mr-0 lg:mr-2 sm:text-lg" />
+          <span className="sm:hidden lg:inline lg:text-sm xl:text-base">Template</span>
         </button>
         <button
           className={`${getStyle("ratio")}`}
           onClick={() => dispatch(changeTab("ratio"))}
         >
-          <RatioIcon className="mr-2 sm:text-xs md:text-base" />
-          <span className="text-base sm:text-xs md:text-base">Ratio</span>
+          <RatioIcon className="mr-2 sm:mr-0 lg:mr-2 sm:text-lg" />
+          <span className="sm:hidden lg:inline lg:text-sm xl:text-base">Ratio</span>
         </button>
         <button
           className={`${getStyle("more")}`}
           onClick={() => dispatch(changeTab("more"))}
         >
-          <FiltersIcon className="mr-2 sm:text-xs md:text-base" />
-          <span className="text-base sm:text-xs md:text-base">Filters</span>
+          <FiltersIcon className="mr-2 sm:mr-0 lg:mr-2 sm:text-lg" />
+          <span className="sm:hidden lg:inline lg:text-sm xl:text-base">Filters</span>
         </button>
       </div>
 
