@@ -3,6 +3,7 @@ import TabRatio from "./TabRatio"
 import TabTemplate from "./TabTemplate"
 import RatioIcon from "./icons/RatioIcon"
 import TemplateIcon from "./icons/TemplateIcon"
+import FiltersIcon from "./icons/FiltersIcon"
 
 import { SelectedTabType } from "@/types"
 import { RootStateType } from "@/redux/store"
