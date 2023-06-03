@@ -6,14 +6,13 @@ import {
 import { useAppSelector, useAppDispatch } from "@/redux/hooks"
 import { RootStateType } from "@/redux/store"
 import * as fabric from "fabric"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import toast, { Toaster } from "react-hot-toast"
-import { changeTab, setCanvas } from "@/redux/settingsSlice"
+import { changeTab, setCanvas, increaseUploadCount, resetUploadCount } from "@/redux/settingsSlice"
 
 export default function Canvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const inputRef = useRef<HTMLInputElement | null>(null)
-  const [uploads, setUploads] = useState(0)
   const dispatch = useAppDispatch()
 
   const activeTemplateIndex = useAppSelector(
@@ -43,7 +42,7 @@ export default function Canvas() {
       dispatch(setCanvas(canvas))
 
       // 1.2 Reset upload count
-      setUploads(0)
+      dispatch(resetUploadCount())
 
       // 2. Setup objects & its properties
       activeTemplate.config.forEach((config) => {
@@ -99,7 +98,7 @@ export default function Canvas() {
               toast.success("Image successfully added.")
               
               // Increment upload count
-              setUploads((prevUploads) => prevUploads + 1)
+              dispatch(increaseUploadCount())
 
               // Switch to More tab, to show controls on active object
               dispatch(changeTab("more"))

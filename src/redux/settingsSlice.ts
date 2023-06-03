@@ -3,10 +3,11 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import type { Canvas } from "fabric"
 
 const defaultSettings: defaultSettingsType = {
-  template: 0,
-  ratio: 0,
-  tab: "template",
   canvas: null,
+  ratio: 0,
+  template: 0,
+  tab: "template",
+  uploaded: 0,
 }
 
 export const settingsSlice = createSlice({
@@ -27,7 +28,13 @@ export const settingsSlice = createSlice({
       // @ts-ignore
       state.canvas = action.payload
     },
-  }
+    increaseUploadCount: (state) => {
+      state.uploaded = state.uploaded + 1
+    },
+    resetUploadCount: (state) => {
+      state.uploaded = 0
+    },
+  },
 })
 
 export const {
@@ -35,6 +42,8 @@ export const {
   changeRatioByIndex,
   changeTab,
   setCanvas,
+  increaseUploadCount,
+  resetUploadCount
 } = settingsSlice.actions
 
 export default settingsSlice.reducer

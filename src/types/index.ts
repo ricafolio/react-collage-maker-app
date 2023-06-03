@@ -52,10 +52,11 @@ export type AspectRatioType = {
 }
 
 export interface defaultSettingsType {
-  template: number
-  ratio: number
-  tab: SelectedTabType
   canvas: Canvas | null
+  ratio: number
+  template: number
+  tab: SelectedTabType
+  uploaded: number
 }
 
 export type FilterType =
