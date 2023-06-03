@@ -1,24 +1,19 @@
 import Canvas from "@/components/Canvas"
 import EditingPanel from "@/components/EditingPanel"
-import Header from "@/components/Header"
-import store from "@/redux/store"
 import { Provider } from "react-redux"
+import store from "@/redux/store"
 
 function App() {
   return (
     <Provider store={store}>
-      <div className="mx-2 max-w-xl sm:mx-auto">
-        <header>
-          <Header />
-        </header>
+      <div className="flex flex-row flex-wrap">
+        <aside className="w-full sm:w-4/12 md:w-3/12 order-2 sm:order-1">
+          <EditingPanel />
+        </aside>
 
-        <main>
+        <main className="w-full sm:w-8/12 md:w-9/12 order-1 sm:order-2">
           <Canvas />
         </main>
-
-        <footer>
-          <Footer />
-        </footer>
       </div>
     </Provider>
   )
