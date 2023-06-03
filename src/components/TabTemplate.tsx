@@ -19,7 +19,7 @@ export default function TabTemplate() {
             <button
               key={`template-${index}`}
               aria-label={`change template to ${template.name}`}
-              className={`flex mx-1 h-20 w-20 sm:w-full md:w-[calc(50%-8px)] cursor-pointer flex-col items-center justify-center text-center transition-colors rounded ${
+              className={`flex mx-1 sm:mb-2 h-20 w-20 sm:w-full md:w-[calc(50%-8px)] cursor-pointer flex-col items-center justify-center text-center transition-colors rounded ${
                 index === activeTemplateIndex
                   ? "bg-neutral-800"
                   : "hover:bg-neutral-800"
