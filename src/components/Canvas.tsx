@@ -13,6 +13,7 @@ import { changeTab, setCanvas, increaseUploadCount, resetUploadCount } from "@/r
 export default function Canvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const inputRef = useRef<HTMLInputElement | null>(null)
+  const wrapperRef = useRef<HTMLDivElement | null>(null)
   const dispatch = useAppDispatch()
 
   const activeTemplateIndex = useAppSelector(
@@ -23,15 +24,18 @@ export default function Canvas() {
   )
 
   const activeTemplate = COLLAGE_TEMPLATES[activeTemplateIndex]
-  const ratio = ASPECT_RATIOS[activeRatioIndex]
 
   useEffect(() => {
-    if (canvasRef.current) {
+    if (canvasRef.current && wrapperRef.current) {
+      // 0. Calculate canvas ratio by initial client width
+      const panelWidth = wrapperRef.current.clientWidth > 640 ? 640 : wrapperRef.current.clientWidth - 16
+      const ratio = ASPECT_RATIOS[activeRatioIndex].canvas(panelWidth)
+
       // 1. Setup canvas
       const canvas = new fabric.Canvas(canvasRef.current, {
         backgroundColor: "#1a1a1a",
-        width: ratio.canvas.width,
-        height: ratio.canvas.height,
+        width: ratio.width,
+        height: ratio.height,
         selection: false,
         controlsAboveOverlay: false,
         allowTouchScrolling: true,
@@ -47,8 +51,8 @@ export default function Canvas() {
       // 2. Setup objects & its properties
       activeTemplate.config.forEach((config) => {
         const PROPERTIES = config.rectFabric(
-          ratio.canvas.height,
-          ratio.canvas.width
+          ratio.height,
+          ratio.width
         )
         const cell = new fabric.Rect(PROPERTIES).set(OBJECT_LOCKED)
 
@@ -135,14 +139,14 @@ export default function Canvas() {
   }, [activeRatioIndex, activeTemplateIndex])
 
   return (
-    <>
+    <div ref={wrapperRef}>
       <Toaster />
-      <div className="h-screen flex items-center justify-center">
+      <div className="my-2 sm:h-screen flex items-center justify-center">
         <canvas ref={canvasRef} />
       </div>
       <div className="hidden">
         <input ref={inputRef} type="file" accept="image/*" className="hidden" />
       </div>
-    </>
+    </div>
   )
 }
