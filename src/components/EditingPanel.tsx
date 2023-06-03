@@ -10,7 +10,7 @@ import { RootStateType } from "@/redux/store"
 import { changeTab } from "@/redux/settingsSlice"
 import { useAppSelector, useAppDispatch } from "@/redux/hooks"
 
-export default function Footer() {
+export default function EditingPanel() {
   const selected = useAppSelector(
     (state: RootStateType) => state.settings.tab
   )

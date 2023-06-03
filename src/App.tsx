@@ -1,5 +1,5 @@
 import Canvas from "@/components/Canvas"
-import Footer from "@/components/Footer"
+import EditingPanel from "@/components/EditingPanel"
 import Header from "@/components/Header"
 import store from "@/redux/store"
 import { Provider } from "react-redux"
