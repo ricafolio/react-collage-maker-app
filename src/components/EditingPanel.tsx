@@ -1,6 +1,9 @@
+import DownloadButton from "./DownloadButton"
+
 import TabFilters from "./TabFilters"
 import TabRatio from "./TabRatio"
 import TabTemplate from "./TabTemplate"
+
 import RatioIcon from "./icons/RatioIcon"
 import TemplateIcon from "./icons/TemplateIcon"
 import FiltersIcon from "./icons/FiltersIcon"
@@ -20,6 +23,7 @@ export default function EditingPanel() {
   const sharedTabStyle = "flex justify-center items-center transition-colors p-3"
   const inactiveTabStyle = `${sharedTabStyle} bg-black hover:bg-neutral-950`
   const activeTabStyle = `${sharedTabStyle} bg-neutral-900`
+  
   const getStyle = (tab: SelectedTabType) => {
     return selected === tab ? activeTabStyle : inactiveTabStyle
   }
@@ -58,6 +62,10 @@ export default function EditingPanel() {
         {selected === "template" && <TabTemplate />}
         {selected === "ratio" && <TabRatio />}
         {selected === "more" && <TabFilters />}
+      </div>
+
+      <div className="sm:fixed bottom-0 left-0 pb-4 px-2 sm:p-4">
+        <DownloadButton />
       </div>
     </>
   )
