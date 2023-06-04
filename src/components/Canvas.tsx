@@ -147,6 +147,11 @@ export default function Canvas() {
       <div className="hidden">
         <input ref={inputRef} type="file" accept="image/*" className="hidden" />
       </div>
+      <div className="w-full text-center hidden sm:block">
+        <a href="https://github.com/ricafolio/react-canvas-collage-maker/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-200 transition-colors font-medium">Source code</a>
+        <span className="mx-3 text-gray-700">&middot;</span>
+        <a href="https://ricafolio.me" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-200 transition-colors font-medium">ricafolio.me</a>
+      </div>
     </div>
   )
 }
