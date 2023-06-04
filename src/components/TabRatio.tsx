@@ -2,7 +2,7 @@ import { ASPECT_RATIOS } from "@/constants/canvasConfig"
 import { useAppSelector, useAppDispatch } from "@/redux/hooks"
 import { changeRatioByIndex } from "@/redux/settingsSlice"
 import { RootStateType } from "@/redux/store"
-import toast, { Toaster } from "react-hot-toast"
+import toast from "react-hot-toast"
 
 export default function TabRatio() {
   const activeRatioIndex = useAppSelector(
@@ -12,7 +12,6 @@ export default function TabRatio() {
 
   return (
     <>
-      <Toaster />
       <div className="flex flex-nowrap sm:flex-wrap place-items-start text-white">
         {ASPECT_RATIOS.map((ratio, index) => {
           return (

@@ -1,7 +1,7 @@
 import { COLLAGE_TEMPLATES } from "@/constants/canvasConfig"
 import type { RootStateType } from "@/redux/store"
 import DownloadIcon from "./icons/DownloadIcon"
-import toast, { Toaster } from "react-hot-toast"
+import toast from "react-hot-toast"
 import { useAppSelector } from "@/redux/hooks"
 import { useRef } from "react"
 
@@ -32,7 +32,6 @@ export default function DownloadButton() {
 
   return (
     <>
-      <Toaster />
       <a ref={linkRef} id="download" className="hidden"></a>
       <button
         className="mt-4 flex w-full items-center justify-center rounded bg-indigo-600 px-5 py-3 text-sm font-semibold transition transition-colors hover:bg-indigo-700 disabled:bg-gray-500"

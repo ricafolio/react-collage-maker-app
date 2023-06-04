@@ -2,7 +2,7 @@ import { COLLAGE_TEMPLATES } from "@/constants/canvasConfig"
 import { useAppSelector, useAppDispatch } from "@/redux/hooks"
 import { changeTemplateByIndex } from "@/redux/settingsSlice"
 import { RootStateType } from "@/redux/store"
-import toast, { Toaster } from "react-hot-toast"
+import toast from "react-hot-toast"
 
 export default function TabTemplate() {
   const activeTemplateIndex = useAppSelector(
@@ -12,7 +12,6 @@ export default function TabTemplate() {
 
   return (
     <>
-      <Toaster />
       <div className="flex flex-nowrap sm:flex-wrap place-items-start text-white">
         {COLLAGE_TEMPLATES.map((template, index) => {
           return (

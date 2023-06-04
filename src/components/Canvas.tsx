@@ -7,7 +7,7 @@ import { useAppSelector, useAppDispatch } from "@/redux/hooks"
 import { RootStateType } from "@/redux/store"
 import * as fabric from "fabric"
 import { useEffect, useRef } from "react"
-import toast, { Toaster } from "react-hot-toast"
+import toast from "react-hot-toast"
 import { changeTab, setCanvas, increaseUploadCount, resetUploadCount } from "@/redux/settingsSlice"
 
 export default function Canvas() {
@@ -140,7 +140,6 @@ export default function Canvas() {
 
   return (
     <div ref={wrapperRef}>
-      <Toaster />
       <div className="py-2 sm:py-8 sm:min-h-screen flex items-start justify-center">
         <canvas ref={canvasRef} />
       </div>

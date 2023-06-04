@@ -3,7 +3,7 @@ import type { FilterType } from "@/types"
 import { useAppSelector } from "@/redux/hooks"
 import { useState } from "react"
 import * as fabric from "fabric"
-import toast, { Toaster } from "react-hot-toast"
+import toast from "react-hot-toast"
 
 export default function TabFilters() {
   const [setting, setSetting] = useState<FilterType>("Noise")
@@ -43,7 +43,6 @@ export default function TabFilters() {
 
   return (
     <div className="w-full px-2">
-      <Toaster />
       <button 
         type="button" 
         onClick={() => setSetting("Noise")}
