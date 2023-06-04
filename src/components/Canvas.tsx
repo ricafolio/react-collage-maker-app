@@ -99,7 +99,7 @@ export default function Canvas() {
               // Render in canvas
               canvas.remove(selectedCell)
               canvas.renderAll()
-              toast.success("Image successfully added.")
+              toast.success("Image successfully added.", { id: "toast-uploaded" })
               
               // Increment upload count
               dispatch(increaseUploadCount())

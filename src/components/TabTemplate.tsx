@@ -26,7 +26,7 @@ export default function TabTemplate() {
               }`}
               onClick={() => {
                 dispatch(changeTemplateByIndex(index))
-                toast.success(`Template changed`, { duration: 800, position: "top-right" })
+                toast.success(`Template changed`, { duration: 650, id: "toast-template" })
               }}
             >
               <img src={template.icon} alt={template.name} />

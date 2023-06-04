@@ -26,7 +26,7 @@ export default function TabRatio() {
               }`}
               onClick={() => {
                 dispatch(changeRatioByIndex(index)) 
-                toast.success(`Ratio changed to ${ratio.name}`, { duration: 800, position: "top-right" })
+                toast.success(`Ratio changed to ${ratio.name}`, { duration: 650, id: "toast-ratio" })
               }}
             >
               <img src={ratio.icon} alt={ratio.name} />
