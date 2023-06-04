@@ -22,6 +22,42 @@ export default function TabFilters() {
         brightness: 0.1
       }) as fabric.filters.BaseFilter
     },
+    {
+      id: "Contrast",
+      min: 0,
+      max: 0.6,
+      step: 0.002,
+      emptyFilter: () => new fabric.filters.Contrast({
+        contrast: 0.1
+      }) as fabric.filters.BaseFilter
+    },
+    {
+      id: "Saturation",
+      min: 0,
+      max: 1,
+      step: 0.002,
+      emptyFilter: () => new fabric.filters.Saturation({
+        saturation: 0.1
+      }) as fabric.filters.BaseFilter
+    },
+    {
+      id: "Vibrance",
+      min: 0,
+      max: 0.6,
+      step: 0.002,
+      emptyFilter: () => new fabric.filters.Vibrance({
+        vibrance: 0.1
+      }) as fabric.filters.BaseFilter
+    },
+    {
+      id: "Blur",
+      min: 0,
+      max: 1,
+      step: 0.002,
+      emptyFilter: () => new fabric.filters.Blur({
+        blur: 0.5
+      }) as fabric.filters.BaseFilter
+    },
   ]
 
   return (
