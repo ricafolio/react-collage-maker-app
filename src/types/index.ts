@@ -1,5 +1,4 @@
-import type { Canvas } from "fabric"
-
+import type { filters, Canvas } from "fabric"
 export type SelectedTabType = "template" | "ratio" | "more"
 
 export type LockedObjectType = {
@@ -59,7 +58,7 @@ export interface defaultSettingsType {
   uploaded: number
 }
 
-export type FilterType =
+export type FilterIdType =
   | "Brightness"
   | "Contrast"
   | "Noise"
@@ -69,3 +68,22 @@ export type FilterType =
   | "Hue"
   | "Pixelate"
   | "Blur"
+
+export type FilterListType = 
+   | filters.Brightness
+   | filters.Contrast
+   | filters.Noise
+   | filters.Saturation
+   | filters.Vibrance
+   | filters.HueRotation
+   | filters.Pixelate
+   | filters.Blur
+   // | filters.Sharpen
+
+export type FilterControlType = {
+  id: FilterIdType
+  min: number
+  max: number
+  step: number
+  emptyFilter: () => filters.BaseFilter
+}
