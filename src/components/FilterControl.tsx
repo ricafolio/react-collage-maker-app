@@ -82,7 +82,7 @@ export default function FilterControl(props: FilterControlType) {
     <div className="border-b border-neutral-800 py-4">
       <div className={`flex flex-row w-full items-center transition-colors rounded`}>
         <h3 className="w-1/2 text-left font-medium">{id}</h3>
-        <span className="w-1/2 text-right">{computePercentage()}%</span>
+        <span className="w-1/2 text-right">{selectedImageIndex !== null ? `${computePercentage()}%` : "-"}</span>
       </div>
 
       <div className="w-full flex justify-center items-center">
