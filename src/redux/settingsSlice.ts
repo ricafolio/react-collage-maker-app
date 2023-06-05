@@ -48,6 +48,17 @@ export const settingsSlice = createSlice({
     clearSelectedImage: (state) => {
       state.selectedImage = null
     },
+    setImageFilterValue: (state, action: PayloadAction<{ imageId: string, filterType: string, filterValue: number}>) => {
+      const { imageId, filterType, filterValue } = action.payload
+      const { selectedImage } = state
+
+      if (selectedImage && selectedImage.id === imageId) {
+        selectedImage.filters = {
+          ...selectedImage.filters,
+          [filterType]: filterValue,
+        }
+      }
+    }
   },
 })
 
@@ -61,6 +72,7 @@ export const {
   newImage,
   setSelectedImage,
   clearSelectedImage,
+  setImageFilterValue
 } = settingsSlice.actions
 
 export default settingsSlice.reducer
