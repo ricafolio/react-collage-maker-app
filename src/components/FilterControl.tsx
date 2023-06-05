@@ -7,14 +7,33 @@ import toast from "react-hot-toast"
 
 export default function FilterControl(props: FilterControlType) {
   const { id, min, max, step, emptyFilter } = props
+  const filterTypeLower = id.toLowerCase()
 
   // Get necessary data from Redux store
   const dispatch = useAppDispatch()
   const canvas = useAppSelector((state: RootStateType) => state.canvas.canvas)
-  const selectedImage = useAppSelector((state: RootStateType) => state.selection.selectedImage)
-  const filterTypeLower = id.toLowerCase()
-  const rangeValue = selectedImage?.filters[filterTypeLower as LowercaseFilterIdType] || 0
+  const images = useAppSelector((state: RootStateType) => state.selection.images)
+  const selectedImageIndex = useAppSelector((state: RootStateType) => state.selection.selectedImageIndex)
 
+  // get image filter historical values or set all to zero if none is selected
+  const selectedImage = (
+    selectedImageIndex !== null 
+      ? images[selectedImageIndex] 
+      : {
+          filters: {
+            brightness: 0,
+            contrast: 0,
+            noise: 0,
+            saturation: 0,
+            vibrance: 0,
+            blur: 0,
+          }
+        }
+  )
+
+  // actual range value
+  const rangeValue = selectedImage.filters[filterTypeLower as LowercaseFilterIdType]
+  
   // Compute the percentage based on the range value
   const computePercentage = () => Math.round(((rangeValue - min) / (max - min)) * 100)
 
@@ -43,14 +62,14 @@ export default function FilterControl(props: FilterControlType) {
 
   // Update the filter value when the range value changes
   const setValue = (value: string) => {
-    if (!selectedImage) {
+    if (selectedImageIndex === null) {
       toast("Please select an image to apply filter", { id: "no-image" })
       return
     }
 
     // Set selectedImage value in redux, it will take care of the rest
     dispatch(setImageFilterValue({
-      imageId: selectedImage.id,
+      imageIndex: selectedImageIndex,
       filterType: filterTypeLower,
       filterValue: parseFloat(value)
     }))

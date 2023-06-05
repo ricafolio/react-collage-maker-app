@@ -17,12 +17,12 @@ export interface UploadedImage {
 }
 
 export interface SelectedImageStateType {
-  selectedImage: UploadedImage | null
+  selectedImageIndex: number | null
   images: UploadedImage[]
 }
 
 export interface ImageFilterUpdate {
-  imageId: string
+  imageIndex: number
   filterType: string
   filterValue: number
 }
