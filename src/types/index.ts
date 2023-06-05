@@ -50,12 +50,26 @@ export type AspectRatioType = {
   canvas: (w: number) => DimensionsType
 }
 
+export interface UploadedImage {
+  id: string
+  filters: {
+    brightness: number
+    contrast: number
+    noise: number
+    saturation: number
+    vibrance: number
+    blur: number
+  }
+}
+
 export interface defaultSettingsType {
   canvas: Canvas | null
   ratio: number
   template: number
   tab: SelectedTabType
   uploaded: number
+  selectedImage: UploadedImage | null
+  images: UploadedImage[]
 }
 
 export type FilterIdType =

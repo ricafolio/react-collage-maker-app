@@ -1,4 +1,4 @@
-import { defaultSettingsType, SelectedTabType } from "@/types"
+import { defaultSettingsType, SelectedTabType, UploadedImage } from "@/types"
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import type { Canvas } from "fabric"
 
@@ -8,6 +8,8 @@ const defaultSettings: defaultSettingsType = {
   template: 0,
   tab: "template",
   uploaded: 0,
+  selectedImage: null,
+  images: []
 }
 
 export const settingsSlice = createSlice({
@@ -34,6 +36,18 @@ export const settingsSlice = createSlice({
     resetUploadCount: (state) => {
       state.uploaded = 0
     },
+    newImage: (state, action: PayloadAction<UploadedImage>) => {
+      state.images = [
+        ...state.images,
+        action.payload
+      ]
+    },
+    setSelectedImage: (state, action: PayloadAction<string>) => {
+      state.selectedImage = state.images.find((image) => image.id === action.payload) || null
+    },
+    clearSelectedImage: (state) => {
+      state.selectedImage = null
+    },
   },
 })
 
@@ -43,7 +57,10 @@ export const {
   changeTab,
   setCanvas,
   increaseUploadCount,
-  resetUploadCount
+  resetUploadCount,
+  newImage,
+  setSelectedImage,
+  clearSelectedImage,
 } = settingsSlice.actions
 
 export default settingsSlice.reducer
