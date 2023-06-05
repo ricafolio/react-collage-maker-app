@@ -12,7 +12,7 @@ export default function DownloadButton() {
     (state: RootStateType) => state.settings.canvas
   )
   const uploaded = useAppSelector(
-    (state: RootStateType) => state.settings.uploaded
+    (state: RootStateType) => state.settings.images.length
   )
   const activeTemplateConfig = useAppSelector(
     (state: RootStateType) => COLLAGE_TEMPLATES[state.settings.template].config

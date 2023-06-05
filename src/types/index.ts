@@ -67,7 +67,6 @@ export interface defaultSettingsType {
   ratio: number
   template: number
   tab: SelectedTabType
-  uploaded: number
   selectedImage: UploadedImage | null
   images: UploadedImage[]
 }

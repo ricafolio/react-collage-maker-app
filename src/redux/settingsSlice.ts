@@ -7,7 +7,6 @@ const defaultSettings: defaultSettingsType = {
   ratio: 0,
   template: 0,
   tab: "template",
-  uploaded: 0,
   selectedImage: null,
   images: []
 }
@@ -29,12 +28,6 @@ export const settingsSlice = createSlice({
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       state.canvas = action.payload
-    },
-    increaseUploadCount: (state) => {
-      state.uploaded = state.uploaded + 1
-    },
-    resetUploadCount: (state) => {
-      state.uploaded = 0
     },
     newImage: (state, action: PayloadAction<UploadedImage>) => {
       state.images = [
@@ -67,8 +60,6 @@ export const {
   changeRatioByIndex,
   changeTab,
   setCanvas,
-  increaseUploadCount,
-  resetUploadCount,
   newImage,
   setSelectedImage,
   clearSelectedImage,

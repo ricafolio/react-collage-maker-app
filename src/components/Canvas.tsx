@@ -7,8 +7,6 @@ import { useAppSelector, useAppDispatch } from "@/redux/hooks"
 import {
   changeTab,
   setCanvas,
-  increaseUploadCount,
-  resetUploadCount,
   newImage,
   setSelectedImage,
   clearSelectedImage,
@@ -57,9 +55,6 @@ export default function Canvas() {
 
       // 1.1 Clone canvas
       dispatch(setCanvas(canvas))
-
-      // 1.2 Reset upload count
-      dispatch(resetUploadCount())
 
       // 2. Setup objects & its properties
       activeTemplate.config.forEach((config) => {
@@ -130,9 +125,6 @@ export default function Canvas() {
               toast.success("Image successfully added.", {
                 id: "toast-uploaded",
               })
-
-              // Increment upload count
-              dispatch(increaseUploadCount())
 
               // Switch to More tab, to show controls on active object
               dispatch(changeTab("more"))
