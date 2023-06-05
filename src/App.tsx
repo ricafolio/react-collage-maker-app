@@ -1,24 +1,22 @@
 import Canvas from "@/components/Canvas"
-import Footer from "@/components/Footer"
-import Header from "@/components/Header"
-import store from "@/redux/store"
+import EditingPanel from "@/components/EditingPanel"
 import { Provider } from "react-redux"
+import store from "@/redux/store"
+import { Toaster } from "react-hot-toast"
 
 function App() {
   return (
     <Provider store={store}>
-      <div className="mx-2 max-w-xl sm:mx-auto">
-        <header>
-          <Header />
-        </header>
+      <div className="flex flex-row flex-wrap">
+        <Toaster />
 
-        <main>
+        <aside className="w-full sm:w-3/12 order-2 sm:order-1 sm:border-r border-gray-800 sm:bg-neutral-900">
+          <EditingPanel />
+        </aside>
+
+        <main className="w-full sm:w-9/12 order-1 sm:order-2">
           <Canvas />
         </main>
-
-        <footer>
-          <Footer />
-        </footer>
       </div>
     </Provider>
   )
