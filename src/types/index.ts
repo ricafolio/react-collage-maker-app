@@ -1,4 +1,4 @@
-import type { filters, Canvas } from "fabric"
+import type { filters, Canvas, Image } from "fabric"
 export type SelectedTabType = "template" | "ratio" | "more"
 
 export type LockedObjectType = {
@@ -80,6 +80,8 @@ export type FilterIdType =
   | "Vibrance"
   | "Blur"
 
+export type LowercaseFilterIdType = Lowercase<FilterIdType>
+
 export type FilterListType = 
    | filters.Brightness
    | filters.Contrast
@@ -95,4 +97,8 @@ export type FilterControlType = {
   max: number
   step: number
   emptyFilter: () => filters.BaseFilter
+}
+
+export type CustomImageObject = Image & {
+  id: string
 }
