@@ -76,11 +76,8 @@ export type FilterIdType =
   | "Brightness"
   | "Contrast"
   | "Noise"
-  | "Sharpen"
   | "Saturation"
   | "Vibrance"
-  | "Hue"
-  | "Pixelate"
   | "Blur"
 
 export type FilterListType = 
@@ -89,10 +86,8 @@ export type FilterListType =
    | filters.Noise
    | filters.Saturation
    | filters.Vibrance
-   | filters.HueRotation
    | filters.Pixelate
    | filters.Blur
-   // | filters.Sharpen
 
 export type FilterControlType = {
   id: FilterIdType
