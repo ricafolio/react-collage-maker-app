@@ -1,4 +1,4 @@
-import { defaultSettingsType, SelectedTabType, UploadedImage } from "@/types"
+import { defaultSettingsType, SelectedTabType, UploadedImage, ImageFilterUpdate } from "@/types"
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import type { Canvas } from "fabric"
 
@@ -41,7 +41,7 @@ export const settingsSlice = createSlice({
     clearSelectedImage: (state) => {
       state.selectedImage = null
     },
-    setImageFilterValue: (state, action: PayloadAction<{ imageId: string, filterType: string, filterValue: number}>) => {
+    setImageFilterValue: (state, action: PayloadAction<ImageFilterUpdate>) => {
       const { imageId, filterType, filterValue } = action.payload
       const { selectedImage } = state
 

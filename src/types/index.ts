@@ -101,3 +101,9 @@ export type FilterControlType = {
 export type CustomImageObject = Image & {
   id: string
 }
+
+export interface ImageFilterUpdate {
+  imageId: string
+  filterType: string
+  filterValue: number
+}
