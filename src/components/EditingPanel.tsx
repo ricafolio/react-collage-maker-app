@@ -15,10 +15,10 @@ import { changeTab } from "@/redux/canvasSlice"
 import { useAppSelector, useAppDispatch } from "@/redux/hooks"
 
 export default function EditingPanel() {
+  const dispatch = useAppDispatch()
   const selected = useAppSelector(
     (state: RootStateType) => state.canvas.tab
   )
-  const dispatch = useAppDispatch()
 
   const sharedTabStyle = "flex justify-center items-center transition-colors p-3"
   const inactiveTabStyle = `${sharedTabStyle} bg-black hover:bg-neutral-950`

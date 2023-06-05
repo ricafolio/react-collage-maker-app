@@ -5,10 +5,10 @@ import { RootStateType } from "@/redux/store"
 import toast from "react-hot-toast"
 
 export default function TabRatio() {
+  const dispatch = useAppDispatch()
   const activeRatioIndex = useAppSelector(
     (state: RootStateType) => state.canvas.ratio
   )
-  const dispatch = useAppDispatch()
 
   return (
     <>

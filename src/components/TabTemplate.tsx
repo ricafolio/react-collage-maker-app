@@ -5,10 +5,10 @@ import { RootStateType } from "@/redux/store"
 import toast from "react-hot-toast"
 
 export default function TabTemplate() {
+  const dispatch = useAppDispatch()
   const activeTemplateIndex = useAppSelector(
     (state: RootStateType) => state.canvas.template
   )
-  const dispatch = useAppDispatch()
 
   return (
     <>
