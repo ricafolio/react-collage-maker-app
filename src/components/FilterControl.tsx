@@ -38,7 +38,7 @@ export default function FilterControl(props: FilterControlType) {
   const computePercentage = () => Math.round(((rangeValue - min) / (max - min)) * 100)
 
   // Add or update the image filter when the range value changes
-  const addFilter = () => {
+  const addFilter = (filterValue: number) => {
     if (!canvas) return
 
     const image = canvas.getActiveObject() as fabric.Image
@@ -50,10 +50,10 @@ export default function FilterControl(props: FilterControlType) {
       const filterInstance = image.filters[filterIndex] as FilterListType
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (filterInstance as { [key: string]: any })[filterTypeLower] = rangeValue
+      (filterInstance as { [key: string]: any })[filterTypeLower] = filterValue
     } else {
       // Create new filter
-      image.filters.push(emptyFilter())
+      image.filters.push(emptyFilter(filterValue))
     }
 
     image.applyFilters()
@@ -67,15 +67,15 @@ export default function FilterControl(props: FilterControlType) {
       return
     }
 
+    // Start adding the actual filter
+    addFilter(parseFloat(value))
+
     // Set selectedImage value in redux, it will take care of the rest
     dispatch(setImageFilterValue({
       imageIndex: selectedImageIndex,
       filterType: filterTypeLower,
       filterValue: parseFloat(value)
     }))
-
-    // Start adding the actual filter
-    addFilter()
   }
 
   return (
