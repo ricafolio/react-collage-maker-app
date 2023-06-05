@@ -1,40 +1,40 @@
-import type { RootStateType } from "@/redux/store"
-import type { FilterControlType, FilterListType } from "@/types"
-import { useAppSelector } from "@/redux/hooks"
-import { useState } from "react"
-import toast from "react-hot-toast"
 import * as fabric from "fabric"
+import type { RootStateType } from "@/redux/store"
+import type { FilterControlType, FilterListType, LowercaseFilterIdType } from "@/types"
+import { useAppSelector, useAppDispatch } from "@/redux/hooks"
+import { setImageFilterValue } from "@/redux/settingsSlice"
+import toast from "react-hot-toast"
 
 export default function FilterControl(props: FilterControlType) {
   const { id, min, max, step, emptyFilter } = props
-  const [value, setValue] = useState<number>(0)
+  const filterTypeLower = id.toLowerCase()
+  const dispatch = useAppDispatch()
+
   const canvas = useAppSelector(
     (state: RootStateType) => state.settings.canvas
   )
+  const selectedImage = useAppSelector(
+    (state: RootStateType) => state.settings.selectedImage
+  )
+  const rangeValue = selectedImage?.filters[filterTypeLower as LowercaseFilterIdType] || 0
+
   const computePercentage = () => {
-    const percentage = ((value - min) / (max - min)) * 100
+    const percentage = ((rangeValue - min) / (max - min)) * 100
     return Math.round(percentage)
   }
 
   function addFilter() {
     if (canvas) {
       const image = canvas.getActiveObject() as fabric.Image
-      
-      if (!image) {
-        toast("Please select an image to apply filter", { id: "no-image" })
-        setValue(0)
-        return
-      }
-
-      const parsedImage = image.toJSON()
+      const parsedImage: fabric.Image = image.toJSON()
       const filterIndex = parsedImage.filters.findIndex((f: { type: string }) => f.type === id)
 
       if (filterIndex !== -1) {
-        // Change existing filter
+        // Tweak existing filter
         const filterInstance = image.filters[filterIndex] as FilterListType
         
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (filterInstance as { [key: string]: any })[id.toLowerCase()] = value
+        (filterInstance as { [key: string]: any })[id.toLowerCase()] = rangeValue
       } else {
         // Create new filter
         image.filters.push(emptyFilter())
@@ -43,6 +43,23 @@ export default function FilterControl(props: FilterControlType) {
       image.applyFilters()
       canvas.renderAll()
     }
+  }
+
+  const setValue = (value: string) => {
+    if (!selectedImage) {
+      toast("Please select an image to apply filter", { id: "no-image" })
+      return
+    }
+
+    // Set selectedImage value in redux, it will take care of the rest
+    dispatch(setImageFilterValue({
+      imageId: selectedImage.id,
+      filterType: filterTypeLower,
+      filterValue: parseFloat(value)
+    }))
+
+    // Start adding the actual filter
+    addFilter()
   }
 
   return (
@@ -60,11 +77,8 @@ export default function FilterControl(props: FilterControlType) {
             min={min}
             max={max}
             step={step}
-            value={value}
-            onChange={(e) => {
-              setValue(parseFloat(e.target.value))
-              addFilter()
-            }}
+            value={rangeValue}
+            onChange={(e) => setValue(e.target.value)}
             className="w-full my-2"
           />
         )}

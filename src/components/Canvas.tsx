@@ -8,7 +8,16 @@ import { RootStateType } from "@/redux/store"
 import * as fabric from "fabric"
 import { useEffect, useRef } from "react"
 import toast from "react-hot-toast"
-import { changeTab, setCanvas, increaseUploadCount, resetUploadCount } from "@/redux/settingsSlice"
+import { 
+  changeTab, 
+  setCanvas, 
+  increaseUploadCount, 
+  resetUploadCount,
+  newImage,
+  setSelectedImage,
+  clearSelectedImage, 
+} from "@/redux/settingsSlice"
+import { CustomImageObject } from "@/types"
 
 export default function Canvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
@@ -73,16 +82,18 @@ export default function Canvas() {
                 // 1.1 Load image as fabric image
                 const addImage = async (imageBase64: string) => {
                   const img = await fabric.Image.fromURL(imageBase64)
+                  const imgId = `img_${new Date().getTime()}`
+
                   // Set position to selected cell
                   img.set({
-                    id: `img_${new Date().getTime()}`,
+                    id: imgId,
                     left: selectedCell.left,
                     top: selectedCell.top,
                     selectable: true,
                     hasControls: true,
                     clipPath: selectedCell,
                     perPixelTargetFind: true,
-                  })
+                  }) as CustomImageObject
                   
                   // Scale accordingly to look good
                   if (config.scaleTo === "width") {
@@ -90,6 +101,19 @@ export default function Canvas() {
                   } else if (config.scaleTo === "height") {
                     img.scaleToHeight(selectedCell.height + 1)
                   }
+
+                  // save image in redux
+                  dispatch(newImage({
+                    id: imgId,
+                    filters: {
+                      brightness: 0,
+                      contrast: 0,
+                      noise: 0,
+                      saturation: 0,
+                      vibrance: 0,
+                      blur: 0,
+                    }
+                  }))
 
                   canvas.add(img)
                   canvas.setActiveObject(img)
@@ -126,10 +150,26 @@ export default function Canvas() {
       // 6. Render all looped objects
       canvas.renderAll()
 
-      // 7. Change tab when an object is selected
-      canvas.on('selection:created', () => {
+      // 7. Attach event handler on object selection
+      const handleImageSelect = (selected: CustomImageObject) => {
+        // Change tab on select
         dispatch(changeTab("more"))
-      });
+
+        // Set selected image
+        dispatch(setSelectedImage(selected.id))
+      }
+
+      canvas.on("selection:created", ({ selected }) => {
+        handleImageSelect(selected[0] as CustomImageObject)
+      })
+
+      canvas.on("selection:updated", ({ selected }) => {
+        handleImageSelect(selected[0] as CustomImageObject)
+      })
+
+      canvas.on("selection:cleared", () => {
+        dispatch(clearSelectedImage())
+      })
 
       // 8. Clean up the canvas when the component unmounts
       return () => {
