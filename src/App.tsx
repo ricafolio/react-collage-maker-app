@@ -10,7 +10,7 @@ function App() {
       <div className="flex flex-row flex-wrap">
         <Toaster />
 
-        <aside className="w-full sm:w-3/12 order-2 sm:order-1 sm:border-r border-gray-800 bg-neutral-900">
+        <aside className="w-full sm:w-3/12 order-2 sm:order-1 sm:border-r border-gray-800 sm:bg-neutral-900">
           <EditingPanel />
         </aside>
 
