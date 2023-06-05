@@ -7,44 +7,41 @@ import toast from "react-hot-toast"
 
 export default function FilterControl(props: FilterControlType) {
   const { id, min, max, step, emptyFilter } = props
-  const filterTypeLower = id.toLowerCase()
-  const dispatch = useAppDispatch()
 
-  const canvas = useAppSelector(
-    (state: RootStateType) => state.settings.canvas
-  )
-  const selectedImage = useAppSelector(
-    (state: RootStateType) => state.settings.selectedImage
-  )
+  // Get necessary data from Redux store
+  const dispatch = useAppDispatch()
+  const canvas = useAppSelector((state: RootStateType) => state.settings.canvas)
+  const selectedImage = useAppSelector((state: RootStateType) => state.settings.selectedImage)
+  const filterTypeLower = id.toLowerCase()
   const rangeValue = selectedImage?.filters[filterTypeLower as LowercaseFilterIdType] || 0
 
-  const computePercentage = () => {
-    const percentage = ((rangeValue - min) / (max - min)) * 100
-    return Math.round(percentage)
-  }
+  // Compute the percentage based on the range value
+  const computePercentage = () => Math.round(((rangeValue - min) / (max - min)) * 100)
 
-  function addFilter() {
-    if (canvas) {
-      const image = canvas.getActiveObject() as fabric.Image
-      const parsedImage: fabric.Image = image.toJSON()
-      const filterIndex = parsedImage.filters.findIndex((f: { type: string }) => f.type === id)
+  // Add or update the image filter when the range value changes
+  const addFilter = () => {
+    if (!canvas) return
 
-      if (filterIndex !== -1) {
-        // Tweak existing filter
-        const filterInstance = image.filters[filterIndex] as FilterListType
-        
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (filterInstance as { [key: string]: any })[id.toLowerCase()] = rangeValue
-      } else {
-        // Create new filter
-        image.filters.push(emptyFilter())
-      }
+    const image = canvas.getActiveObject() as fabric.Image
+    const parsedImage: fabric.Image = image.toJSON()
+    const filterIndex = parsedImage.filters.findIndex((f: { type: string }) => f.type === id)
 
-      image.applyFilters()
-      canvas.renderAll()
+    if (filterIndex !== -1) {
+      // Tweak existing filter
+      const filterInstance = image.filters[filterIndex] as FilterListType
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (filterInstance as { [key: string]: any })[filterTypeLower] = rangeValue
+    } else {
+      // Create new filter
+      image.filters.push(emptyFilter())
     }
+
+    image.applyFilters()
+    canvas.renderAll()
   }
 
+  // Update the filter value when the range value changes
   const setValue = (value: string) => {
     if (!selectedImage) {
       toast("Please select an image to apply filter", { id: "no-image" })
