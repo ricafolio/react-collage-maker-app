@@ -2,7 +2,7 @@ import * as fabric from "fabric"
 import type { RootStateType } from "@/redux/store"
 import type { FilterControlType, FilterListType, LowercaseFilterIdType } from "@/types"
 import { useAppSelector, useAppDispatch } from "@/redux/hooks"
-import { setImageFilterValue } from "@/redux/settingsSlice"
+import { setImageFilterValue } from "@/redux/selectedImageSlice"
 import toast from "react-hot-toast"
 
 export default function FilterControl(props: FilterControlType) {
@@ -10,8 +10,8 @@ export default function FilterControl(props: FilterControlType) {
 
   // Get necessary data from Redux store
   const dispatch = useAppDispatch()
-  const canvas = useAppSelector((state: RootStateType) => state.settings.canvas)
-  const selectedImage = useAppSelector((state: RootStateType) => state.settings.selectedImage)
+  const canvas = useAppSelector((state: RootStateType) => state.canvas.canvas)
+  const selectedImage = useAppSelector((state: RootStateType) => state.selection.selectedImage)
   const filterTypeLower = id.toLowerCase()
   const rangeValue = selectedImage?.filters[filterTypeLower as LowercaseFilterIdType] || 0
 

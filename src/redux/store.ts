@@ -1,9 +1,11 @@
-import settingsReducer from "@/redux/settingsSlice"
+import canvasReducer from "@/redux/canvasSlice"
+import selectedImageReducer from "@/redux/selectedImageSlice"
 import { configureStore } from "@reduxjs/toolkit"
 
 const store = configureStore({
   reducer: {
-    settings: settingsReducer,
+    canvas: canvasReducer,
+    selection: selectedImageReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -1,12 +1,12 @@
 import { COLLAGE_TEMPLATES } from "@/constants/canvasConfig"
 import { useAppSelector, useAppDispatch } from "@/redux/hooks"
-import { changeTemplateByIndex } from "@/redux/settingsSlice"
+import { changeTemplateByIndex } from "@/redux/canvasSlice"
 import { RootStateType } from "@/redux/store"
 import toast from "react-hot-toast"
 
 export default function TabTemplate() {
   const activeTemplateIndex = useAppSelector(
-    (state: RootStateType) => state.settings.template
+    (state: RootStateType) => state.canvas.template
   )
   const dispatch = useAppDispatch()
 

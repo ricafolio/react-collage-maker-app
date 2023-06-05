@@ -1,19 +1,10 @@
-import {
-  OBJECT_LOCKED,
-  ASPECT_RATIOS,
-  COLLAGE_TEMPLATES,
-} from "@/constants/canvasConfig"
+import * as fabric from "fabric"
+import { OBJECT_LOCKED, ASPECT_RATIOS, COLLAGE_TEMPLATES } from "@/constants/canvasConfig"
+import { newImage, setSelectedImage, clearSelectedImage } from "@/redux/selectedImageSlice"
+import { changeTab, setCanvas } from "@/redux/canvasSlice"
 import { useAppSelector, useAppDispatch } from "@/redux/hooks"
-import {
-  changeTab,
-  setCanvas,
-  newImage,
-  setSelectedImage,
-  clearSelectedImage,
-} from "@/redux/settingsSlice"
 import { RootStateType } from "@/redux/store"
 import { CustomImageObject } from "@/types"
-import * as fabric from "fabric"
 import { useEffect, useRef } from "react"
 import toast from "react-hot-toast"
 
@@ -25,10 +16,10 @@ export default function Canvas() {
   // Get necessary data from Redux store
   const dispatch = useAppDispatch()
   const activeTemplateIndex = useAppSelector(
-    (state: RootStateType) => state.settings.template
+    (state: RootStateType) => state.canvas.template
   )
   const activeRatioIndex = useAppSelector(
-    (state: RootStateType) => state.settings.ratio
+    (state: RootStateType) => state.canvas.ratio
   )
   const activeTemplate = COLLAGE_TEMPLATES[activeTemplateIndex]
 

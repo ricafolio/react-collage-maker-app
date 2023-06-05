@@ -9,13 +9,13 @@ export default function DownloadButton() {
   const linkRef = useRef<HTMLAnchorElement | null>(null)
   
   const canvas = useAppSelector(
-    (state: RootStateType) => state.settings.canvas
+    (state: RootStateType) => state.canvas.canvas
   )
   const uploaded = useAppSelector(
-    (state: RootStateType) => state.settings.images.length
+    (state: RootStateType) => state.selection.images.length
   )
   const activeTemplateConfig = useAppSelector(
-    (state: RootStateType) => COLLAGE_TEMPLATES[state.settings.template].config
+    (state: RootStateType) => COLLAGE_TEMPLATES[state.canvas.template].config
   )
 
   const downloadImage = () => {

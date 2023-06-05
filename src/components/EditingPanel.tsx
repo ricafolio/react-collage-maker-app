@@ -11,12 +11,12 @@ import FiltersIcon from "./icons/FiltersIcon"
 import { SelectedTabType } from "@/types"
 import { RootStateType } from "@/redux/store"
 
-import { changeTab } from "@/redux/settingsSlice"
+import { changeTab } from "@/redux/canvasSlice"
 import { useAppSelector, useAppDispatch } from "@/redux/hooks"
 
 export default function EditingPanel() {
   const selected = useAppSelector(
-    (state: RootStateType) => state.settings.tab
+    (state: RootStateType) => state.canvas.tab
   )
   const dispatch = useAppDispatch()
 

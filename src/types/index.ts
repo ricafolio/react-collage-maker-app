@@ -50,6 +50,13 @@ export type AspectRatioType = {
   canvas: (w: number) => DimensionsType
 }
 
+export interface CanvasStateType {
+  canvas: Canvas | null
+  ratio: number
+  template: number
+  tab: SelectedTabType
+}
+
 export interface UploadedImage {
   id: string
   filters: {
@@ -62,11 +69,7 @@ export interface UploadedImage {
   }
 }
 
-export interface defaultSettingsType {
-  canvas: Canvas | null
-  ratio: number
-  template: number
-  tab: SelectedTabType
+export interface SelectedImageStateType {
   selectedImage: UploadedImage | null
   images: UploadedImage[]
 }

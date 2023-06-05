@@ -1,12 +1,12 @@
 import { ASPECT_RATIOS } from "@/constants/canvasConfig"
 import { useAppSelector, useAppDispatch } from "@/redux/hooks"
-import { changeRatioByIndex } from "@/redux/settingsSlice"
+import { changeRatioByIndex } from "@/redux/canvasSlice"
 import { RootStateType } from "@/redux/store"
 import toast from "react-hot-toast"
 
 export default function TabRatio() {
   const activeRatioIndex = useAppSelector(
-    (state: RootStateType) => state.settings.ratio
+    (state: RootStateType) => state.canvas.ratio
   )
   const dispatch = useAppDispatch()
 
