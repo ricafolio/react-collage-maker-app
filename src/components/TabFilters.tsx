@@ -13,7 +13,7 @@ export default function TabFilters() {
             min={filter.min}
             max={filter.max}
             step={filter.step}
-            emptyFilter={filter.emptyFilter}
+            newFilter={filter.newFilter}
           />
         )
       })}

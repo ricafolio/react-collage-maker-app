@@ -24,5 +24,5 @@ export type FilterControlType = {
   min: number
   max: number
   step: number
-  emptyFilter: (value: number) => filters.BaseFilter
+  newFilter: (value: number) => filters.BaseFilter
 }

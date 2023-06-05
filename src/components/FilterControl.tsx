@@ -6,7 +6,7 @@ import { setImageFilterValue } from "@/redux/selectedImageSlice"
 import toast from "react-hot-toast"
 
 export default function FilterControl(props: FilterControlType) {
-  const { id, min, max, step, emptyFilter } = props
+  const { id, min, max, step, newFilter } = props
   const filterTypeLower = id.toLowerCase()
 
   // Get necessary data from Redux store
@@ -53,7 +53,7 @@ export default function FilterControl(props: FilterControlType) {
       (filterInstance as { [key: string]: any })[filterTypeLower] = filterValue
     } else {
       // Create new filter
-      image.filters.push(emptyFilter(filterValue))
+      image.filters.push(newFilter(filterValue))
     }
 
     image.applyFilters()

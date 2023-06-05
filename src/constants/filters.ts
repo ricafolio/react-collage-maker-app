@@ -8,7 +8,7 @@ export const filters: FilterControlType[] = [
     min: 0,
     max: 100,
     step: 1,
-    emptyFilter: (value) => new fabricFilter.Noise({
+    newFilter: (value) => new fabricFilter.Noise({
       noise: value
     }) as fabricFilterType.BaseFilter
   },
@@ -17,7 +17,7 @@ export const filters: FilterControlType[] = [
     min: 0,
     max: 0.6,
     step: 0.002,
-    emptyFilter: (value) => new fabricFilter.Brightness({
+    newFilter: (value) => new fabricFilter.Brightness({
       brightness: value
     }) as fabricFilterType.BaseFilter
   },
@@ -26,7 +26,7 @@ export const filters: FilterControlType[] = [
     min: 0,
     max: 0.6,
     step: 0.002,
-    emptyFilter: (value) => new fabricFilter.Contrast({
+    newFilter: (value) => new fabricFilter.Contrast({
       contrast: value
     }) as fabricFilterType.BaseFilter
   },
@@ -35,7 +35,7 @@ export const filters: FilterControlType[] = [
     min: 0,
     max: 1,
     step: 0.002,
-    emptyFilter: (value) => new fabricFilter.Saturation({
+    newFilter: (value) => new fabricFilter.Saturation({
       saturation: value
     }) as fabricFilterType.BaseFilter
   },
@@ -44,7 +44,7 @@ export const filters: FilterControlType[] = [
     min: 0,
     max: 0.6,
     step: 0.002,
-    emptyFilter: (value) => new fabricFilter.Vibrance({
+    newFilter: (value) => new fabricFilter.Vibrance({
       vibrance: value
     }) as fabricFilterType.BaseFilter
   },
@@ -53,7 +53,7 @@ export const filters: FilterControlType[] = [
     min: 0,
     max: 1,
     step: 0.002,
-    emptyFilter: (value) => new fabricFilter.Blur({
+    newFilter: (value) => new fabricFilter.Blur({
       blur: value
     }) as fabricFilterType.BaseFilter
   },
