@@ -75,6 +75,7 @@ export default function Canvas() {
                   const img = await fabric.Image.fromURL(imageBase64)
                   // Set position to selected cell
                   img.set({
+                    id: `img_${new Date().getTime()}`,
                     left: selectedCell.left,
                     top: selectedCell.top,
                     selectable: true,
