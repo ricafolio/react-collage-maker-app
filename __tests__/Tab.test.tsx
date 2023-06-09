@@ -1,6 +1,6 @@
 import EditingPanel from "../src/components/EditingPanel"
 import store from "../src/redux/store"
-import { render, screen, cleanup } from "@testing-library/react"
+import { render, screen, cleanup, fireEvent } from "@testing-library/react"
 import React from "react"
 import { Provider } from "react-redux"
 import { describe, it, expect, afterEach, beforeEach } from "vitest"
@@ -12,6 +12,28 @@ function assertButtonWithText(text: string) {
   expect(buttonText).not.toBeNull()
   expect(buttonText?.tagName).toBe("SPAN")
   expect(buttonElement?.tagName).toBe("BUTTON")
+}
+
+function assertTabContent(tab: string, numberOfButtons: number) {
+  const buttonText = screen.queryByText(tab)
+  const buttonElement = buttonText?.closest("button")
+  if (buttonElement) {
+    // Click Template tab
+    fireEvent.click(buttonElement)
+
+    // Get Tab content
+    const tabContentElement = screen.getByTestId("tabContent")
+    const templateButtons = tabContentElement.querySelectorAll("button")
+
+    // Should have 10 templates
+    expect(templateButtons).toHaveLength(numberOfButtons)
+
+    // Should have icons inside buttons
+    templateButtons.forEach((button) => {
+      const imgIcon = button.querySelector("img")
+      expect(imgIcon).not.toBeNull()
+    })
+  }
 }
 
 describe("Tabs renders correctly", () => {
@@ -37,5 +59,27 @@ describe("Tabs renders correctly", () => {
 
   it("Should have Filters tab", () => {
     assertButtonWithText("Filters")
+  })
+})
+
+describe("Tabs content renders correctly", () => {
+  beforeEach(() => {
+    render(
+      <Provider store={store}>
+        <EditingPanel />
+      </Provider>
+    )
+  })
+
+  afterEach(() => {
+    cleanup()
+  })
+
+  it("Template should show 10 options", () => {
+    assertTabContent("Template", 10)
+  })
+
+  it("Ratio should show 8 options", () => {
+    assertTabContent("Ratio", 8)
   })
 })
