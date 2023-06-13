@@ -1,6 +1,7 @@
 import { ASPECT_RATIOS } from "@/constants/canvasConfig"
 import { useAppSelector, useAppDispatch } from "@/redux/hooks"
 import { changeRatioByIndex } from "@/redux/canvasSlice"
+import { clearAllImages } from "@/redux/selectedImageSlice"
 import { RootStateType } from "@/redux/store"
 import toast from "react-hot-toast"
 
@@ -24,7 +25,8 @@ export default function TabRatio() {
                   : "hover:bg-neutral-800"
               }`}
               onClick={() => {
-                dispatch(changeRatioByIndex(index)) 
+                dispatch(changeRatioByIndex(index))
+                dispatch(clearAllImages())
                 toast.success(`Ratio changed to ${ratio.name}`, { duration: 650, id: "toast-ratio" })
               }}
             >
