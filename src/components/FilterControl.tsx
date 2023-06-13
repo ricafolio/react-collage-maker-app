@@ -4,10 +4,28 @@ import type { FilterControlType, FilterListType, LowercaseFilterIdType } from "@
 import { useAppSelector, useAppDispatch } from "@/redux/hooks"
 import { setImageFilterValue } from "@/redux/selectedImageSlice"
 import toast from "react-hot-toast"
+import { useState, useEffect } from "react"
 
 export default function FilterControl(props: FilterControlType) {
   const { id, min, max, step, newFilter } = props
   const filterTypeLower = id.toLowerCase()
+
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const handleResize = () => {
+      const isMobileView = window.matchMedia('(max-width: 640px)').matches
+      setIsMobile(isMobileView)
+    }
+
+    handleResize()
+
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
   // Get necessary data from Redux store
   const dispatch = useAppDispatch()
@@ -76,6 +94,14 @@ export default function FilterControl(props: FilterControlType) {
       filterType: filterTypeLower,
       filterValue: parseFloat(value)
     }))
+  }
+
+  if (isMobile) { 
+    return (
+      <div>
+        {/* { TO DO } */}
+      </div>
+    )
   }
 
   return (
