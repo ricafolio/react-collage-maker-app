@@ -29,4 +29,6 @@ export interface FilterControlType {
 
 export interface FilterControlTypeProps extends FilterControlType {
   isMobile: boolean
+  activeFilter: FilterIdType | null
+  setActiveFilter: (value: FilterIdType | null) => void
 }
