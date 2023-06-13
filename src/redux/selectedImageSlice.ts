@@ -23,6 +23,10 @@ export const selectedImageSlice = createSlice({
     clearSelectedImage: (state) => {
       state.selectedImageIndex = null
     },
+    clearAllImages: (state) => {
+      state.selectedImageIndex = null
+      state.images = []
+    },
     setImageFilterValue: (state, action: PayloadAction<ImageFilterUpdate>) => {
       // protect imageIndex  againts nulls before running the reducer
       const { imageIndex, filterType, filterValue } = action.payload
@@ -42,6 +46,7 @@ export const {
   newImage,
   setSelectedImage,
   clearSelectedImage,
+  clearAllImages,
   setImageFilterValue
 } = selectedImageSlice.actions
 
