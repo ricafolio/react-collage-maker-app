@@ -19,10 +19,14 @@ export type FilterListType =
 
 export type LowercaseFilterIdType = Lowercase<FilterIdType>
 
-export type FilterControlType = {
+export interface FilterControlType {
   id: FilterIdType
   min: number
   max: number
   step: number
   newFilter: (value: number) => filters.BaseFilter
+}
+
+export interface FilterControlTypeProps extends FilterControlType {
+  isMobile: boolean
 }
