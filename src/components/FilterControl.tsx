@@ -44,6 +44,7 @@ export default function FilterControl(props: FilterControlType) {
     const image = canvas.getActiveObject() as fabric.Image
     const parsedImage: fabric.Image = await image.toJSON()
     const filterIndex = parsedImage.filters.findIndex((f: { type: string }) => f.type === id)
+    console.log(filterIndex)
 
     if (filterIndex !== -1) {
       // Tweak existing filter
