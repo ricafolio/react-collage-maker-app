@@ -38,11 +38,11 @@ export default function FilterControl(props: FilterControlType) {
   const computePercentage = () => Math.round(((rangeValue - min) / (max - min)) * 100)
 
   // Add or update the image filter when the range value changes
-  const addFilter = (filterValue: number) => {
+  const addFilter = async (filterValue: number) => {
     if (!canvas) return
 
     const image = canvas.getActiveObject() as fabric.Image
-    const parsedImage: fabric.Image = image.toJSON()
+    const parsedImage: fabric.Image = await image.toJSON()
     const filterIndex = parsedImage.filters.findIndex((f: { type: string }) => f.type === id)
 
     if (filterIndex !== -1) {
@@ -56,19 +56,19 @@ export default function FilterControl(props: FilterControlType) {
       image.filters.push(newFilter(filterValue))
     }
 
-    image.applyFilters()
+    image.applyFilters(image.filters)
     canvas.renderAll()
   }
 
   // Update the filter value when the range value changes
-  const setValue = (value: string) => {
+  const setValue = async (value: string) => {
     if (selectedImageIndex === null) {
       toast("Please select an image to apply filter", { id: "no-image" })
       return
     }
 
     // Start adding the actual filter
-    addFilter(parseFloat(value))
+    await addFilter(parseFloat(value))
 
     // Set selectedImage value in redux, it will take care of the rest
     dispatch(setImageFilterValue({
