@@ -79,7 +79,7 @@ export default function FilterControl(props: FilterControlType) {
   }
 
   return (
-    <div className="border-b border-neutral-800 py-4">
+    <div data-testid={filterTypeLower} className="border-b border-neutral-800 py-4">
       <div className={`flex flex-row w-full items-center transition-colors rounded`}>
         <h3 className="w-1/2 text-left font-medium">{id}</h3>
         <span className="w-1/2 text-right">{selectedImageIndex !== null ? `${computePercentage()}%` : "-"}</span>
