@@ -40,17 +40,17 @@ function useImageFilterAction() {
 
 function useCanvasAction() {
   const dispatch = useAppDispatch()
-  const setCanvasAction = (canvas: Canvas) => {
-    dispatch(setCanvas(canvas))
-  }
   const addImageAction = (imagePayload: UploadedImage) => {
     dispatch(newImage(imagePayload))
   }
-  const setSelectedImageAction = (id: string) => {
-    dispatch(setSelectedImage(id))
-  }
   const clearSelectedImageAction = () => {
     dispatch(clearSelectedImage())
+  }
+  const setCanvasAction = (canvas: Canvas) => {
+    dispatch(setCanvas(canvas))
+  }
+  const setSelectedImageAction = (id: string) => {
+    dispatch(setSelectedImage(id))
   }
   return {
     addImageAction,

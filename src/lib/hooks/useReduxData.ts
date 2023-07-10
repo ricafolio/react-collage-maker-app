@@ -20,9 +20,9 @@ function useCanvasConfigData() {
   const activeTemplate = COLLAGE_TEMPLATES[activeTemplateIndex]
 
   return { 
-    activeTemplateIndex,
     activeRatioIndex,
-    activeTemplate 
+    activeTemplateIndex,
+    activeTemplate
   }
 }
 
@@ -40,7 +40,12 @@ function useCanvasImageData() {
     (state: RootStateType) => state.selection.images
   )
 
-  return { uploadCount, maxImageUploads, images, selectedImageIndex }
+  return {
+    images,
+    maxImageUploads,
+    selectedImageIndex,
+    uploadCount,
+  }
 }
 
 function useTabData() {
