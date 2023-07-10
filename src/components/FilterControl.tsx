@@ -1,3 +1,4 @@
+import clsx from "clsx"
 import * as fabric from "fabric"
 import type { RootStateType } from "@/redux/store"
 import type { FilterControlTypeProps, FilterListType, LowercaseFilterIdType } from "@/types"
@@ -83,17 +84,33 @@ export default function FilterControl(props: FilterControlTypeProps) {
       <>
         {activeFilter === null
           // LIST OF FILTERS
-          ? <button onClick={() => setActiveFilter(id)} className={`flex mx-1 px-2 h-20 min-w-20 cursor-pointer flex-col items-center justify-center text-center transition-colors rounded hover:bg-neutral-800`}>
-            <span className="w-full text-center">{selectedImageIndex !== null ? `${computePercentage()}` : "-"}</span>
-            <h3 className="w-full text-center text-sm font-medium">{id}</h3>
-          </button>
+          ? (
+            <button 
+              onClick={() => setActiveFilter(id)} 
+              className={clsx(
+                "cursor-pointer transition-colors",
+                "min-w-20 h-20 mx-1 px-2",
+                "flex flex-col items-center justify-center text-center",
+                "rounded hover:bg-neutral-800",
+            )}>
+              <span className="w-full text-center">
+                {selectedImageIndex !== null ? `${computePercentage()}` : "-"}
+              </span>
+              <h3 className="w-full text-center text-sm font-medium">{id}</h3>
+            </button>
+          )
           : (
             // SHOW ACTIVE FILTER INNER CONTENT
             activeFilter === id && (
               <div className="w-full flex items-center">
                 <button 
                   onClick={() => setActiveFilter(null)} 
-                  className="rounded mx-1 px-1 h-20 w-16 cursor-pointer hover:bg-neutral-800 flex flex-col items-center justify-center"
+                  className={clsx(
+                    "cursor-pointer",
+                    "mx-1 px-1 h-20 w-16",
+                    "flex flex-col items-center justify-center",
+                    "rounded hover:bg-neutral-800",
+                  )}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 15 15"><path fill="currentColor" fillRule="evenodd" d="M8.842 3.135a.5.5 0 0 1 .023.707L5.435 7.5l3.43 3.658a.5.5 0 0 1-.73.684l-3.75-4a.5.5 0 0 1 0-.684l3.75-4a.5.5 0 0 1 .707-.023Z" clipRule="evenodd"/></svg>
                   <span className="text-sm">Back</span>
@@ -102,7 +119,9 @@ export default function FilterControl(props: FilterControlTypeProps) {
                 <div className="grow mx-3">
                   <div className="flex flex-row w-full items-center transition-colors rounded">
                     <h3 className="w-1/2 text-left font-medium">{id}</h3>
-                    <span className="w-1/2 text-right">{selectedImageIndex !== null ? `${computePercentage()}%` : "-"}</span>
+                    <span className="w-1/2 text-right">
+                      {selectedImageIndex !== null ? `${computePercentage()}%` : "-"}
+                    </span>
                   </div>
 
                   <div className="w-full flex justify-center items-center">
@@ -128,9 +147,11 @@ export default function FilterControl(props: FilterControlTypeProps) {
 
   return (
     <div data-testid={filterTypeLower} className="border-b border-neutral-800 py-4">
-      <div className={`flex flex-row w-full items-center transition-colors rounded`}>
+      <div className="flex flex-row w-full items-center transition-colors rounded">
         <h3 className="w-1/2 text-left font-medium">{id}</h3>
-        <span className="w-1/2 text-right">{selectedImageIndex !== null ? `${computePercentage()}%` : "-"}</span>
+        <span className="w-1/2 text-right">
+          {selectedImageIndex !== null ? `${computePercentage()}%` : "-"}
+        </span>
       </div>
 
       <div className="w-full flex justify-center items-center">

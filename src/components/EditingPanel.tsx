@@ -1,3 +1,4 @@
+import clsx from "clsx"
 import DownloadButton from "./DownloadButton"
 
 import TabFilters from "./TabFilters"
@@ -21,9 +22,9 @@ export default function EditingPanel() {
   )
 
   const sharedTabStyle = "flex justify-center items-center transition-colors p-3"
-  const inactiveTabStyle = `${sharedTabStyle} bg-black hover:bg-neutral-950`
-  const activeTabStyle = `${sharedTabStyle} bg-neutral-900`
-  
+  const inactiveTabStyle = clsx(sharedTabStyle, "bg-black hover:bg-neutral-950")
+  const activeTabStyle = clsx(sharedTabStyle, "bg-neutral-900")
+
   const getStyle = (tab: SelectedTabType) => {
     return selected === tab ? activeTabStyle : inactiveTabStyle
   }
@@ -54,17 +55,18 @@ export default function EditingPanel() {
         </button>
       </div>
 
-      <div data-testid="tabContent" className="
-        scrollbar-hide bg-neutral-900 p-2 mx-2 sm:mx-0
-        h-28 flex items-center overflow-x-auto overflow-y-hidden
-        sm:min-h-screen sm:block sm:overflow-x-hidden sm:overflow-y-auto
-      ">
+      <div data-testid="tabContent" className={clsx([
+        "scrollbar-hide bg-neutral-900",
+        "h-28 mx-2 p-2",
+        "flex items-center overflow-x-auto overflow-y-hidden",
+        "sm:min-h-screen sm:mx-0 sm:block sm:overflow-x-hidden sm:overflow-y-auto"
+      ])}>
         {selected === "template" && <TabTemplate />}
         {selected === "ratio" && <TabRatio />}
         {selected === "more" && <TabFilters />}
       </div>
 
-      <div className="sm:fixed bottom-0 left-0 pb-4 px-2 sm:p-4">
+      <div className={clsx("bottom-0 left-0 pb-4 px-2", "sm:fixed sm:p-4")}>
         <DownloadButton />
       </div>
     </>

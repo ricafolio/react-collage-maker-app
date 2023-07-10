@@ -1,3 +1,4 @@
+import clsx from "clsx"
 import type { FilterControlType, FilterIdType } from "@/types"
 import { useState, useEffect } from "react"
 import { filters } from "@/constants/filters"
@@ -23,7 +24,11 @@ export default function TabFilters() {
   }, [])
 
   return (
-    <div className={`${isMobile ? "w-full flex flex-nowrap" : "w-full px-2"}`}>
+    <div className={clsx({
+      "w-full": true,
+      "flex flex-nowrap": isMobile,
+      "px-2": !isMobile
+    })}>
       {filters.map((filter: FilterControlType, i: number) => {
         return (
           <FilterControl
