@@ -4,6 +4,7 @@ import DownloadIcon from "./icons/DownloadIcon"
 import toast from "react-hot-toast"
 import { useAppSelector } from "@/redux/hooks"
 import { useRef } from "react"
+import clsx from "clsx"
 
 export default function DownloadButton() {
   const linkRef = useRef<HTMLAnchorElement | null>(null)
@@ -34,7 +35,12 @@ export default function DownloadButton() {
     <>
       <a ref={linkRef} id="download" className="hidden"></a>
       <button
-        className="mt-4 flex w-full items-center justify-center rounded bg-indigo-600 px-5 py-3 text-sm font-semibold transition transition-colors hover:bg-indigo-700 disabled:bg-gray-500"
+        className={clsx([
+          "w-full flex items-center justify-center",
+          "mt-4 px-5 py-3 text-sm font-semibold",
+          "transition transition-colors",
+          "rounded bg-indigo-600 hover:bg-indigo-700 disabled:bg-gray-500"
+        ])}
         onClick={downloadImage}
         disabled={uploaded !== activeTemplateConfig.length}
       >

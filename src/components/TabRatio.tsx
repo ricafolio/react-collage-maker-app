@@ -4,6 +4,7 @@ import { changeRatioByIndex } from "@/redux/canvasSlice"
 import { clearAllImages } from "@/redux/selectedImageSlice"
 import { RootStateType } from "@/redux/store"
 import toast from "react-hot-toast"
+import clsx from "clsx"
 
 export default function TabRatio() {
   const dispatch = useAppDispatch()
@@ -19,11 +20,17 @@ export default function TabRatio() {
             <button
               key={`ratio-${index}`}
               aria-label={`change aspect ratio to ${ratio.name}`}
-              className={`flex mx-1 sm:mb-2 h-20 w-20 sm:w-full md:w-[calc(50%-8px)] cursor-pointer flex-col items-center justify-center text-center transition-colors rounded ${
-                index === activeRatioIndex
-                  ? "bg-neutral-800"
-                  : "hover:bg-neutral-800"
-              }`}
+              className={clsx(
+                "cursor-pointer transition-colors rounded",
+                "flex flex-col items-center justify-center text-center",
+                "w-20 h-20 mx-1",
+                "md:w-[calc(50%-8px)]",
+                "sm:w-full sm:mb-2",
+                {
+                  "bg-neutral-800": index === activeRatioIndex,
+                  "hover:bg-neutral-800": index !== activeRatioIndex,
+                }
+              )}
               onClick={() => {
                 dispatch(changeRatioByIndex(index))
                 dispatch(clearAllImages())
