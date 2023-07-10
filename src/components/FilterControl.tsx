@@ -13,7 +13,7 @@ export default function FilterControl(props: FilterControlTypeProps) {
 
   // Get necessary data from Redux store
   const { canvas, images, selectedImageIndex } = useCanvasData()
-  const { setImageFilterValues } = useImageFilterAction()
+  const { changeFilterValue } = useImageFilterAction()
 
   // get image filter historical values or set all to zero if none is selected
   const selectedImage = (
@@ -71,7 +71,7 @@ export default function FilterControl(props: FilterControlTypeProps) {
     await addFilter(parseFloat(value))
 
     // Set selectedImage value in redux, it will take care of the rest
-    setImageFilterValues({
+    changeFilterValue({
       imageIndex: selectedImageIndex,
       filterType: filterTypeLower,
       filterValue: parseFloat(value)

@@ -31,10 +31,10 @@ function useTemplateAction() {
 
 function useImageFilterAction() {
   const dispatch = useAppDispatch()
-  const setImageFilterValues = (values: ImageFilterUpdate) => {
+  const changeFilterValue = (values: ImageFilterUpdate) => {
     dispatch(setImageFilterValue(values))
   }
-  return { setImageFilterValues }
+  return { changeFilterValue }
 }
 
 export {
