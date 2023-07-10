@@ -1,7 +1,7 @@
 import { useCanvasData, useCanvasImageData } from "@/lib/hooks/useReduxData"
 import { useRef } from "react"
 
-import DownloadIcon from "./icons/DownloadIcon"
+import DownloadIcon from "@/components/icons/DownloadIcon"
 import toast from "react-hot-toast"
 import clsx from "clsx"
 

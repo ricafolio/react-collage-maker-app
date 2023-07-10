@@ -2,7 +2,7 @@ import clsx from "clsx"
 import type { FilterControlType, FilterIdType } from "@/types"
 import { useState, useEffect } from "react"
 import { filters } from "@/constants/filters"
-import FilterControl from "./FilterControl"
+import FilterControl from "@/components/FilterControl"
 
 export default function TabFilters() {
   const [isMobile, setIsMobile] = useState(false)

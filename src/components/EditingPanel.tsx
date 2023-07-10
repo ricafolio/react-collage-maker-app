@@ -1,13 +1,13 @@
 import clsx from "clsx"
-import DownloadButton from "./DownloadButton"
+import DownloadButton from "@/components/DownloadButton"
 
-import TabFilters from "./TabFilters"
-import TabRatio from "./TabRatio"
-import TabTemplate from "./TabTemplate"
+import TabFilters from "@/components/TabFilters"
+import TabRatio from "@/components/TabRatio"
+import TabTemplate from "@/components/TabTemplate"
 
-import RatioIcon from "./icons/RatioIcon"
-import TemplateIcon from "./icons/TemplateIcon"
-import FiltersIcon from "./icons/FiltersIcon"
+import RatioIcon from "@/components/icons/RatioIcon"
+import TemplateIcon from "@/components/icons/TemplateIcon"
+import FiltersIcon from "@/components/icons/FiltersIcon"
 
 import { SelectedTabType } from "@/types"
 import { useTabData } from "@/lib/hooks/useReduxData"
