@@ -6,14 +6,8 @@ function useCanvasData() {
   const canvas = useAppSelector(
     (state: RootStateType) => state.canvas.canvas
   )
-  const selectedImageIndex = useAppSelector(
-    (state: RootStateType) => state.selection.selectedImageIndex
-  )
-  const images = useAppSelector(
-    (state: RootStateType) => state.selection.images
-  )
 
-  return { canvas, images, selectedImageIndex }
+  return { canvas }
 }
 
 function useCanvasConfigData() {
@@ -23,7 +17,13 @@ function useCanvasConfigData() {
   const activeRatioIndex = useAppSelector(
     (state: RootStateType) => state.canvas.ratio
   )
-  return { activeTemplateIndex, activeRatioIndex }
+  const activeTemplate = COLLAGE_TEMPLATES[activeTemplateIndex]
+
+  return { 
+    activeTemplateIndex,
+    activeRatioIndex,
+    activeTemplate 
+  }
 }
 
 function useCanvasImageData() {
@@ -33,8 +33,14 @@ function useCanvasImageData() {
   const maxImageUploads = useAppSelector(
     (state: RootStateType) => COLLAGE_TEMPLATES[state.canvas.template].config
   ).length
+  const selectedImageIndex = useAppSelector(
+    (state: RootStateType) => state.selection.selectedImageIndex
+  )
+  const images = useAppSelector(
+    (state: RootStateType) => state.selection.images
+  )
 
-  return { uploadCount, maxImageUploads }
+  return { uploadCount, maxImageUploads, images, selectedImageIndex }
 }
 
 function useTabData() {

@@ -4,7 +4,7 @@ import toast from "react-hot-toast"
 
 import type { FilterControlTypeProps, FilterListType, LowercaseFilterIdType } from "@/types"
 
-import { useCanvasData } from "@/lib/hooks/useReduxData"
+import { useCanvasData, useCanvasImageData } from "@/lib/hooks/useReduxData"
 import { useImageFilterAction } from "@/lib/hooks/useReduxAction"
 
 export default function FilterControl(props: FilterControlTypeProps) {
@@ -12,7 +12,8 @@ export default function FilterControl(props: FilterControlTypeProps) {
   const filterTypeLower = id.toLowerCase()
 
   // Get necessary data from Redux store
-  const { canvas, images, selectedImageIndex } = useCanvasData()
+  const { canvas } = useCanvasData()
+  const { images, selectedImageIndex } = useCanvasImageData()
   const { changeFilterValue } = useImageFilterAction()
 
   // get image filter historical values or set all to zero if none is selected
