@@ -1,7 +1,7 @@
-import { SelectedTabType } from "@/types"
 import { useAppDispatch } from "@/redux/hooks"
+import { SelectedTabType, ImageFilterUpdate } from "@/types"
+import { clearAllImages, setImageFilterValue } from "@/redux/selectedImageSlice"
 import { changeTemplateByIndex, changeRatioByIndex, changeTab } from "@/redux/canvasSlice"
-import { clearAllImages } from "@/redux/selectedImageSlice"
 
 function useTabAction() {
   const dispatch = useAppDispatch()
@@ -29,8 +29,17 @@ function useTemplateAction() {
   return { changeTemplate }
 }
 
+function useImageFilterAction() {
+  const dispatch = useAppDispatch()
+  const setImageFilterValues = (values: ImageFilterUpdate) => {
+    dispatch(setImageFilterValue(values))
+  }
+  return { setImageFilterValues }
+}
+
 export {
   useTabAction,
   useRatioAction,
-  useTemplateAction
+  useTemplateAction,
+  useImageFilterAction
 }

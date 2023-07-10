@@ -6,7 +6,14 @@ function useCanvasData() {
   const canvas = useAppSelector(
     (state: RootStateType) => state.canvas.canvas
   )
-  return { canvas }
+  const selectedImageIndex = useAppSelector(
+    (state: RootStateType) => state.selection.selectedImageIndex
+  )
+  const images = useAppSelector(
+    (state: RootStateType) => state.selection.images
+  )
+
+  return { canvas, images, selectedImageIndex }
 }
 
 function useCanvasConfigData() {

@@ -1,20 +1,19 @@
 import clsx from "clsx"
 import * as fabric from "fabric"
-import type { RootStateType } from "@/redux/store"
-import type { FilterControlTypeProps, FilterListType, LowercaseFilterIdType } from "@/types"
-import { useAppSelector, useAppDispatch } from "@/redux/hooks"
-import { setImageFilterValue } from "@/redux/selectedImageSlice"
 import toast from "react-hot-toast"
+
+import type { FilterControlTypeProps, FilterListType, LowercaseFilterIdType } from "@/types"
+
+import { useCanvasData } from "@/lib/hooks/useReduxData"
+import { useImageFilterAction } from "@/lib/hooks/useReduxAction"
 
 export default function FilterControl(props: FilterControlTypeProps) {
   const { id, min, max, step, newFilter, isMobile, activeFilter, setActiveFilter } = props
   const filterTypeLower = id.toLowerCase()
 
   // Get necessary data from Redux store
-  const dispatch = useAppDispatch()
-  const canvas = useAppSelector((state: RootStateType) => state.canvas.canvas)
-  const images = useAppSelector((state: RootStateType) => state.selection.images)
-  const selectedImageIndex = useAppSelector((state: RootStateType) => state.selection.selectedImageIndex)
+  const { canvas, images, selectedImageIndex } = useCanvasData()
+  const { setImageFilterValues } = useImageFilterAction()
 
   // get image filter historical values or set all to zero if none is selected
   const selectedImage = (
@@ -34,7 +33,7 @@ export default function FilterControl(props: FilterControlTypeProps) {
 
   // actual range value
   const rangeValue = selectedImage.filters[filterTypeLower as LowercaseFilterIdType]
-  
+
   // Compute the percentage based on the range value
   const computePercentage = () => Math.round(((rangeValue - min) / (max - min)) * 100)
 
@@ -72,11 +71,11 @@ export default function FilterControl(props: FilterControlTypeProps) {
     await addFilter(parseFloat(value))
 
     // Set selectedImage value in redux, it will take care of the rest
-    dispatch(setImageFilterValue({
+    setImageFilterValues({
       imageIndex: selectedImageIndex,
       filterType: filterTypeLower,
       filterValue: parseFloat(value)
-    }))
+    })
   }
 
   if (isMobile) {
