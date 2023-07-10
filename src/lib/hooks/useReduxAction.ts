@@ -1,6 +1,7 @@
 import type { Canvas } from "fabric"
+import type { ImageFilterUpdate, SelectedTabType, UploadedImage } from "@/types"
+
 import { useAppDispatch } from "@/redux/hooks"
-import { ImageFilterUpdate, SelectedTabType, UploadedImage } from "@/types"
 import { clearAllImages, clearSelectedImage, newImage, setSelectedImage, setImageFilterValue } from "@/redux/selectedImageSlice"
 import { changeTab, changeRatioByIndex, changeTemplateByIndex, setCanvas } from "@/redux/canvasSlice"
 
