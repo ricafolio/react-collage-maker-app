@@ -10,23 +10,19 @@ import TemplateIcon from "./icons/TemplateIcon"
 import FiltersIcon from "./icons/FiltersIcon"
 
 import { SelectedTabType } from "@/types"
-import { RootStateType } from "@/redux/store"
-
-import { changeTab } from "@/redux/canvasSlice"
-import { useAppSelector, useAppDispatch } from "@/redux/hooks"
+import { useTabData } from "./lib/hooks/useReduxData"
+import { useTabAction } from "./lib/hooks/useReduxAction"
 
 export default function EditingPanel() {
-  const dispatch = useAppDispatch()
-  const selected = useAppSelector(
-    (state: RootStateType) => state.canvas.tab
-  )
+  const { changeTabAction } = useTabAction()
+  const { activeTab } = useTabData()
 
   const sharedTabStyle = "flex justify-center items-center transition-colors p-3"
   const inactiveTabStyle = clsx(sharedTabStyle, "bg-black hover:bg-neutral-950")
   const activeTabStyle = clsx(sharedTabStyle, "bg-neutral-900")
 
   const getStyle = (tab: SelectedTabType) => {
-    return selected === tab ? activeTabStyle : inactiveTabStyle
+    return activeTab === tab ? activeTabStyle : inactiveTabStyle
   }
 
   return (
@@ -34,21 +30,21 @@ export default function EditingPanel() {
       <div data-testid="tabs" className="scrollbar-hide overflow-x-auto grid grid-flow-col justify-stretch mx-2 sm:mx-0">
         <button
           className={`${getStyle("template")}`}
-          onClick={() => dispatch(changeTab("template"))}
+          onClick={() => changeTabAction("template")}
         >
           <TemplateIcon className="mr-2 sm:mr-0 lg:mr-2 sm:text-lg" />
           <span className="sm:hidden lg:inline lg:text-sm xl:text-base">Template</span>
         </button>
         <button
           className={`${getStyle("ratio")}`}
-          onClick={() => dispatch(changeTab("ratio"))}
+          onClick={() => changeTabAction("ratio")}
         >
           <RatioIcon className="mr-2 sm:mr-0 lg:mr-2 sm:text-lg" />
           <span className="sm:hidden lg:inline lg:text-sm xl:text-base">Ratio</span>
         </button>
         <button
           className={`${getStyle("more")}`}
-          onClick={() => dispatch(changeTab("more"))}
+          onClick={() => changeTabAction("more")}
         >
           <FiltersIcon className="mr-2 sm:mr-0 lg:mr-2 sm:text-lg" />
           <span className="sm:hidden lg:inline lg:text-sm xl:text-base">Filters</span>
@@ -61,9 +57,9 @@ export default function EditingPanel() {
         "flex items-center overflow-x-auto overflow-y-hidden",
         "sm:min-h-screen sm:mx-0 sm:block sm:overflow-x-hidden sm:overflow-y-auto"
       ])}>
-        {selected === "template" && <TabTemplate />}
-        {selected === "ratio" && <TabRatio />}
-        {selected === "more" && <TabFilters />}
+        {activeTab === "template" && <TabTemplate />}
+        {activeTab === "ratio" && <TabRatio />}
+        {activeTab === "more" && <TabFilters />}
       </div>
 
       <div className={clsx("bottom-0 left-0 pb-4 px-2", "sm:fixed sm:p-4")}>

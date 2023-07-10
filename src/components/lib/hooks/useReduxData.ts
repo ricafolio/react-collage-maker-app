@@ -9,6 +9,16 @@ function useCanvasData() {
   return { canvas }
 }
 
+function useCanvasConfigData() {
+  const activeTemplateIndex = useAppSelector(
+    (state: RootStateType) => state.canvas.template
+  )
+  const activeRatioIndex = useAppSelector(
+    (state: RootStateType) => state.canvas.ratio
+  )
+  return { activeTemplateIndex, activeRatioIndex }
+}
+
 function useCanvasImageData() {
   const uploadCount = useAppSelector(
     (state: RootStateType) => state.selection.images.length
@@ -20,7 +30,17 @@ function useCanvasImageData() {
   return { uploadCount, maxImageUploads }
 }
 
+function useTabData() {
+  const activeTab = useAppSelector(
+    (state: RootStateType) => state.canvas.tab
+  )
+
+  return { activeTab }
+}
+
 export { 
   useCanvasData,
-  useCanvasImageData
+  useCanvasConfigData,
+  useCanvasImageData,
+  useTabData
 }
