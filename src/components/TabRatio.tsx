@@ -1,16 +1,13 @@
 import { ASPECT_RATIOS } from "@/constants/canvasConfig"
-import { useAppSelector, useAppDispatch } from "@/redux/hooks"
-import { changeRatioByIndex } from "@/redux/canvasSlice"
-import { clearAllImages } from "@/redux/selectedImageSlice"
-import { RootStateType } from "@/redux/store"
+import { useCanvasConfigData } from "@/lib/hooks/useReduxData"
+import { useRatioAction } from "@/lib/hooks/useReduxAction"
+
 import toast from "react-hot-toast"
 import clsx from "clsx"
 
 export default function TabRatio() {
-  const dispatch = useAppDispatch()
-  const activeRatioIndex = useAppSelector(
-    (state: RootStateType) => state.canvas.ratio
-  )
+  const { activeRatioIndex } = useCanvasConfigData()
+  const { changeRatio } = useRatioAction()
 
   return (
     <>
@@ -32,8 +29,7 @@ export default function TabRatio() {
                 }
               )}
               onClick={() => {
-                dispatch(changeRatioByIndex(index))
-                dispatch(clearAllImages())
+                changeRatio(index)
                 toast.success(`Ratio changed to ${ratio.name}`, { duration: 650, id: "toast-ratio" })
               }}
             >

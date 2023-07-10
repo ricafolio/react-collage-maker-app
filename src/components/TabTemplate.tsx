@@ -1,16 +1,13 @@
 import { COLLAGE_TEMPLATES } from "@/constants/canvasConfig"
-import { useAppSelector, useAppDispatch } from "@/redux/hooks"
-import { changeTemplateByIndex } from "@/redux/canvasSlice"
-import { clearAllImages } from "@/redux/selectedImageSlice"
-import { RootStateType } from "@/redux/store"
+import { useCanvasConfigData } from "@/lib/hooks/useReduxData"
+import { useTemplateAction } from "@/lib/hooks/useReduxAction"
+
 import toast from "react-hot-toast"
 import clsx from "clsx"
 
 export default function TabTemplate() {
-  const dispatch = useAppDispatch()
-  const activeTemplateIndex = useAppSelector(
-    (state: RootStateType) => state.canvas.template
-  )
+  const { activeTemplateIndex } = useCanvasConfigData()
+  const { changeTemplate } = useTemplateAction()
 
   return (
     <>
@@ -32,8 +29,7 @@ export default function TabTemplate() {
                 }
               )}
               onClick={() => {
-                dispatch(changeTemplateByIndex(index))
-                dispatch(clearAllImages())
+                changeTemplate(index)
                 toast.success(`Template changed`, { duration: 650, id: "toast-template" })
               }}
             >
