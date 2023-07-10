@@ -1,11 +1,9 @@
 import * as fabric from "fabric"
-import { OBJECT_LOCKED, ASPECT_RATIOS, COLLAGE_TEMPLATES } from "@/constants/canvasConfig"
-import { newImage, setSelectedImage, clearSelectedImage } from "@/redux/selectedImageSlice"
-import { changeTab, setCanvas } from "@/redux/canvasSlice"
-import { useAppSelector, useAppDispatch } from "@/redux/hooks"
-import { RootStateType } from "@/redux/store"
+import { OBJECT_LOCKED, ASPECT_RATIOS } from "@/constants/canvasConfig"
 import { CustomImageObject } from "@/types"
 import { useEffect, useRef } from "react"
+import { useCanvasConfigData } from "@/lib/hooks/useReduxData"
+import { useCanvasAction, useTabAction } from "@/lib/hooks/useReduxAction"
 import toast from "react-hot-toast"
 import CanvasFooter from "@/components/CanvasFooter"
 
@@ -14,15 +12,21 @@ export default function Canvas() {
   const inputRef = useRef<HTMLInputElement | null>(null)
   const wrapperRef = useRef<HTMLDivElement | null>(null)
 
-  // Get necessary data from Redux store
-  const dispatch = useAppDispatch()
-  const activeTemplateIndex = useAppSelector(
-    (state: RootStateType) => state.canvas.template
-  )
-  const activeRatioIndex = useAppSelector(
-    (state: RootStateType) => state.canvas.ratio
-  )
-  const activeTemplate = COLLAGE_TEMPLATES[activeTemplateIndex]
+  // Get necessary Redux data via hooks
+  const { 
+    activeTemplateIndex,
+    activeRatioIndex,
+    activeTemplate
+  } = useCanvasConfigData()
+
+  const {
+    addImageAction,
+    clearSelectedImageAction,
+    setCanvasAction,
+    setSelectedImageAction 
+  } = useCanvasAction()
+
+  const { changeTabAction } = useTabAction()
 
   // Canvas initialization
   useEffect(() => {
@@ -46,7 +50,7 @@ export default function Canvas() {
       })
 
       // 1.1 Clone canvas
-      dispatch(setCanvas(canvas))
+      setCanvasAction(canvas)
 
       // 2. Setup objects & its properties
       activeTemplate.config.forEach((config) => {
@@ -91,19 +95,17 @@ export default function Canvas() {
                   }
 
                   // Save image in redux
-                  dispatch(
-                    newImage({
-                      id: imgId,
-                      filters: {
-                        brightness: 0,
-                        contrast: 0,
-                        noise: 0,
-                        saturation: 0,
-                        vibrance: 0,
-                        blur: 0,
-                      },
-                    })
-                  )
+                  addImageAction({
+                    id: imgId,
+                    filters: {
+                      brightness: 0,
+                      contrast: 0,
+                      noise: 0,
+                      saturation: 0,
+                      vibrance: 0,
+                      blur: 0,
+                    },
+                  })
 
                   canvas.add(img)
                   canvas.setActiveObject(img)
@@ -119,7 +121,7 @@ export default function Canvas() {
               })
 
               // Switch to More tab, to show controls on active object
-              dispatch(changeTab("more"))
+              changeTabAction("more")
             }
 
             input.click()
@@ -142,10 +144,10 @@ export default function Canvas() {
       // 7. Attach event handler on object selection
       const handleImageSelect = (selected: CustomImageObject) => {
         // Change tab on select
-        dispatch(changeTab("more"))
+        changeTabAction("more")
 
         // Set selected image
-        dispatch(setSelectedImage(selected.id))
+        setSelectedImageAction(selected.id)
       }
 
       canvas.on("selection:created", ({ selected }) => {
@@ -157,7 +159,7 @@ export default function Canvas() {
       })
 
       canvas.on("selection:cleared", () => {
-        dispatch(clearSelectedImage())
+        clearSelectedImageAction()
       })
 
       // 8. Clean up the canvas when the component unmounts
