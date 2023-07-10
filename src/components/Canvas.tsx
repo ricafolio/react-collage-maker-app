@@ -7,6 +7,7 @@ import { RootStateType } from "@/redux/store"
 import { CustomImageObject } from "@/types"
 import { useEffect, useRef } from "react"
 import toast from "react-hot-toast"
+import CanvasFooter from "@/components/CanvasFooter"
 
 export default function Canvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
@@ -175,25 +176,7 @@ export default function Canvas() {
       <div className="hidden">
         <input ref={inputRef} type="file" accept="image/*" className="hidden" />
       </div>
-      <div className="hidden w-full text-center sm:block">
-        <a
-          href="https://github.com/ricafolio/react-canvas-collage-maker/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-medium text-gray-600 transition-colors hover:text-gray-200"
-        >
-          Source code
-        </a>
-        <span className="mx-3 text-gray-700">&middot;</span>
-        <a
-          href="https://ricafolio.me"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-medium text-gray-600 transition-colors hover:text-gray-200"
-        >
-          ricafolio.me
-        </a>
-      </div>
+      <CanvasFooter />
     </div>
   )
 }
