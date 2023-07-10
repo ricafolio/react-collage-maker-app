@@ -1,6 +1,6 @@
 import { COLLAGE_TEMPLATES } from "@/constants/canvasConfig"
-import { useCanvasConfigData } from "./lib/hooks/useReduxData"
-import { useTemplateAction } from "./lib/hooks/useReduxAction"
+import { useCanvasConfigData } from "@/lib/hooks/useReduxData"
+import { useTemplateAction } from "@/lib/hooks/useReduxAction"
 import toast from "react-hot-toast"
 import clsx from "clsx"
 

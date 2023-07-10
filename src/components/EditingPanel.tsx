@@ -10,8 +10,8 @@ import TemplateIcon from "./icons/TemplateIcon"
 import FiltersIcon from "./icons/FiltersIcon"
 
 import { SelectedTabType } from "@/types"
-import { useTabData } from "./lib/hooks/useReduxData"
-import { useTabAction } from "./lib/hooks/useReduxAction"
+import { useTabData } from "@/lib/hooks/useReduxData"
+import { useTabAction } from "@/lib/hooks/useReduxAction"
 
 export default function EditingPanel() {
   const { changeTabAction } = useTabAction()
