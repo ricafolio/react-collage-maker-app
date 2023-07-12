@@ -8,7 +8,7 @@ import { useCanvasConfigData } from "@/lib/hooks/useReduxData"
 import { useCanvasAction, useTabAction } from "@/lib/hooks/useReduxAction"
 
 import toast from "react-hot-toast"
-import CanvasFooter from "@/components/CanvasFooter"
+import CanvasFooter from "@/components/Canvas/CanvasFooter"
 
 export default function Canvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
