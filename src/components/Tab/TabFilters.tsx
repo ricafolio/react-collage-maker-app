@@ -2,7 +2,7 @@ import type { FilterControlType, FilterIdType } from "@/types"
 import { filters } from "@/constants/filters"
 import { useState, useEffect } from "react"
 
-import FilterControl from "@/components/FilterControl"
+import FilterControl from "@/components/FilterSliderInput"
 import clsx from "clsx"
 
 export default function TabFilters() {
