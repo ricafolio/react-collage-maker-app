@@ -1,5 +1,5 @@
 import clsx from "clsx"
-import DownloadButton from "@/components/DownloadButton"
+import DownloadButton from "@/components/Button/DownloadButton"
 
 import TabFilters from "@/components/Tab/TabFilters"
 import TabRatio from "@/components/Tab/TabRatio"
