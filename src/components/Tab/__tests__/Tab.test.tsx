@@ -1,5 +1,6 @@
-import EditingPanel from "../TabPanel"
-import store from "../../../redux/store"
+import TabPanel from "@/components/Tab/TabPanel"
+import store from "@/redux/store"
+
 import { render, screen, cleanup, fireEvent } from "@testing-library/react"
 import { Provider } from "react-redux"
 import { describe, it, expect, afterEach, beforeEach } from "vitest"
@@ -39,7 +40,7 @@ describe("Tabs renders correctly", () => {
   beforeEach(() => {
     render(
       <Provider store={store}>
-        <EditingPanel />
+        <TabPanel />
       </Provider>
     )
   })
@@ -49,15 +50,15 @@ describe("Tabs renders correctly", () => {
   })
 
   it("Should have Template tab", () => {
-    assertButtonWithText("Template")
+    assertButtonWithText("template")
   })
 
   it("Should have Ratio tab", () => {
-    assertButtonWithText("Ratio")
+    assertButtonWithText("ratio")
   })
 
   it("Should have Filters tab", () => {
-    assertButtonWithText("Filters")
+    assertButtonWithText("filters")
   })
 })
 
@@ -65,7 +66,7 @@ describe("Tabs content renders correctly", () => {
   beforeEach(() => {
     render(
       <Provider store={store}>
-        <EditingPanel />
+        <TabPanel />
       </Provider>
     )
   })
