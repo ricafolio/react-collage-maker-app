@@ -4,7 +4,7 @@ import TabTemplate from "@/components/Tab/TabTemplate"
 import TabFilters from "@/components/Tab/TabFilters"
 import TabRatio from "@/components/Tab/TabRatio"
 
-import { useTabData } from "@/lib/hooks/useReduxData"
+import { useTabData } from "@/hooks/useReduxData"
 
 export default function TabContent() {
   const { activeTab } = useTabData()

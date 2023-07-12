@@ -1,4 +1,4 @@
-import { useCanvasData, useCanvasImageData } from "@/lib/hooks/useReduxData"
+import { useCanvasData, useCanvasImageData } from "@/hooks/useReduxData"
 import { useRef } from "react"
 
 import DownloadIcon from "@/components/Icon/DownloadIcon"

@@ -4,8 +4,8 @@ import { OBJECT_LOCKED, ASPECT_RATIOS } from "@/constants/canvasConfig"
 import { CustomImageObject } from "@/types"
 import { useEffect, useRef } from "react"
 
-import { useCanvasConfigData } from "@/lib/hooks/useReduxData"
-import { useCanvasAction, useTabAction } from "@/lib/hooks/useReduxAction"
+import { useCanvasConfigData } from "@/hooks/useReduxData"
+import { useCanvasAction, useTabAction } from "@/hooks/useReduxAction"
 
 import toast from "react-hot-toast"
 import CanvasFooter from "@/components/Canvas/CanvasFooter"

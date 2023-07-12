@@ -1,8 +1,8 @@
 import clsx from "clsx"
 
 import { SelectedTabType, TabItem } from "@/types"
-import { useTabAction } from "@/lib/hooks/useReduxAction"
-import { useTabData } from "@/lib/hooks/useReduxData"
+import { useTabAction } from "@/hooks/useReduxAction"
+import { useTabData } from "@/hooks/useReduxData"
 
 export default function TabButton({ id, icon }: TabItem) {
   const { changeTabAction } = useTabAction()

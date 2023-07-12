@@ -1,6 +1,6 @@
 import { ASPECT_RATIOS } from "@/constants/canvasConfig"
-import { useCanvasConfigData } from "@/lib/hooks/useReduxData"
-import { useRatioAction } from "@/lib/hooks/useReduxAction"
+import { useCanvasConfigData } from "@/hooks/useReduxData"
+import { useRatioAction } from "@/hooks/useReduxAction"
 
 import toast from "react-hot-toast"
 import clsx from "clsx"

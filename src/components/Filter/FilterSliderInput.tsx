@@ -4,8 +4,8 @@ import toast from "react-hot-toast"
 
 import type { FilterControlTypeProps, FilterListType, LowercaseFilterIdType } from "@/types"
 
-import { useCanvasData, useCanvasImageData } from "@/lib/hooks/useReduxData"
-import { useImageFilterAction } from "@/lib/hooks/useReduxAction"
+import { useCanvasData, useCanvasImageData } from "@/hooks/useReduxData"
+import { useImageFilterAction } from "@/hooks/useReduxAction"
 
 export default function FilterControl(props: FilterControlTypeProps) {
   const { id, min, max, step, newFilter, isMobile, activeFilter, setActiveFilter } = props
