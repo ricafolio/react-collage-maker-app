@@ -7,7 +7,7 @@ import type { FilterControlTypeProps, FilterListType, LowercaseFilterIdType } fr
 import { useCanvasData, useCanvasImageData } from "@/hooks/useReduxData"
 import { useImageFilterAction } from "@/hooks/useReduxAction"
 
-export default function FilterControl(props: FilterControlTypeProps) {
+export default function FilterSliderInput(props: FilterControlTypeProps) {
   const { id, min, max, step, newFilter, isMobile, activeFilter, setActiveFilter } = props
   const filterTypeLower = id.toLowerCase()
 

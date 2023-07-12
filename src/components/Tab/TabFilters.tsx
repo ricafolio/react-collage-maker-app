@@ -2,7 +2,7 @@ import type { FilterControlType, FilterIdType } from "@/types"
 import { filters } from "@/constants/filters"
 import { useState, useEffect } from "react"
 
-import FilterControl from "@/components/Filter/FilterSliderInput"
+import FilterSliderInput from "@/components/Filter/FilterSliderInput"
 import clsx from "clsx"
 
 export default function TabFilters() {
@@ -32,7 +32,7 @@ export default function TabFilters() {
     })}>
       {filters.map((filter: FilterControlType, i: number) => {
         return (
-          <FilterControl
+          <FilterSliderInput
             key={`filter-${i}`}
             id={filter.id}
             min={filter.min}
