@@ -17,7 +17,7 @@ export default function TabButtonGroup() {
       icon: <RatioIcon />
     },
     {
-      id: "more",
+      id: "filters",
       icon: <FiltersIcon />
     }
   ]

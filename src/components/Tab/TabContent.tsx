@@ -18,7 +18,7 @@ export default function TabContent() {
     ])}>
       {activeTab === "template" && <TabTemplate />}
       {activeTab === "ratio" && <TabRatio />}
-      {activeTab === "more" && <TabFilters />}
+      {activeTab === "filters" && <TabFilters />}
     </div>
   )
 }
