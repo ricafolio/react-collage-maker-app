@@ -1,7 +1,7 @@
-import { useCanvasData, useCanvasImageData } from "@/lib/hooks/useReduxData"
+import { useCanvasData, useCanvasImageData } from "@/hooks/useReduxData"
 import { useRef } from "react"
 
-import DownloadIcon from "@/components/icons/DownloadIcon"
+import DownloadIcon from "@/components/Icon/DownloadIcon"
 import toast from "react-hot-toast"
 import clsx from "clsx"
 
@@ -23,7 +23,7 @@ export default function DownloadButton() {
   }
 
   return (
-    <>
+    <div className={clsx("bottom-0 left-0 pb-4 px-2", "sm:fixed sm:p-4")}>
       <a ref={linkRef} id="download" className="hidden"></a>
       <button
         className={clsx([
@@ -38,6 +38,6 @@ export default function DownloadButton() {
         <DownloadIcon className="mr-2" />
         <span>Download <span className="inline sm:hidden md:inline">collage</span></span>
       </button>
-    </>
+    </div>
   )
 }

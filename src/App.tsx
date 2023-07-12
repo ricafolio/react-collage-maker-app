@@ -2,8 +2,8 @@ import { Toaster } from "react-hot-toast"
 import { Provider } from "react-redux"
 import store from "@/redux/store"
 
-import Canvas from "@/components/Canvas"
-import EditingPanel from "@/components/EditingPanel"
+import Canvas from "@/components/Canvas/Canvas"
+import EditingPanel from "@/components/Tab/TabPanel"
 
 function App() {
   return (

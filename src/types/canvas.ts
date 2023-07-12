@@ -1,6 +1,5 @@
 import type { Canvas } from "fabric"
-
-export type SelectedTabType = "template" | "ratio" | "more"
+import type { SelectedTabType } from "@/types/tab"
 
 export type RectFabricFunctionType = (CANVAS_HEIGHT: number, CANVAS_WIDTH: number) => {
   fill: string
