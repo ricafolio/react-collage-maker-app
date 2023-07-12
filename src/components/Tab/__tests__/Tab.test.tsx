@@ -1,5 +1,5 @@
-import EditingPanel from "../src/components/EditingPanel"
-import store from "../src/redux/store"
+import EditingPanel from "../../EditingPanel"
+import store from "../../../redux/store"
 import { render, screen, cleanup, fireEvent } from "@testing-library/react"
 import React from "react"
 import { Provider } from "react-redux"
