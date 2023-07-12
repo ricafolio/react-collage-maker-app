@@ -1,4 +1,4 @@
-import EditingPanel from "../../EditingPanel"
+import EditingPanel from "../TabPanel"
 import store from "../../../redux/store"
 import { render, screen, cleanup, fireEvent } from "@testing-library/react"
 import React from "react"
