@@ -12,5 +12,13 @@ jobs:
         with:
           fetch-depth: 0
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: "npm"
+
+      - name: Install prettier
+        run: npm i prettier prettier-plugin-tailwindcss @trivago/prettier-plugin-sort-imports
+
       - name: Check prettier
         run: npx prettier --check .
