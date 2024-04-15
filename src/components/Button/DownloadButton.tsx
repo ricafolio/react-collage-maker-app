@@ -22,14 +22,14 @@ export default function DownloadButton() {
   }
 
   return (
-    <div className={clsx("bottom-0 left-0 px-2 pb-4", "sm:fixed sm:p-4")}>
+    <div>
       <a ref={linkRef} id="download" className="hidden"></a>
       <button
         className={clsx([
           "flex w-full items-center justify-center",
-          "mt-4 px-5 py-3 text-sm font-semibold",
-          "transition transition-colors",
-          "rounded bg-indigo-600 hover:bg-indigo-700 disabled:bg-gray-500",
+          "px-5 py-3 text-sm font-semibold",
+          "transition-colors",
+          "bg-indigo-600 hover:bg-indigo-700 disabled:bg-gray-500 disabled:text-gray-300/50",
         ])}
         onClick={downloadImage}
         disabled={uploadCount !== maxImageUploads}
