@@ -3,7 +3,7 @@ import type { DimensionsType } from "@/types"
 export default function calculateWidthByAspectRatio(
   widthRatio: number,
   heightRatio: number,
-  exactWidth: number
+  exactWidth: number,
 ): DimensionsType {
   return {
     width: exactWidth,

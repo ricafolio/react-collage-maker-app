@@ -1,14 +1,11 @@
-import * as fabric from "fabric"
-
-import { OBJECT_LOCKED, ASPECT_RATIOS } from "@/constants/canvasConfig"
-import { CustomImageObject } from "@/types"
-import { useEffect, useRef } from "react"
-
-import { useCanvasConfigData } from "@/hooks/useReduxData"
-import { useCanvasAction, useTabAction } from "@/hooks/useReduxAction"
-
-import toast from "react-hot-toast"
 import CanvasFooter from "@/components/Canvas/CanvasFooter"
+import { OBJECT_LOCKED, ASPECT_RATIOS } from "@/constants/canvasConfig"
+import { useCanvasAction, useTabAction } from "@/hooks/useReduxAction"
+import { useCanvasConfigData } from "@/hooks/useReduxData"
+import { CustomImageObject } from "@/types"
+import * as fabric from "fabric"
+import { useEffect, useRef } from "react"
+import toast from "react-hot-toast"
 
 export default function Canvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
@@ -16,17 +13,14 @@ export default function Canvas() {
   const wrapperRef = useRef<HTMLDivElement | null>(null)
 
   // Get necessary Redux data via hooks
-  const { 
-    activeTemplateIndex,
-    activeRatioIndex,
-    activeTemplate
-  } = useCanvasConfigData()
+  const { activeTemplateIndex, activeRatioIndex, activeTemplate } =
+    useCanvasConfigData()
 
   const {
     addImageAction,
     clearSelectedImageAction,
     setCanvasAction,
-    setSelectedImageAction 
+    setSelectedImageAction,
   } = useCanvasAction()
 
   const { changeTabAction } = useTabAction()

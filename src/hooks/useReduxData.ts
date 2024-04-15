@@ -1,43 +1,41 @@
-import type { RootStateType } from "@/redux/store"
 import { COLLAGE_TEMPLATES } from "@/constants/canvasConfig"
 import { useAppSelector } from "@/redux/hooks"
+import type { RootStateType } from "@/redux/store"
 
 function useCanvasData() {
-  const canvas = useAppSelector(
-    (state: RootStateType) => state.canvas.canvas
-  )
+  const canvas = useAppSelector((state: RootStateType) => state.canvas.canvas)
 
   return { canvas }
 }
 
 function useCanvasConfigData() {
   const activeTemplateIndex = useAppSelector(
-    (state: RootStateType) => state.canvas.template
+    (state: RootStateType) => state.canvas.template,
   )
   const activeRatioIndex = useAppSelector(
-    (state: RootStateType) => state.canvas.ratio
+    (state: RootStateType) => state.canvas.ratio,
   )
   const activeTemplate = COLLAGE_TEMPLATES[activeTemplateIndex]
 
-  return { 
+  return {
     activeRatioIndex,
     activeTemplateIndex,
-    activeTemplate
+    activeTemplate,
   }
 }
 
 function useCanvasImageData() {
   const uploadCount = useAppSelector(
-    (state: RootStateType) => state.selection.images.length
+    (state: RootStateType) => state.selection.images.length,
   )
   const maxImageUploads = useAppSelector(
-    (state: RootStateType) => COLLAGE_TEMPLATES[state.canvas.template].config
+    (state: RootStateType) => COLLAGE_TEMPLATES[state.canvas.template].config,
   ).length
   const selectedImageIndex = useAppSelector(
-    (state: RootStateType) => state.selection.selectedImageIndex
+    (state: RootStateType) => state.selection.selectedImageIndex,
   )
   const images = useAppSelector(
-    (state: RootStateType) => state.selection.images
+    (state: RootStateType) => state.selection.images,
   )
 
   return {
@@ -49,16 +47,9 @@ function useCanvasImageData() {
 }
 
 function useTabData() {
-  const activeTab = useAppSelector(
-    (state: RootStateType) => state.canvas.tab
-  )
+  const activeTab = useAppSelector((state: RootStateType) => state.canvas.tab)
 
   return { activeTab }
 }
 
-export { 
-  useCanvasData,
-  useCanvasConfigData,
-  useCanvasImageData,
-  useTabData
-}
+export { useCanvasData, useCanvasConfigData, useCanvasImageData, useTabData }

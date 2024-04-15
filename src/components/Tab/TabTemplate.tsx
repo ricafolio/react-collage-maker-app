@@ -1,9 +1,8 @@
 import { COLLAGE_TEMPLATES } from "@/constants/canvasConfig"
-import { useCanvasConfigData } from "@/hooks/useReduxData"
 import { useTemplateAction } from "@/hooks/useReduxAction"
-
-import toast from "react-hot-toast"
+import { useCanvasConfigData } from "@/hooks/useReduxData"
 import clsx from "clsx"
+import toast from "react-hot-toast"
 
 export default function TabTemplate() {
   const { activeTemplateIndex } = useCanvasConfigData()
@@ -11,26 +10,29 @@ export default function TabTemplate() {
 
   return (
     <>
-      <div className="flex flex-nowrap sm:flex-wrap place-items-start text-white">
+      <div className="flex flex-nowrap place-items-start text-white sm:flex-wrap">
         {COLLAGE_TEMPLATES.map((template, index) => {
           return (
             <button
               key={`template-${index}`}
               aria-label={`change template to ${template.name}`}
               className={clsx(
-                "cursor-pointer transition-colors rounded",
+                "cursor-pointer rounded transition-colors",
                 "flex flex-col items-center justify-center text-center",
-                "w-20 h-20 mx-1",
+                "mx-1 h-20 w-20",
                 "md:w-[calc(50%-8px)]",
-                "sm:w-full sm:mb-2",
+                "sm:mb-2 sm:w-full",
                 {
                   "bg-neutral-800": index === activeTemplateIndex,
                   "hover:bg-neutral-800": index !== activeTemplateIndex,
-                }
+                },
               )}
               onClick={() => {
                 changeTemplate(index)
-                toast.success(`Template changed`, { duration: 650, id: "toast-template" })
+                toast.success(`Template changed`, {
+                  duration: 650,
+                  id: "toast-template",
+                })
               }}
             >
               <img src={template.icon} alt={template.name} />
