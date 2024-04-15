@@ -25,11 +25,14 @@ export default function TabFilters() {
   }, [])
 
   return (
-    <div className={clsx({
-      "w-full": true,
-      "flex flex-nowrap": isMobile,
-      "px-2": !isMobile
-    })}>
+    <div 
+      data-testid="tabFilters"
+      className={clsx({
+        "w-full": true,
+        "flex flex-nowrap": isMobile,
+        "px-2": !isMobile
+      })}
+    >
       {filters.map((filter: FilterControlType, i: number) => {
         return (
           <FilterSliderInput
