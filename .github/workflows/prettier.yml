@@ -1,0 +1,16 @@
+name: Check formatting via prettier
+
+on:
+  pull_request:
+    branches: ["master"]
+jobs:
+  check-formatting-via-prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Check prettier
+        run: npx prettier --check .
