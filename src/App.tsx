@@ -1,4 +1,5 @@
 import Canvas from "@/components/Canvas/Canvas"
+import MenuBar from "@/components/Menu/MenuBar"
 import EditingPanel from "@/components/Tab/TabPanel"
 import store from "@/redux/store"
 import { Toaster } from "react-hot-toast"
@@ -15,6 +16,7 @@ function App() {
         </aside>
 
         <main className="order-1 w-full sm:order-2 sm:w-9/12">
+          <MenuBar />
           <Canvas />
         </main>
       </div>

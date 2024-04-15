@@ -1,4 +1,3 @@
-import CanvasFooter from "@/components/Canvas/CanvasFooter"
 import { OBJECT_LOCKED, ASPECT_RATIOS } from "@/constants/canvasConfig"
 import { useCanvasAction, useTabAction } from "@/hooks/useReduxAction"
 import { useCanvasConfigData } from "@/hooks/useReduxData"
@@ -175,7 +174,6 @@ export default function Canvas() {
       <div className="hidden">
         <input ref={inputRef} type="file" accept="image/*" className="hidden" />
       </div>
-      <CanvasFooter />
     </div>
   )
 }
