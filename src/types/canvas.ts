@@ -25,16 +25,14 @@ export type CollageTemplateType = {
   config: RectConfigType[]
 }
 
-export type DimensionsType = {
-  width: number
-  height: number
-}
-
 export type AspectRatioType = {
   name: string
   nickname: string
   icon: string
-  canvas: (w: number) => DimensionsType
+  getCanvasSize: (WIDTH: number, HEIGHT: number) => {
+    width: number
+    height: number
+  }
 }
 
 export interface CanvasStateType {

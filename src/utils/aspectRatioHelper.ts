@@ -1,12 +1,11 @@
-import type { DimensionsType } from "@/types"
-
 export default function calculateAspectRatio(
   widthRatio: number,
   heightRatio: number,
-  exactWidth: number,
-): DimensionsType {
+  wrapperWidth: number,
+  wrapperHeight: number,
+) {
   return {
-    width: exactWidth,
-    height: Math.round((exactWidth / widthRatio) * heightRatio),
+    width: wrapperWidth,
+    height: Math.min(wrapperHeight, Math.round((wrapperWidth / widthRatio) * heightRatio)),
   }
 }

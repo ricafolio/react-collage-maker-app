@@ -32,7 +32,7 @@ export default function Canvas() {
         wrapperRef.current.clientWidth > 640
           ? 640 // fixed 640px canvas on >640px devices
           : wrapperRef.current.clientWidth - 16 // 16px margin
-      const ratio = ASPECT_RATIOS[activeRatioIndex].canvas(panelWidth)
+      const ratio = ASPECT_RATIOS[activeRatioIndex].getCanvasSize(panelWidth, wrapperRef.current.clientHeight)
 
       // 1. Setup canvas
       const canvas = new fabric.Canvas(canvasRef.current, {
