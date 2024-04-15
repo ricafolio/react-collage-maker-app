@@ -32,7 +32,10 @@ export default function Canvas() {
         wrapperRef.current.clientWidth > 640
           ? 640 // fixed 640px canvas on >640px devices
           : wrapperRef.current.clientWidth - 16 // 16px margin
-      const ratio = ASPECT_RATIOS[activeRatioIndex].canvas(panelWidth)
+      const ratio = ASPECT_RATIOS[activeRatioIndex].getCanvasSize(
+        panelWidth,
+        wrapperRef.current.clientHeight - 16,
+      )
 
       // 1. Setup canvas
       const canvas = new fabric.Canvas(canvasRef.current, {
@@ -167,8 +170,11 @@ export default function Canvas() {
   }, [activeRatioIndex, activeTemplateIndex])
 
   return (
-    <div ref={wrapperRef}>
-      <div className="flex items-start justify-center py-2 sm:min-h-screen sm:py-8">
+    <div
+      ref={wrapperRef}
+      className="flex h-[calc(100vh-14rem)] items-center justify-center sm:h-[calc(99vh-3rem)]"
+    >
+      <div>
         <canvas ref={canvasRef} />
       </div>
       <div className="hidden">

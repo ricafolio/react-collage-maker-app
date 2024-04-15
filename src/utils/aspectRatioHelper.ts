@@ -1,12 +1,20 @@
-import type { DimensionsType } from "@/types"
-
-export default function calculateWidthByAspectRatio(
+export default function calculateAspectRatio(
   widthRatio: number,
   heightRatio: number,
-  exactWidth: number,
-): DimensionsType {
-  return {
-    width: exactWidth,
-    height: Math.round((exactWidth / widthRatio) * heightRatio),
+  wrapperWidth: number,
+  wrapperHeight: number,
+) {
+  if (wrapperWidth / wrapperHeight >= widthRatio / heightRatio) {
+    // Use container height as the reference
+    return {
+      height: wrapperHeight,
+      width: Math.round((wrapperHeight * widthRatio) / heightRatio),
+    }
+  } else {
+    // Use container width as the reference
+    return {
+      height: Math.round((wrapperWidth * heightRatio) / widthRatio),
+      width: wrapperWidth,
+    }
   }
 }

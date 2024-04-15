@@ -8,10 +8,10 @@ import { Provider } from "react-redux"
 function App() {
   return (
     <Provider store={store}>
-      <div className="flex flex-row flex-wrap">
+      <div className="flex flex-row flex-wrap overflow-hidden">
         <Toaster />
 
-        <aside className="order-2 w-full border-gray-800 sm:order-1 sm:w-3/12 sm:border-r sm:bg-neutral-900">
+        <aside className="absolute bottom-0 z-10 order-2 w-full border-gray-800 sm:relative sm:order-1 sm:w-3/12 sm:border-r sm:bg-neutral-900">
           <EditingPanel />
         </aside>
 
