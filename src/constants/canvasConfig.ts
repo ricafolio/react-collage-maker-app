@@ -1,5 +1,5 @@
-import calculateWidthByAspectRatio from "@/utils/aspectRatioHelper"
 import { LockedObjectType, CollageTemplateType, AspectRatioType } from "@/types"
+import calculateWidthByAspectRatio from "@/utils/aspectRatioHelper"
 
 export const OBJECT_LOCKED: LockedObjectType = {
   lockMovementX: true,

@@ -1,9 +1,13 @@
-import { SelectedImageStateType, UploadedImage, ImageFilterUpdate } from "@/types"
+import {
+  SelectedImageStateType,
+  UploadedImage,
+  ImageFilterUpdate,
+} from "@/types"
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 const defaultState: SelectedImageStateType = {
   selectedImageIndex: null,
-  images: []
+  images: [],
 }
 
 export const selectedImageSlice = createSlice({
@@ -11,13 +15,12 @@ export const selectedImageSlice = createSlice({
   initialState: defaultState,
   reducers: {
     newImage: (state, action: PayloadAction<UploadedImage>) => {
-      state.images = [
-        ...state.images,
-        action.payload
-      ]
+      state.images = [...state.images, action.payload]
     },
     setSelectedImage: (state, action: PayloadAction<string>) => {
-      const selectedIndex = state.images.findIndex((image) => image.id === action.payload)
+      const selectedIndex = state.images.findIndex(
+        (image) => image.id === action.payload,
+      )
       state.selectedImageIndex = selectedIndex !== -1 ? selectedIndex : null
     },
     clearSelectedImage: (state) => {
@@ -47,7 +50,7 @@ export const {
   setSelectedImage,
   clearSelectedImage,
   clearAllImages,
-  setImageFilterValue
+  setImageFilterValue,
 } = selectedImageSlice.actions
 
 export default selectedImageSlice.reducer

@@ -1,5 +1,5 @@
-import EditingPanel from "../TabPanel"
 import store from "../../../redux/store"
+import EditingPanel from "../TabPanel"
 import { render, screen, cleanup, fireEvent } from "@testing-library/react"
 import { Provider } from "react-redux"
 import { describe, it, expect, afterEach, beforeEach } from "vitest"
@@ -7,7 +7,7 @@ import { describe, it, expect, afterEach, beforeEach } from "vitest"
 function assertButtonWithText(text: string) {
   const buttonText = screen.queryByText(text)
   const buttonElement = buttonText?.closest("button")
-  
+
   expect(buttonText).not.toBeNull()
   expect(buttonText?.tagName).toBe("SPAN")
   expect(buttonElement?.tagName).toBe("BUTTON")
@@ -40,7 +40,7 @@ describe("Tabs renders correctly", () => {
     render(
       <Provider store={store}>
         <EditingPanel />
-      </Provider>
+      </Provider>,
     )
   })
 
@@ -66,7 +66,7 @@ describe("Tabs content renders correctly", () => {
     render(
       <Provider store={store}>
         <EditingPanel />
-      </Provider>
+      </Provider>,
     )
   })
 

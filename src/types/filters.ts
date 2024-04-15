@@ -8,7 +8,7 @@ export type FilterIdType =
   | "Vibrance"
   | "Blur"
 
-export type FilterListType = 
+export type FilterListType =
   | filters.Brightness
   | filters.Contrast
   | filters.Noise

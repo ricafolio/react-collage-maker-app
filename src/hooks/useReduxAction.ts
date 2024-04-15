@@ -1,9 +1,19 @@
-import type { Canvas } from "fabric"
-import type { ImageFilterUpdate, SelectedTabType, UploadedImage } from "@/types"
-
+import {
+  changeTab,
+  changeRatioByIndex,
+  changeTemplateByIndex,
+  setCanvas,
+} from "@/redux/canvasSlice"
 import { useAppDispatch } from "@/redux/hooks"
-import { clearAllImages, clearSelectedImage, newImage, setSelectedImage, setImageFilterValue } from "@/redux/selectedImageSlice"
-import { changeTab, changeRatioByIndex, changeTemplateByIndex, setCanvas } from "@/redux/canvasSlice"
+import {
+  clearAllImages,
+  clearSelectedImage,
+  newImage,
+  setSelectedImage,
+  setImageFilterValue,
+} from "@/redux/selectedImageSlice"
+import type { ImageFilterUpdate, SelectedTabType, UploadedImage } from "@/types"
+import type { Canvas } from "fabric"
 
 function useTabAction() {
   const dispatch = useAppDispatch()
@@ -66,5 +76,5 @@ export {
   useRatioAction,
   useTemplateAction,
   useImageFilterAction,
-  useCanvasAction
+  useCanvasAction,
 }

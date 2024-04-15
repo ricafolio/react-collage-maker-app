@@ -1,9 +1,8 @@
-import { Toaster } from "react-hot-toast"
-import { Provider } from "react-redux"
-import store from "@/redux/store"
-
 import Canvas from "@/components/Canvas/Canvas"
 import EditingPanel from "@/components/Tab/TabPanel"
+import store from "@/redux/store"
+import { Toaster } from "react-hot-toast"
+import { Provider } from "react-redux"
 
 function App() {
   return (
@@ -11,11 +10,11 @@ function App() {
       <div className="flex flex-row flex-wrap">
         <Toaster />
 
-        <aside className="w-full sm:w-3/12 order-2 sm:order-1 sm:border-r border-gray-800 sm:bg-neutral-900">
+        <aside className="order-2 w-full border-gray-800 sm:order-1 sm:w-3/12 sm:border-r sm:bg-neutral-900">
           <EditingPanel />
         </aside>
 
-        <main className="w-full sm:w-9/12 order-1 sm:order-2">
+        <main className="order-1 w-full sm:order-2 sm:w-9/12">
           <Canvas />
         </main>
       </div>

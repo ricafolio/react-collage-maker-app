@@ -8,6 +8,6 @@ export default defineConfig({
     alias: [{ find: "@", replacement: "/src" }],
   },
   test: {
-    environment: "jsdom"
-  }
+    environment: "jsdom",
+  },
 })
