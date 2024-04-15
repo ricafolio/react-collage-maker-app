@@ -1,6 +1,6 @@
 import type { DimensionsType } from "@/types"
 
-export default function calculateWidthByAspectRatio(
+export default function calculateAspectRatio(
   widthRatio: number,
   heightRatio: number,
   exactWidth: number,
