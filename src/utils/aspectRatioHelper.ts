@@ -4,8 +4,17 @@ export default function calculateAspectRatio(
   wrapperWidth: number,
   wrapperHeight: number,
 ) {
-  return {
-    width: wrapperWidth,
-    height: Math.min(wrapperHeight, Math.round((wrapperWidth / widthRatio) * heightRatio)),
+  if (wrapperWidth / wrapperHeight >= widthRatio / heightRatio) {
+  // Use container height as the reference
+    return {
+      height: wrapperHeight,
+      width: Math.round((wrapperHeight * widthRatio) / heightRatio)
+    }
+  } else {
+    // Use container width as the reference
+    return {
+      height: Math.round((wrapperWidth * heightRatio) / widthRatio),
+      width: wrapperWidth
+    }
   }
 }
