@@ -514,13 +514,15 @@ export const ASPECT_RATIOS: AspectRatioType[] = [
   {
     name: "9:16",
     nickname: "Stories",
-    getCanvasSize: (WIDTH, HEIGHT) => calculateAspectRatio(9, 16, WIDTH, HEIGHT),
+    getCanvasSize: (WIDTH, HEIGHT) =>
+      calculateAspectRatio(9, 16, WIDTH, HEIGHT),
     icon: "data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_7_23)'%3E%3Crect x='7.5' y='0.5' width='15.8' height='29' stroke='white'/%3E%3Cg clip-path='url(%23clip1_7_23)'%3E%3Cpath d='M15.6014 27.9266H8.97553V21.3007L10.1516 21.3007L10.1516 26.7505L15.6014 26.7505V27.9266Z' fill='white'/%3E%3C/g%3E%3Cg clip-path='url(%23clip2_7_23)'%3E%3Cpath d='M15.3007 1.97555H21.9266V8.60142L20.7505 8.60142L20.7505 3.15164L15.3007 3.15164V1.97555Z' fill='white'/%3E%3C/g%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_7_23'%3E%3Crect width='30' height='30' fill='white'/%3E%3C/clipPath%3E%3CclipPath id='clip1_7_23'%3E%3Crect width='11.2445' height='11.2445' fill='white' transform='translate(5 23.951) rotate(-45)'/%3E%3C/clipPath%3E%3CclipPath id='clip2_7_23'%3E%3Crect width='11.2445' height='11.2445' fill='white' transform='translate(25.9021 5.95108) rotate(135)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A",
   },
   {
     name: "16:9",
     nickname: "Cinematic",
-    getCanvasSize: (WIDTH, HEIGHT) => calculateAspectRatio(16, 9, WIDTH, HEIGHT),
+    getCanvasSize: (WIDTH, HEIGHT) =>
+      calculateAspectRatio(16, 9, WIDTH, HEIGHT),
     icon: "data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_7_16)'%3E%3Crect x='0.5' y='7.5' width='29' height='16' stroke='white'/%3E%3Cg clip-path='url(%23clip1_7_16)'%3E%3Cpath d='M8.6014 21.9266H1.97553V15.3007L3.15162 15.3007L3.15162 20.7505L8.6014 20.7505V21.9266Z' fill='white'/%3E%3C/g%3E%3Cg clip-path='url(%23clip2_7_16)'%3E%3Cpath d='M21.3007 8.97552H27.9266V15.6014L26.7505 15.6014L26.7505 10.1516L21.3007 10.1516V8.97552Z' fill='white'/%3E%3C/g%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_7_16'%3E%3Crect width='30' height='30' fill='white'/%3E%3C/clipPath%3E%3CclipPath id='clip1_7_16'%3E%3Crect width='11.2445' height='11.2445' fill='white' transform='translate(-2 17.951) rotate(-45)'/%3E%3C/clipPath%3E%3CclipPath id='clip2_7_16'%3E%3Crect width='11.2445' height='11.2445' fill='white' transform='translate(31.9021 12.951) rotate(135)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A",
   },
 ]

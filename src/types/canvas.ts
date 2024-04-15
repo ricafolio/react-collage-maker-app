@@ -29,7 +29,10 @@ export type AspectRatioType = {
   name: string
   nickname: string
   icon: string
-  getCanvasSize: (WIDTH: number, HEIGHT: number) => {
+  getCanvasSize: (
+    WIDTH: number,
+    HEIGHT: number,
+  ) => {
     width: number
     height: number
   }
