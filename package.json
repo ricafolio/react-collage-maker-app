@@ -19,7 +19,8 @@
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-redux": "^8.0.7",
-    "redux": "^4.2.1"
+    "redux": "^4.2.1",
+    "typescript-eslint": "^7.6.0"
   },
   "devDependencies": {
     "@testing-library/react": "^15.0.2",
