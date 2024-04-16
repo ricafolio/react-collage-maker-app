@@ -175,8 +175,21 @@ export default function Canvas() {
         canvas.renderAll()
       })
 
+      // Unselect active image event handler
+      const unselectObject = (e: MouseEvent) => {
+        // Only target parent element
+        if (e.target === wrapperRef.current) {
+          canvas.discardActiveObject()
+          canvas.requestRenderAll()
+        }
+      }
+
+      // Attach handler
+      wrapperRef.current.addEventListener("click", unselectObject)
+
       // 8. Clean up the canvas when the component unmounts
       return () => {
+        wrapperRef.current?.removeEventListener("click", unselectObject)
         canvas.dispose()
       }
     }
