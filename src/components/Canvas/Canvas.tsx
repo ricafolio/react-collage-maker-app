@@ -161,6 +161,20 @@ export default function Canvas() {
         clearSelectedImageAction()
       })
 
+      // On cell hover
+      canvas.on("mouse:over", (e) => {
+        e.target?.set("fill", `${e.target.fill}40`)
+        e.target?.set("backgroundColor", "#121212")
+        canvas.renderAll()
+      })
+
+      canvas.on("mouse:out", (e) => {
+        const fillColor = e.target?.fill as string
+        e.target?.set("fill", fillColor.substring(0, 7))
+        e.target?.set("backgroundColor", "")
+        canvas.renderAll()
+      })
+
       // 8. Clean up the canvas when the component unmounts
       return () => {
         canvas.dispose()
